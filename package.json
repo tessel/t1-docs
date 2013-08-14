@@ -1,0 +1,13 @@
+{
+  "name": "hardware",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD",
+  "gitHead": "d89633b131b66f1304be5cc12e6138c48bc1b8e8"
+}
