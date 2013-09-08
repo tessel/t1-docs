@@ -19,22 +19,22 @@ A bank of pins.
 
 new hardware.<b>Bank</b> (`idx`)  
 
-*array*&nbsp; bank.<b>digitalReadPins</b>  
-*array*&nbsp; bank.<b>digitalWritePins</b>  
-*array*&nbsp; bank.<b>analogReadPins</b>  
-*array*&nbsp; bank.<b>analogWritePins</b>  
-*array*&nbsp; bank.<b>pwmWritePins</b>  
+*array<number>*&nbsp; bank.<b>digitalReadPins</b>  
+*array<number>*&nbsp; bank.<b>digitalWritePins</b>  
+*array<number>*&nbsp; bank.<b>analogReadPins</b>  
+*array<number>*&nbsp; bank.<b>analogWritePins</b>  
+*array<number>*&nbsp; bank.<b>pwmWritePins</b>  
 
-bank.<b>setInput</b> (`pin`)  
-bank.<b>setOutput</b> (`pin`)  
+bank.<b>setInput</b> (`pin`, [`callback(err)`])  
+bank.<b>setOutput</b> (`pin`, [`callback(err)`])  
 
-bank.<b>digitalWrite</b> (`value`, `callback(err)`)  
+bank.<b>digitalWrite</b> (`value`, [`callback(err)`])  
 bank.<b>digitalRead</b> (`callback(err, value)`)  
-*number*&nbsp; bank.<b>digitalReadSync</b> (`callback(err, value)`)  
+*number*&nbsp; bank.<b>digitalReadSync</b> ()  
 
 bank.<b>analogWrite</b> (`value`, [`callback(err)`])  
 bank.<b>analogRead</b> (`callback(err, read)`)  
-*number*&nbsp; bank.<b>analogReadSync</b> (`callback(err, value)`)  
+*number*&nbsp; bank.<b>analogReadSync</b> ()  
 
 bank.<b>pwmWrite</b> (`value`, [`callback(err)`])  
 
