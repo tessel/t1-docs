@@ -29,12 +29,12 @@ bank.<b>setInput</b> (`pin`)
 bank.<b>setOutput</b> (`pin`)  
 
 bank.<b>digitalWrite</b> (`value`, `callback(err)`)  
-bank.<b>digitalReadSync</b> (`callback(err, value)`)  
 *number*&nbsp; bank.<b>digitalRead</b> (`callback(err, value)`)  
+bank.<b>digitalReadSync</b> (`callback(err, value)`)  
 
 bank.<b>analogWrite</b> (`value`, [`callback(err)`])  
-*number*&nbsp; bank.<b>analogReadSync</b> ()  
-bank.<b>analogRead</b> (`callback(err, read)`)  
+*number*&nbsp; bank.<b>analogRead</b> (`callback(err, read)`)  
+bank.<b>analogReadSync</b> (`callback(err, value)`)  
 
 bank.<b>pwmWrite</b> (`value`, [`callback(err)`])  
 
