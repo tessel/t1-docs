@@ -1,63 +1,63 @@
-# Hardware API Proposals
+# Hardware API Proposal
 
 **VERSION 0.0.1**
 
-The goal is to define a lightweight spec that, on your JS platform of choice:
+This is the common interface used by the Tessel for writing hardware modules. The goal is to have one line on your platform of choice:
 
 ```js
 var hardware = require('hardware');
 ```
 
-You can write interoperable code that uses hardware-level protocols, including manipulating GPIOs, SPI/I2C/UART/CAN, and more.
+That lets you write interoperable code for hardware-level protocols, GPIOs, SPI/I2C/UART/CAN, etc.
 
-From this level, we can abstract remote protocols (such as Firmata) and move between interoperable systems.
+From this level, we could abstract remote protocols (such as Firmata) and move interoperably between platforms.
 
 
 ## Bank
 
 A bank of pins.
 
-new hardware.Bank(idx)
+new hardware.<b>Bank</b> (`idx`)  
 
-Bank.digitalReadPins[]
-Bank.digitalWritePins[]
-Bank.analogReadPins[]
-Bank.analogWritePins[]
-Bank.pwmWritePins[]
+*array*&nbsp; bank.<b>digitalReadPins</b>  
+*array*&nbsp; bank.<b>digitalWritePins</b>  
+*array*&nbsp; bank.<b>analogReadPins</b>  
+*array*&nbsp; bank.<b>analogWritePins</b>  
+*array*&nbsp; bank.<b>pwmWritePins</b>  
 
-Bank.setInput(pin)
-Bank.setOutput(pin)
+bank.<b>setInput</b> (`pin`)  
+bank.<b>setOutput</b> (`pin`)  
 
-void Bank.digitalWrite(value, [function (err)])
-bool Bank.digitalReadSync
-void Bank.digitalRead(function (err, read))
+bank.<b>digitalWrite</b> (`value`, `callback(err)`)  
+bank.<b>digitalReadSync</b> (`callback(err, value)`)  
+*number*&nbsp; bank.<b>digitalRead</b> (`callback(err, value)`)  
 
-void Bank.analogWrite(value, [function (err)])
-int  Bank.analogReadSync()
-void Bank.analogRead(function (err, read))
+bank.<b>analogWrite</b> (`value`, [`callback(err)`])  
+*number*&nbsp; bank.<b>analogReadSync</b> ()  
+bank.<b>analogRead</b> (`callback(err, read)`)  
 
-void Bank.pwmWrite(value, [function (err)])
+bank.<b>pwmWrite</b> (`value`, [`callback(err)`])  
 
 
 ## SPI
 
 A SPI output.
 
-new hardware.SPI(idx, [bank])
+new hardware.<b>SPI</b> (`idx`, [`bank`])  
 
-SPI.transfer([cs,] writebuf, readcount, function (err, data))
-SPI.read([cs, ]readcount, function (err, data))
-SPI.write([cs,] writebuf, function (err))
+spi.<b>transfer</b> ([`cs`,] `writebuf`, `readcount`, `callback(err, data)`)  
+spi.<b>read</b> ([`cs`,] `readcount`, `callback(err, data)`)  
+spi.<b>write</b> ([`cs`,] `writebuf`, `callback(err)`)  
 
 
 ## I2C
 
 An I2C output.
 
-new hardware.I2C(idx)
+new hardware.<b>I2C</b> (`idx`)  
 
-I2C.transfer(address, writebuf, readcount, function (err, data))
-I2C.read(address, readcount, function (err, data))
-I2C.write(address, writebuf, function (err))
+i2c.<b>transfer</b> (`address`, `writebuf`, `readcount`, `callback(err, data)`)  
+i2c.<b>read</b> (`address`, `readcount`, `callback(err, data)`)  
+i2c.<b>write</b> (`address`, `writebuf`, `callback(err)`)  
 
 
