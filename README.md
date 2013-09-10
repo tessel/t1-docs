@@ -12,12 +12,14 @@ That lets you write interoperable code for hardware-level protocols, GPIOs, SPI/
 
 From this level, we could abstract remote protocols (such as Firmata) and move interoperably between platforms.
 
+Goals in order: 1) as little GC as neded, 2) as few constants and functions as needed.
 
-## Bank
+
+### Bank
 
 A bank of pins.
 
-new hardware.<b>Bank</b> (`idx`)  
+new hardware.<b>Bank</b> (`bankidx`)  
 
 *array<number>*&nbsp; bank.<b>digitalReadPins</b>  
 *array<number>*&nbsp; bank.<b>digitalWritePins</b>  
@@ -26,7 +28,7 @@ new hardware.<b>Bank</b> (`idx`)
 *array<number>*&nbsp; bank.<b>pwmWritePins</b>  
 
 bank.<b>setInput</b> (`pin`, [`callback(err)`])  
-bank.<b>setOutput</b> (`pin`, [`callback(err)`])  
+bank.<b>setOutput</b> (`pin`, [`initial`], [`callback(err)`])  
 
 bank.<b>digitalWrite</b> (`value`, [`callback(err)`])  
 bank.<b>digitalRead</b> (`callback(err, value)`)  
@@ -38,12 +40,19 @@ bank.<b>analogRead</b> (`callback(err, read)`)
 
 bank.<b>pwmWrite</b> (`value`, [`callback(err)`])  
 
+bank.<b>addRiseListener</b> (`pin`, `onrise(err, time)`)  
+bank.<b>removeRiseListener</b> (`pin`)  
+bank.<b>addFallListener</b> (`pin`, `onfall(err, time)`)  
+bank.<b>removeFallListener</b> (`pin`)  
 
-## SPI
 
-A SPI output.
+### SPI
 
-new hardware.<b>SPI</b> (`idx`, [`bank`, `cs`])  
+A SPI channel.
+
+new hardware.<b>SPI</b> (`spiidx`, [`bankidx`, `cs`])  
+
+spi.<b>initialize</b> (`onconnected(err)`)  
 
 spi.<b>setClockSpeed</b> (`mhz`)  
 spi.<b>setCPOL</b> (`cpol`)  
@@ -54,28 +63,55 @@ spi.<b>read</b> (`readcount`, `callback(err, data)`)
 spi.<b>write</b> (`writebuf`, `callback(err)`)  
 
 
-## I2C
+### I2C
 
-An I2C output.
+An I2C channel.
 
-new hardware.<b>I2C</b> (`idx`, `address`)  
+new hardware.<b>I2C</b> (`i2cidx`, `address`)  
+
+i2c.<b>initialize</b> (`onconnected(err)`)  
 
 i2c.<b>transfer</b> (`writebuf`, `readcount`, `callback(err, data)`)  
 i2c.<b>read</b> (`readcount`, `callback(err, data)`)  
 i2c.<b>write</b> (`writebuf`, `callback(err)`)  
 
 
-## FastSignal
+### Signal
 
-FastSignal signal output via a buffer.
+Signal output via buffers and simple animation protocols. Implementation-dependent.
 
-new hardware.<b>FastSignal</b> (`bankidx`, `pinidx`)
+new hardware.<b>FastSignal</b> (`bankidx`, `signalidx`)  
 
-fast.idleBit = 0  
+*number*&nbsp; signal.<b>idleBit</b> = 0  
 
-fast.<b>setClockSpeed</b> (`mhz`)  
+signal.<b>initialize</b> (`onconnected(err)`)  
 
-fast.<b>loop</b> (`buf`, [`onrepeat(err)`])  
-fast.<b>send</b> (`buf`, [`onfinished(err)`])  
-fast.<b>queue</b> (`buf`, [`onfinished(err)`])  
+signal.<b>setClockSpeed</b> (`mhz`)  
 
+signal.<b>stop</b> ()  
+signal.<b>loop</b> (`buf`, [`onrepeat(err)`])  
+signal.<b>send</b> (`buf`, [`onfinished(err)`])  
+signal.<b>queue</b> (`buf`, [`onfinished(err)`])  
+
+
+## Firmata
+
+Converting between this API and Firmata's:
+
+* bank.<b>setInput</b> / <b>setOutput</b> &rarr; firmata.<b>pinMode</b>
+* bank.<b>digitalWrite</b> &rarr; firmata.<b>digitalWrite</b>
+* bank.<b>digitalRead</b> &rarr; firmata.<b>digitalRead</b>
+* bank.<b>analogWrite</b> / bank.<b>pwmWrite</b> &rarr; firmata.<b>analogWrite</b>
+* bank.<b>pwmWrite</b> &arr; firmata.<b>servoWrite</b>
+* bank.<b>analogRead</b> &rarr; firmata.<b>analogRead</b>
+* i2c.<b>initialize</b> &rarr; firmata.<b>sendI2CConfig</b>
+* i2c.<b>write</b> &arr; firmata.<b>sendI2CWriteRequest</b>
+* i2c.<b>read</b> &arr; firmata.<b>sendI2CReadRequest</b>
+
+
+## References
+
+This API, in part, references several pre-existing APIs.
+
+* <http://firmata.org/wiki/Main_Page>
+* <http://pythonhosted.org/RPIO/> and <https://pypi.python.org/pypi/RPi.GPIO>
