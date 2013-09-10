@@ -24,7 +24,7 @@ new hardware.<b>Bank</b> (`bankidx`)
 *array&lt;number&gt;*&nbsp; bank.<b>digitalReadPins</b>  
 *array&lt;number&gt;*&nbsp; bank.<b>digitalWritePins</b>  
 *array&lt;number&gt;*&nbsp; bank.<b>analogReadPins</b>  
-*array&lt;number&gt;*&nbsp; bank.<b>analogWritePins</b> 
+*array&lt;number&gt;*&nbsp; bank.<b>analogWritePins</b>  
 *array&lt;number&gt;*&nbsp; bank.<b>pwmWritePins</b>  
 
 bank.<b>setInput</b> (`pin`, [`callback(err)`])  
@@ -86,9 +86,9 @@ new hardware.<b>FastSignal</b> (`bankidx`, `signalidx`)
 
 signal.<b>initialize</b> (`onconnected(err)`)  
 
-signal.<b>setClockSpeed</b> (`mhz`)  
+signal.<b>setClockSpeed</b> (`mhz`, [`callback(err)`])  
 
-signal.<b>stop</b> ()  
+signal.<b>stop</b> ([`callback(err)`])  
 signal.<b>loop</b> (`buf`, [`onrepeat(err)`])  
 signal.<b>send</b> (`buf`, [`onfinished(err)`])  
 signal.<b>queue</b> (`buf`, [`onfinished(err)`])  
