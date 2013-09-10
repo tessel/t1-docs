@@ -54,9 +54,9 @@ new hardware.<b>SPI</b> (`spiidx`, [`bankidx`, `cs`])
 
 spi.<b>initialize</b> (`onconnected(err)`)  
 
-spi.<b>setClockSpeed</b> (`mhz`)  
-spi.<b>setCPOL</b> (`cpol`)  
-spi.<b>setCPHA</b> (`cpha`)  
+spi.<b>setClockSpeed</b> (`mhz`, [`callback(err)`])  
+spi.<b>setCPOL</b> (`cpol`, [`callback(err)`])  
+spi.<b>setCPHA</b> (`cpha`, [`callback(err)`])  
 
 spi.<b>transfer</b> (`writebuf`, `readcount`, `callback(err, data)`)  
 spi.<b>read</b> (`readcount`, `callback(err, data)`)  
