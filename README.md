@@ -80,7 +80,7 @@ i2c.<b>write</b> (`writebuf`, `callback(err)`)
 
 Signal output via buffers and simple animation protocols. Implementation-dependent.
 
-new hardware.<b>FastSignal</b> (`bankidx`, `signalidx`)  
+new hardware.<b>Signal</b> (`bankidx`, `signalidx`)  
 
 *number*&nbsp; signal.<b>idleBit</b> = 0  
 
