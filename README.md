@@ -43,21 +43,39 @@ bank.<b>pwmWrite</b> (`value`, [`callback(err)`])
 
 A SPI output.
 
-new hardware.<b>SPI</b> (`idx`, [`bank`])  
+new hardware.<b>SPI</b> (`idx`, [`bank`, `cs`])  
 
-spi.<b>transfer</b> ([`cs`,] `writebuf`, `readcount`, `callback(err, data)`)  
-spi.<b>read</b> ([`cs`,] `readcount`, `callback(err, data)`)  
-spi.<b>write</b> ([`cs`,] `writebuf`, `callback(err)`)  
+spi.<b>setClockSpeed</b> (`mhz`)  
+spi.<b>setCPOL</b> (`cpol`)  
+spi.<b>setCPHA</b> (`cpha`)  
+
+spi.<b>transfer</b> (`writebuf`, `readcount`, `callback(err, data)`)  
+spi.<b>read</b> (`readcount`, `callback(err, data)`)  
+spi.<b>write</b> (`writebuf`, `callback(err)`)  
 
 
 ## I2C
 
 An I2C output.
 
-new hardware.<b>I2C</b> (`idx`)  
+new hardware.<b>I2C</b> (`idx`, `address`)  
 
-i2c.<b>transfer</b> (`address`, `writebuf`, `readcount`, `callback(err, data)`)  
-i2c.<b>read</b> (`address`, `readcount`, `callback(err, data)`)  
-i2c.<b>write</b> (`address`, `writebuf`, `callback(err)`)  
+i2c.<b>transfer</b> (`writebuf`, `readcount`, `callback(err, data)`)  
+i2c.<b>read</b> (`readcount`, `callback(err, data)`)  
+i2c.<b>write</b> (`writebuf`, `callback(err)`)  
 
+
+## FastSignal
+
+FastSignal signal output via a buffer.
+
+new hardware.<b>FastSignal</b> (`bankidx`, `pinidx`)
+
+fast.idleBit = 0  
+
+fast.<b>setClockSpeed</b> (`mhz`)  
+
+fast.<b>loop</b> (`buf`, [`onrepeat(err)`])  
+fast.<b>send</b> (`buf`, [`onfinished(err)`])  
+fast.<b>queue</b> (`buf`, [`onfinished(err)`])  
 
