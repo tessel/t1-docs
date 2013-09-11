@@ -2,48 +2,47 @@
 
 **VERSION 0.0.1**
 
-This is the common interface used by the Tessel for writing hardware modules. The goal is to have one line on your platform of choice:
+This is the common interface used by the Tessel for writing hardware modules. The goal is to have, on platform of choice, a standard hardware interface that can be used by third-party module code.
 
 ```js
-var hardware = require('hardware');
+var myhardware = require('myhardware');
+
+var accel = require('accelmodule').connect(myhardware);
+accel.getAcceleration(function (xyz) { ... });
 ```
 
-That lets you write interoperable code for hardware-level protocols, GPIOs, SPI/I2C/UART/CAN, etc.
+This lets you write interoperable code for hardware-level protocols, GPIOs, SPI/I2C/UART/CAN, etc.
 
-From this level, we could abstract remote protocols (such as Firmata) and move interoperably between platforms.
-
-Goals in order: 1) as little GC as neded, 2) as few constants and functions as needed.
+With a generic hardware interface, you can also create remote protocols (such as Firmata). Interoperable code can control a remote Arduino or run on-board a JavaScript microcontroller/microprocessor.
 
 
-### Bank
+### Pins
 
-A bank of pins.
+Pins manipulation is exposed directly by the hardware interface.
 
-new hardware.<b>Bank</b> (`interface`)
+*array&lt;number&gt;*&nbsp; hardware.<b>digitalReadPins</b>  
+*array&lt;number&gt;*&nbsp; hardware.<b>digitalWritePins</b>  
+*array&lt;number&gt;*&nbsp; hardware.<b>analogReadPins</b>  
+*array&lt;number&gt;*&nbsp; hardware.<b>analogWritePins</b>  
+*array&lt;number&gt;*&nbsp; hardware.<b>pwmWritePins</b>  
 
-*array&lt;number&gt;*&nbsp; bank.<b>digitalReadPins</b>  
-*array&lt;number&gt;*&nbsp; bank.<b>digitalWritePins</b>  
-*array&lt;number&gt;*&nbsp; bank.<b>analogReadPins</b>  
-*array&lt;number&gt;*&nbsp; bank.<b>analogWritePins</b>  
-*array&lt;number&gt;*&nbsp; bank.<b>pwmWritePins</b>  
+hardware.<b>setInput</b> (`pin`, [`callback(err)`])  
+hardware.<b>setOutput</b> (`pin`, [`initial`], [`callback(err)`])  
 
-bank.<b>setInput</b> (`pin`, [`callback(err)`])  
-bank.<b>setOutput</b> (`pin`, [`initial`], [`callback(err)`])  
+hardware.<b>digitalWrite</b> (`value`, [`callback(err)`])  
+hardware.<b>digitalRead</b> (`callback(err, value)`)  
+*number*&nbsp; hardware.<b>digitalReadSync</b> ()  
 
-bank.<b>digitalWrite</b> (`value`, [`callback(err)`])  
-bank.<b>digitalRead</b> (`callback(err, value)`)  
-*number*&nbsp; bank.<b>digitalReadSync</b> ()  
+hardware.<b>analogWrite</b> (`value`, [`callback(err)`])  
+hardware.<b>analogRead</b> (`callback(err, read)`)  
+*number*&nbsp; hardware.<b>analogReadSync</b> ()  
 
-bank.<b>analogWrite</b> (`value`, [`callback(err)`])  
-bank.<b>analogRead</b> (`callback(err, read)`)  
-*number*&nbsp; bank.<b>analogReadSync</b> ()  
+hardware.<b>pwmWrite</b> (`value`, [`callback(err)`])  
 
-bank.<b>pwmWrite</b> (`value`, [`callback(err)`])  
-
-bank.<b>setRiseListener</b> (`pin`, `onrise(err, time)`)  
-bank.<b>removeRiseListener</b> (`pin`)  
-bank.<b>setFallListener</b> (`pin`, `onfall(err, time)`)  
-bank.<b>removeFallListener</b> (`pin`)  
+hardware.<b>setRiseListener</b> (`pin`, `onrise(err, time)`)  
+hardware.<b>removeRiseListener</b> (`pin`)  
+hardware.<b>setFallListener</b> (`pin`, `onfall(err, time)`)  
+hardware.<b>removeFallListener</b> (`pin`)  
 
 
 ### SPI
