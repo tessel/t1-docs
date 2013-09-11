@@ -2,7 +2,7 @@
 
 **VERSION 0.0.1**
 
-This is the common interface used by the Tessel for writing hardware modules. The goal is to have, on platform of choice, a standard hardware interface that can be used by third-party module code.
+This is a proposal for a common interface for Hardware APIs in JavaScript. The goal is to have, on platform of choice, a standardard API to code modules against.
 
 ```js
 var myhardware = require('myhardware');
@@ -18,7 +18,7 @@ With a generic hardware interface, you can also create remote protocols (such as
 
 ### Pins
 
-Pins manipulation is exposed directly by the hardware interface.
+GPIO access exists on the hardware interface.
 
 *array&lt;number&gt;*&nbsp; hardware.<b>digitalReadPins</b>  
 *array&lt;number&gt;*&nbsp; hardware.<b>digitalWritePins</b>  
@@ -106,6 +106,11 @@ This API can be used as a front-end for remote protocols, such as Firmata:
 * i2c.<b>initialize</b> &rarr; firmata.<b>sendI2CConfig</b>
 * i2c.<b>write</b> &rarr; firmata.<b>sendI2CWriteRequest</b>
 * i2c.<b>read</b> &rarr; firmata.<b>sendI2CReadRequest</b>
+
+
+## Implementors
+
+Currently implemented by Tessel.
 
 
 ## References
