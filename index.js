@@ -2,32 +2,75 @@
  * By default, support on this module exists only for Firmata.
  */
 
-exports.firmata = function (board) {
+var firmata = require('firmata');
+
+function promise () {
+  var queue = [], args = null;
+  var promise = function (fn) {
+    if (promise.delivered) {
+      process.nextTick(function () {
+        fn.apply(null, args);
+      });
+    } else {
+      queue.push(fn);
+    }
+  }
+  promise.deliver = function () {
+    args = arguments, promise.delivered = true;
+    queue.splice(0, queue.length).forEach(function (fn) {
+      process.nextTick(function () {
+        fn.apply(null, args);
+      });
+    });
+  }
+  return promise;
+}
+
+
+exports.firmata = function (usbport) {
+  var onconnect = promise();
+
+  var board = new firmata.Board(usbport, function () {
+    onconnect.deliver();
+  });
+
   return {
     pinOutput: function (idx) {
-      board.pinMode(idx, board.MODES.OUTPUT);
+      onconnect(function () {
+        board.pinMode(idx, board.MODES.OUTPUT);
+      });
     },
     digitalWrite: function (idx, val) {
-      board.digitalWrite(idx, val ? board.HIGH : board.LOW);
+      onconnect(function () {
+        board.digitalWrite(idx, val ? board.HIGH : board.LOW);
+      });
     },
-    I2C: function (interface, addr) {
+    I2C: function (addr) {
       this.initialize = function () {
-        board.sendI2CConfig();
+        onconnect(function () {
+          board.sendI2CConfig();
+        });
       }
       this.transfer = function (send, recv, next) {
-        board.sendI2CWriteRequest(addr, send);
-        board.sendI2CReadRequest(addr, recv, function (data) {
-          next(null, data);
+        onconnect(function () {
+          board.sendI2CWriteRequest(addr, send);
+          board.sendI2CReadRequest(addr, recv, function (data) {
+            next(null, data);
+          });
         });
       }
       this.read = function (recv, next) {
-        board.sendI2CReadRequest(addr, recv, function (data) {
-          next(null, data);
+        onconnect(function () {
+          board.sendI2CReadRequest(addr, recv, function (data) {
+            next(null, data);
+          });
         });
       }
       this.send = function (send, next) {
-        board.sendI2CWriteRequest(addr, send);
-        setImmediate(next, null);
+        onconnect(function () {
+          board.sendI2CWriteRequest(addr, send);
+          setImmediate(next, null);
+        });
       }
     }
   }
