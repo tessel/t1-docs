@@ -1,4 +1,4 @@
-# Hardware API Proposal
+# JavaScript Hardware API Proposal
 
 **VERSION 0.0.1**
 
@@ -19,7 +19,7 @@ Goals in order: 1) as little GC as neded, 2) as few constants and functions as n
 
 A bank of pins.
 
-new hardware.<b>Bank</b> (`bankidx`)
+new hardware.<b>Bank</b> (`interface`)
 
 *array&lt;number&gt;*&nbsp; bank.<b>digitalReadPins</b>  
 *array&lt;number&gt;*&nbsp; bank.<b>digitalWritePins</b>  
@@ -50,7 +50,7 @@ bank.<b>removeFallListener</b> (`pin`)
 
 A SPI channel.
 
-new hardware.<b>SPI</b> (`spiidx`, [`bankidx`, `cs`])  
+new hardware.<b>SPI</b> (`interface`, [`cs`])  
 
 spi.<b>initialize</b> (`onconnected(err)`)  
 
@@ -67,7 +67,7 @@ spi.<b>write</b> (`writebuf`, `callback(err)`)
 
 An I2C channel.
 
-new hardware.<b>I2C</b> (`i2cidx`, `address`)  
+new hardware.<b>I2C</b> (`interface`, `address`)  
 
 i2c.<b>initialize</b> (`onconnected(err)`)  
 
@@ -80,7 +80,7 @@ i2c.<b>write</b> (`writebuf`, `callback(err)`)
 
 Signal output via buffers and simple animation protocols. Implementation-dependent.
 
-new hardware.<b>Signal</b> (`bankidx`, `signalidx`)  
+new hardware.<b>Signal</b> (`interface`, `signalidx`)  
 
 *number*&nbsp; signal.<b>idleBit</b> = 0  
 
