@@ -95,7 +95,7 @@ signal.<b>queue</b> (`buf`, [`onfinished(err)`])
 
 ## Firmata
 
-Converting between this API to Firmata:
+This API can be used as a front-end for remote protocols, such as Firmata:
 
 * bank.<b>setInput</b> / <b>setOutput</b> &rarr; firmata.<b>pinMode</b>
 * bank.<b>digitalWrite</b> &rarr; firmata.<b>digitalWrite</b>
