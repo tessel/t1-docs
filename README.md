@@ -40,9 +40,9 @@ bank.<b>analogRead</b> (`callback(err, read)`)
 
 bank.<b>pwmWrite</b> (`value`, [`callback(err)`])  
 
-bank.<b>addRiseListener</b> (`pin`, `onrise(err, time)`)  
+bank.<b>setRiseListener</b> (`pin`, `onrise(err, time)`)  
 bank.<b>removeRiseListener</b> (`pin`)  
-bank.<b>addFallListener</b> (`pin`, `onfall(err, time)`)  
+bank.<b>setFallListener</b> (`pin`, `onfall(err, time)`)  
 bank.<b>removeFallListener</b> (`pin`)  
 
 
