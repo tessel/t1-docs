@@ -167,7 +167,7 @@ The maximum speed (in MHz) at which a signal can be emitted.
 The bit, truthy for HIGH and otherwise LOW, to be output while there is no signal. This value is writeable.  
 
 &#x20;<a href="#api-signal-initialize-onconnected-err-" name="api-signal-initialize-onconnected-err-">#</a> signal.<b>initialize</b> ( `onconnected(err)` )   
-...
+Initializes the signal connection.
 
 &#x20;<a href="#api-signal-setClockSpeed-MHz-callback-err-" name="api-signal-setClockSpeed-MHz-callback-err-">#</a> signal.<b>setClockSpeed</b> ( `MHz`, [`callback(err)`] )   
 Set the signal output speed from `0` to `maxSpeed`.  

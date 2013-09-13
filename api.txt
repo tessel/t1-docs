@@ -160,7 +160,7 @@ The bit, truthy for HIGH and otherwise LOW, to be output while there is no signa
 
 
 signal.initialize ( `onconnected(err)` ) 
-...
+Initializes the signal connection.
 
 signal.setClockSpeed ( `MHz`, [`callback(err)`] ) 
 Set the signal output speed from `0` to `maxSpeed`.  
