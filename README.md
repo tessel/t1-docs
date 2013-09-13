@@ -31,14 +31,14 @@ With a generic hardware interface, you can also create remote protocols (such as
 
 GPIO access exists on the hardware interface.
 
-*array&lt;number&gt;*&nbsp; hardware.<b>digitalReadPins</b> &mdash; An array of which pins are digital inputs.  
-*array&lt;number&gt;*&nbsp; hardware.<b>digitalWritePins</b> &mdash; An array of which pins are digital outputs.  
-*array&lt;number&gt;*&nbsp; hardware.<b>analogReadPins</b> &mdash; An array of which pins are analog inputs.  
-*array&lt;number&gt;*&nbsp; hardware.<b>analogWritePins</b> &mdash; An array of which pins are analog outputs.  
-*array&lt;number&gt;*&nbsp; hardware.<b>pwmWritePins</b> &mdash; An array of which pins are PWM outputs.  
+<a href="#target-hardware-digitalReadPins" id="target-hardware-digitalReadPins">#</a> *array&lt;number&gt;*&nbsp; hardware.<b>digitalReadPins</b> &mdash; An array of which pins are digital inputs.  
+<a href="#target-hardware-digitalWritePins" id="target-hardware-digitalWritePins">#</a> *array&lt;number&gt;*&nbsp; hardware.<b>digitalWritePins</b> &mdash; An array of which pins are digital outputs.  
+<a href="#target-hardware-analogReadPins" id="target-hardware-analogReadPins">#</a> *array&lt;number&gt;*&nbsp; hardware.<b>analogReadPins</b> &mdash; An array of which pins are analog inputs.  
+<a href="#target-hardware-analogWritePins" id="target-hardware-analogWritePins">#</a> *array&lt;number&gt;*&nbsp; hardware.<b>analogWritePins</b> &mdash; An array of which pins are analog outputs.  
+<a href="#target-hardware-pwmWritePins" id="target-hardware-pwmWritePins">#</a> *array&lt;number&gt;*&nbsp; hardware.<b>pwmWritePins</b> &mdash; An array of which pins are PWM outputs.  
 
-hardware.<b>setInput</b> ( `pin`, [`callback(err)`] ) &mdash; Set `pin` to be an input. Sets `err` if the pin cannot be used as an input.  
-hardware.<b>setOutput</b> ( `pin`, [`initial`], [`callback(err)`] ) &mdash; Set `pin` to be an output. Sets `err` if the pin cannot be used as an output.  
+<a href="#target-hardware-setInput" id="target-hardware-setInput">#</a> hardware.<b>setInput</b> ( `pin`, [`callback(err)`] ) &mdash; Set `pin` to be an input. Sets `err` if the pin cannot be used as an input.  
+<a href="#target-hardware-setOutput" id="target-hardware-setOutput">#</a> hardware.<b>setOutput</b> ( `pin`, [`initial`], [`callback(err)`] ) &mdash; Set `pin` to be an output. Sets `err` if the pin cannot be used as an output.  
 
 hardware.<b>digitalWrite</b> ( `value`, [`callback(err)`] ) &mdash; Write the digital `value` to a digital output pin. HIGH is output if `value` is truthy, otherwise LOW. Sets `err` if the pin cannot be used as a digital output or is not configured as an output.
 hardware.<b>digitalRead</b> ( `callback(err, value)` ) &mdash; Read a digital `value` from a digital input pin. `1` is returned if the value is HIGH, otherwise `0` if LOW. Sets `err` if the pin cannot be used as a digital input or is not configured as an input.  
