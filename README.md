@@ -22,9 +22,9 @@ With a generic hardware interface, you can also create remote protocols (such as
 
 ## Goals
 
-* <b>Platform-agnostic.</b> No preference for an event/listener system other than a single assigned listener for events. Asynchronous functions use Node.js-form callbacks (error in the first argument, values in the subsequent arguments). Synchronous functions are discouraged but available for compatibility.
-* <b>Simple.</b> Straightforward functions and objects modeling protocols. No use of constants in function arguments.
-* <b>Capability-based.</b> When capabilities aren't supported, this is determinable by user code and errors are thrown in case of unsupported use.
+* **Platform-agnostic.** No preference for an event/listener system other than a single assigned listener for events. Asynchronous functions use Node.js-form callbacks (error in the first argument, values in the subsequent arguments). Synchronous functions are discouraged but available for compatibility.
+* **Simple.** Straightforward functions and objects modeling protocols. No use of constants in function arguments.
+* **Capability-based.** When capabilities aren't supported, this is determinable by user code and errors are thrown in case of unsupported use.
 
 
 ### Pins
