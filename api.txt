@@ -1,0 +1,178 @@
+# Pins
+
+GPIO access exists on the hardware interface.
+
+
+array<number> hardware.digitalReadPins = []
+An array of which pins are digital inputs.
+
+array<number> hardware.digitalWritePins = []
+An array of which pins are digital outputs.
+
+array<number> hardware.analogReadPins = []
+An array of which pins are analog inputs.
+
+array<number> hardware.analogWritePins = []
+An array of which pins are analog outputs.
+
+array<number> hardware.pwmWritePins = []
+An array of which pins are PWM outputs.
+
+
+array<number> hardware.setInput ( `pin`, [`callback(err)`] )
+Set `pin` to be an input. Sets `err` if the pin cannot be used as an input. 
+
+hardware.setOutput ( `pin`, [`initial`], [`callback(err)`] ) 
+Set `pin` to be an output. Sets `err` if the pin cannot be used as an output.  
+
+
+hardware.digitalWrite ( `value`, [`callback(err)`] ) 
+Write the digital `value` to a digital output pin. HIGH is output if `value` is truthy, otherwise LOW. Sets `err` if the pin cannot be used as a digital output or is not configured as an output.
+
+hardware.digitalRead ( `callback(err, value)` ) 
+Read a digital `value` from a digital input pin. `1` is returned if the value is HIGH, otherwise `0` if LOW. Sets `err` if the pin cannot be used as a digital input or is not configured as an input.  
+
+hardware.digitalReadSync () *&rarr; number* 
+Reads a digital `value` from a digital input pin synchronously and returns immediately. `1` is returned if the value is HIGH, otherwise `0` if LOW. An error is thrown if the pin cannot be used as a digital input or is not configured as an input.  
+
+
+hardware.analogWrite ( `value`, [`callback(err)`] ) 
+Write the analog `value` to an analog output pin. The `value` is a number ranging from `0` to `255`. Sets `err` if the pin cannot be used as an analog output or is not configured as an output.  
+
+hardware.analogRead ( `callback(err, value)` )  
+Read the analog `value` from an analog input pin. The `value` is a number ranging from `0` to `1024`. Sets `err` if the pin cannot be used as an analog input or is not configured as an input.  
+
+hardware.analogReadSync () *&rarr; number*  
+Read the analog `value` from an analog input pin synchronously and returns immediately. The `value` is a number ranging from `0` to `1024`. An error is thrown if the pin cannot be used as an analog input or is not configured as an input.  
+
+hardware.pwmWrite ( `value`, [`callback(err)`] ) 
+Write the analog `value` to a PWM output pin. The `value` is a number ranging from `0` to `255`. Sets `err` if the pin cannot be used as an PWM output or is not configured as an output.  
+
+
+hardware.setRiseListener ( `pin`, `onrise(err, time)` )  
+...
+
+hardware.removeRiseListener ( `pin` )  
+...
+
+hardware.setFallListener ( `pin`, `onfall(err, time)` )  
+...
+
+hardware.removeFallListener ( `pin` )  
+...
+
+
+# SPI
+
+A SPI channel.
+
+new hardware.SPI ( [`idx`] )  
+...
+
+
+spi.initialize (`onconnected(err)`)  
+...
+
+
+spi.setClockSpeed ( `mhz`, [`callback(err)`] ) 
+Set the SPI output speed.  
+
+spi.setCPOL ( `cpol`, [`callback(err)`] ) 
+Set CPOL (SPI polarity).  
+
+spi.setCPHA ( `cpha`, [`callback(err)`] ) 
+Set CPHA (SPI bit significance).    
+
+
+spi.transfer ( `cs`, `writebuf`, `readcount`, `callback(err, data)` ) 
+`cs` is the chip select pin, or `-1` if no pin should be toggled.  
+
+spi.read ( `cs`, `readcount`, `callback(err, data)` ) 
+`cs` is the chip select pin, or `-1` if no pin should be toggled.  
+
+spi.write ( `cs`, `writebuf`, `callback(err)` ) 
+`cs` is the chip select pin, or `-1` if no pin should be toggled.  
+
+
+# I2C
+
+An I2C channel.
+
+new hardware.I2C ( [`idx`] )  
+...
+
+
+i2c.initialize ( `onconnected(err)` )  
+...
+
+
+i2c.transfer ( `address`, `writebuf`, `readcount`, `callback(err, data)` )  
+...
+
+i2c.read ( `address`, `readcount`, `callback(err, data)` )  
+...
+
+i2c.write ( `address`, `writebuf`, `callback(err)` )  
+...
+
+
+# UART
+
+A UART channel.
+
+new hardware.UART ( [`idx`] )
+...
+
+
+array<number> uart.baudRates 
+An array of valid baud rates supported by the system.  
+
+
+uart.initialize ( `onconnected(err)` ) 
+Initializes the UART connection.  
+
+uart.setBaudRate ( `rate`, `callback(err)` ) 
+Sets the baud `rate` to a valid rate in `baudRates`.
+
+
+uart.setDataListener ( `ondata(err, data)` ) 
+Set the new data listener function.  
+
+uart.removeDataListener 
+Removes datas listener attached to the port.  
+
+uart.write ( `buf`, `callback(err)` ) 
+Writes a buffer to the UART connection.
+
+
+# Signal
+
+Signal output via buffers and simple animation protocols. High speed signals are implementation-dependent and use their own signal indexing scheme.
+
+new hardware.Signal ( `interface`, `signalidx` )  
+...
+
+number signal.maxSpeed
+The maximum speed (in MHz) at which a signal can be emitted.
+
+number signal.idleBit = 0 
+The bit, truthy for HIGH and otherwise LOW, to be output while there is no signal. This value is writeable.  
+
+
+signal.initialize ( `onconnected(err)` ) 
+...
+
+signal.setClockSpeed ( `MHz`, [`callback(err)`] ) 
+Set the signal output speed from `0` to `maxSpeed`.  
+
+signal.stop ( [`callback(err)`] ) 
+Stop an ongoing signal.  
+
+signal.loop ( `buf`, [`onrepeat(err)`] ) 
+Repeat the buffered signal.  
+
+signal.send ( `buf`, [`onfinished(err)`] ) 
+Send a signal, calling the callback when completed.  
+
+signal.queue ( `buf`, [`onfinished(err)`] ) 
+Queue a signal for when the current signal completes.  
