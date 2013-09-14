@@ -185,15 +185,17 @@ Send a signal, calling the callback when completed.
 Queue a signal for when the current signal completes.  
 
 
-## Implementations
+## Example Implementations
 
-* <b>[hardware-firmata](https://github.com/technicalmachine/hardware-firmata)</b> &mdash; An implementation of the [Firmata](http://firmata.org/wiki/Main_Page) protocol using the Hardware.js API.
-* <b>[Tessel](http://technical.io)</b> &mdash; Tessel is an Internet-connected microcontroller for software developers.
+* <b>[hardware-firmata](https://github.com/technicalmachine/hardware-firmata)</b> &mdash; An implementation of the hardware API to output the [Firmata](http://firmata.org/wiki/Main_Page) protocol.
+* <b>[accel-mma84](https://github.com/technicalmachine/accel-mma84)</b> &mdash; MMA8452Q accelerometer.
+* <b>[servo-pca9685](https://github.com/technicalmachine/servo-pca9685)</b> &mdash; PCA9685 PWM driver.
+* <b>[climate-s17005](https://github.com/technicalmachine/climate-s17005)</b> &mdash; S17005 temperature/humidity sensor.
 
 
 ## References
 
-This API, in part, references several pre-existing APIs.
+This API in part draws inspiration from several pre-existing APIs.
 
 * <http://firmata.org/wiki/Main_Page>
 * <http://pythonhosted.org/RPIO/> and <https://pypi.python.org/pypi/RPi.GPIO>
