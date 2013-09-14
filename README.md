@@ -1,4 +1,4 @@
-# JavaScript Hardware API Proposal
+# Proposal: JavaScript Hardware API
 
 **VERSION 0.0.1**
 
@@ -74,25 +74,25 @@ Read the analog `value` from an analog input pin synchronously and returns immed
 Write the analog `value` to a PWM output pin. The `value` is a number ranging from `0` to `255`. Sets `err` if the pin cannot be used as an PWM output or is not configured as an output.  
 
 &#x20;<a href="#api-hardware-setRiseListener-pin-onrise-err-time-" name="api-hardware-setRiseListener-pin-onrise-err-time-">#</a> hardware.<b>setRiseListener</b> ( `pin`, `onrise(err, time)` )    
-...
+Sets a listener for a rising signal edge on `pin`.
 
 &#x20;<a href="#api-hardware-removeRiseListener-pin-" name="api-hardware-removeRiseListener-pin-">#</a> hardware.<b>removeRiseListener</b> ( `pin` )    
-...
+Removes the listener for rising signal edge.
 
 &#x20;<a href="#api-hardware-setFallListener-pin-onfall-err-time-" name="api-hardware-setFallListener-pin-onfall-err-time-">#</a> hardware.<b>setFallListener</b> ( `pin`, `onfall(err, time)` )    
-...
+Sets a listener for a falling signal edge on `pin`.
 
 &#x20;<a href="#api-hardware-removeFallListener-pin-" name="api-hardware-removeFallListener-pin-">#</a> hardware.<b>removeFallListener</b> ( `pin` )    
-...
+Removes the listener for the falling signal edge.
 
 ### SPI
 A SPI channel.
 
 &#x20;<a href="#api-new-hardware-SPI-idx-" name="api-new-hardware-SPI-idx-">#</a> new hardware.<b>SPI</b> ( [`idx`] )    
-...
+Creates a SPI channel.
 
 &#x20;<a href="#api-spi-initialize-onconnected-err-" name="api-spi-initialize-onconnected-err-">#</a> spi.<b>initialize</b> (`onconnected(err)`)    
-...
+Initializes the SPI channel.
 
 &#x20;<a href="#api-spi-setClockSpeed-mhz-callback-err-" name="api-spi-setClockSpeed-mhz-callback-err-">#</a> spi.<b>setClockSpeed</b> ( `mhz`, [`callback(err)`] )   
 Set the SPI output speed.  
@@ -116,25 +116,25 @@ Set CPHA (SPI bit significance).
 An I2C channel.
 
 &#x20;<a href="#api-new-hardware-I2C-idx-" name="api-new-hardware-I2C-idx-">#</a> new hardware.<b>I2C</b> ( [`idx`] )    
-...
+Creates an I2C channel.
 
 &#x20;<a href="#api-i2c-initialize-onconnected-err-" name="api-i2c-initialize-onconnected-err-">#</a> i2c.<b>initialize</b> ( `onconnected(err)` )    
-...
+Initializes the I2C channel.
 
 &#x20;<a href="#api-i2c-transfer-address-writebuf-readcount-callback-err-data-" name="api-i2c-transfer-address-writebuf-readcount-callback-err-data-">#</a> i2c.<b>transfer</b> ( `address`, `writebuf`, `readcount`, `callback(err, data)` )    
-...
+Transfers the array of bytes `writebuf` to the device signified by `address` with `readcount` bytes.
 
 &#x20;<a href="#api-i2c-read-address-readcount-callback-err-data-" name="api-i2c-read-address-readcount-callback-err-data-">#</a> i2c.<b>read</b> ( `address`, `readcount`, `callback(err, data)` )    
-...
+Reads `readcount` bytes from the device with the `address` on the bus.
 
 &#x20;<a href="#api-i2c-write-address-writebuf-callback-err-" name="api-i2c-write-address-writebuf-callback-err-">#</a> i2c.<b>write</b> ( `address`, `writebuf`, `callback(err)` )    
-...
+Writes the array of bytes `writebuf` to the device with the `address` on the bus.
 
 ### UART
 A UART channel.
 
 &#x20;<a href="#api-new-hardware-UART-idx-" name="api-new-hardware-UART-idx-">#</a> new hardware.<b>UART</b> ( [`idx`] )  
-...
+Creates a UART channel.
 
 &#x20;<a href="#api-array-number-uart-baudRates-" name="api-array-number-uart-baudRates-">#</a> <i>array&lt;number&gt;</i>&nbsp; uart.<b>baudRates</b>   
 An array of valid baud rates supported by the system.  
@@ -158,7 +158,7 @@ Writes a buffer to the UART connection.
 Signal output via buffers and simple animation protocols. High speed signals are implementation-dependent and use their own signal indexing scheme.
 
 &#x20;<a href="#api-new-hardware-Signal-interface-signalidx-" name="api-new-hardware-Signal-interface-signalidx-">#</a> new hardware.<b>Signal</b> ( `interface`, `signalidx` )    
-...
+Creates a signal channel.
 
 &#x20;<a href="#api-number-signal-maxSpeed" name="api-number-signal-maxSpeed">#</a> <i>number</i>&nbsp; signal.<b>maxSpeed</b>  
 The maximum speed (in MHz) at which a signal can be emitted.
@@ -183,6 +183,12 @@ Send a signal, calling the callback when completed.
 
 &#x20;<a href="#api-signal-queue-buf-onfinished-err-" name="api-signal-queue-buf-onfinished-err-">#</a> signal.<b>queue</b> ( `buf`, [`onfinished(err)`] )   
 Queue a signal for when the current signal completes.  
+
+
+## Implementations
+
+* <b>[hardware-firmata](https://github.com/technicalmachine/hardware-firmata)</b> &mdash; An implementation of the [Firmata](http://firmata.org/wiki/Main_Page) protocol using the Hardware.js API.
+* <b>[Tessel](http://technical.io)</b> &mdash; Tessel is an Internet-connected microcontroller for software developers.
 
 
 ## References
