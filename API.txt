@@ -19,46 +19,48 @@ array<number> hardware.pwmWritePins = []
 An array of which pins are PWM outputs.
 
 
-array<number> hardware.setInput ( `pin`, [`callback(err)`] )
+array<number> hardware.Pin ( `pin` )
+
+array<number> pin.setInput( [`callback(err)`] )
 Set `pin` to be an input. Sets `err` if the pin cannot be used as an input. 
 
-hardware.setOutput ( `pin`, [`initial`], [`callback(err)`] ) 
+pin.setOutput ( [`initial`], [`callback(err)`] ) 
 Set `pin` to be an output. Sets `err` if the pin cannot be used as an output.  
 
 
-hardware.digitalWrite ( `value`, [`callback(err)`] ) 
+pin.write ( `value`, [`callback(err)`] ) 
 Write the digital `value` to a digital output pin. HIGH is output if `value` is truthy, otherwise LOW. Sets `err` if the pin cannot be used as a digital output or is not configured as an output.
 
-hardware.digitalRead ( `callback(err, value)` ) 
+pin.read ( `callback(err, value)` ) 
 Read a digital `value` from a digital input pin. `1` is returned if the value is HIGH, otherwise `0` if LOW. Sets `err` if the pin cannot be used as a digital input or is not configured as an input.  
 
-hardware.digitalReadSync () *&rarr; number* 
+pin.readSync () *&rarr; number* 
 Reads a digital `value` from a digital input pin synchronously and returns immediately. `1` is returned if the value is HIGH, otherwise `0` if LOW. An error is thrown if the pin cannot be used as a digital input or is not configured as an input.  
 
 
-hardware.analogWrite ( `value`, [`callback(err)`] ) 
+pin.analogWrite ( `value`, [`callback(err)`] ) 
 Write the analog `value` to an analog output pin. The `value` is a number ranging from `0` to `255`. Sets `err` if the pin cannot be used as an analog output or is not configured as an output.  
 
-hardware.analogRead ( `callback(err, value)` )  
+pin.analogRead ( `callback(err, value)` )  
 Read the analog `value` from an analog input pin. The `value` is a number ranging from `0` to `1024`. Sets `err` if the pin cannot be used as an analog input or is not configured as an input.  
 
-hardware.analogReadSync () *&rarr; number*  
+pin.analogReadSync () *&rarr; number*  
 Read the analog `value` from an analog input pin synchronously and returns immediately. The `value` is a number ranging from `0` to `1024`. An error is thrown if the pin cannot be used as an analog input or is not configured as an input.  
 
-hardware.pwmWrite ( `value`, [`callback(err)`] ) 
+pin.pwmWrite ( `value`, [`callback(err)`] ) 
 Write the analog `value` to a PWM output pin. The `value` is a number ranging from `0` to `255`. Sets `err` if the pin cannot be used as an PWM output or is not configured as an output.  
 
 
-hardware.setRiseListener ( `pin`, `onrise(err, time)` )  
+pin.setRiseListener ( `onrise(err, time)` )  
 Sets a listener for a rising signal edge on `pin`.
 
-hardware.removeRiseListener ( `pin` )  
+pin.removeRiseListener ( )  
 Removes the listener for rising signal edge.
 
-hardware.setFallListener ( `pin`, `onfall(err, time)` )  
+pin.setFallListener ( `onfall(err, time)` )  
 Sets a listener for a falling signal edge on `pin`.
 
-hardware.removeFallListener ( `pin` )  
+pin.removeFallListener ( )  
 Removes the listener for the falling signal edge.
 
 
