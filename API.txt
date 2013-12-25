@@ -19,7 +19,8 @@ array<number> hardware.pwmWritePins = []
 An array of which pins are PWM outputs.
 
 
-array<number> hardware.Pin ( `pin` )
+new hardware.Pin ( `pin` )
+Create and return `pin` object.
 
 array<number> pin.setInput( [`callback(err)`] )
 Set `pin` to be an input. Sets `err` if the pin cannot be used as an input. 
