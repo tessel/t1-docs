@@ -89,6 +89,9 @@ Set CPHA (SPI bit significance).
 &#x20;<a href="#api-spi-transfer-cs-writebuf-readcount-callback-err-data-" name="api-spi-transfer-cs-writebuf-readcount-callback-err-data-">#</a> spi.<b>transfer</b> ( `cs`, `writebuf`, `readcount`, `callback(err, data)` )   
 `cs` is the chip select pin, or `-1` if no pin should be toggled.  
 
+&#x20;<a href="#api-spi-transfer-sync-cs-writebuf-readcount-callback-err-data-" name="api-spi-transfer-sync-cs-writebuf-readcount-callback-err-data-">#</a> spi.<b>transferSync</b> ( `cs`, `writebuf`, `readcount` )   
+`cs` is the chip select pin, or `-1` if no pin should be toggled.  
+
 &#x20;<a href="#api-spi-read-cs-readcount-callback-err-data-" name="api-spi-read-cs-readcount-callback-err-data-">#</a> spi.<b>read</b> ( `cs`, `readcount`, `callback(err, data)` )   
 `cs` is the chip select pin, or `-1` if no pin should be toggled.  
 
@@ -106,6 +109,9 @@ Initializes the I2C channel.
 
 &#x20;<a href="#api-i2c-transfer-address-writebuf-readcount-callback-err-data-" name="api-i2c-transfer-address-writebuf-readcount-callback-err-data-">#</a> i2c.<b>transfer</b> ( `address`, `writebuf`, `readcount`, `callback(err, data)` )    
 Transfers the array of bytes `writebuf` to the device signified by `address` with `readcount` bytes.
+
+&#x20;<a href="#api-i2c-transfer-sync-address-writebuf-readcount-callback-err-data-" name="api-i2c-transfer-sync-address-writebuf-readcount-callback-err-data-">#</a> i2c.<b>transferSync</b> ( `address`, `writebuf`, `readcount` )    
+Transfers the array of bytes `writebuf` to the device signified by `address` with `readcount` bytes synchronously.
 
 &#x20;<a href="#api-i2c-read-address-readcount-callback-err-data-" name="api-i2c-read-address-readcount-callback-err-data-">#</a> i2c.<b>read</b> ( `address`, `readcount`, `callback(err, data)` )    
 Reads `readcount` bytes from the device with the `address` on the bus.
