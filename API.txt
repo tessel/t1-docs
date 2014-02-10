@@ -3,65 +3,67 @@
 GPIO access exists on the hardware interface.
 
 
-array<number> hardware.digitalReadPins = []
-An array of which pins are digital inputs.
+array<number> hardware.digital = []
+An array of which pins are digital inputs/outputs.
 
-array<number> hardware.digitalWritePins = []
-An array of which pins are digital outputs.
+array<number> hardware.analog = []
+An array of which pins are analog inputs/outputs.
 
-array<number> hardware.analogReadPins = []
-An array of which pins are analog inputs.
-
-array<number> hardware.analogWritePins = []
-An array of which pins are analog outputs.
-
-array<number> hardware.pwmWritePins = []
-An array of which pins are PWM outputs.
+array<number> hardware.pwm = []
+An array of which pins are PWM outputs (may overlap analog array).
 
 
-new hardware.Pin ( `pin` )
+new hardware.Pin ( `pin`, `dir` or `initialOutput`, `edge` )
 Create and return `pin` object.
 
-array<number> pin.setInput( [`callback(err)`] )
+string pin.type
+"digital" or "analog".
+
+boolean pin.isPWM
+Whether the `pin.type` is set to `"analog"` and output type is PWM (thus not true analog).
+
+boolean pin.readable
+Whether the pin is readable.
+
+boolean pin.writeable
+Whether the pin is writeable.
+
+number pin.resolution
+Digital pins: 1. Analog pins: ADC resolution of output pins (e.g. 1024 for Tessel).
+
+string pin.direction
+"output" or "input".
+
+pin.setInput( [`callback(err)`] )
 Set `pin` to be an input. Sets `err` if the pin cannot be used as an input. 
 
-pin.setOutput ( [`initial`], [`callback(err)`] ) 
+pin.setOutput ( [`initial`], [callback(err)] ) 
 Set `pin` to be an output. Sets `err` if the pin cannot be used as an output.  
 
 
 pin.write ( `value`, [`callback(err)`] ) 
-Write the digital `value` to a digital output pin. HIGH is output if `value` is truthy, otherwise LOW. Sets `err` if the pin cannot be used as a digital output or is not configured as an output.
+Write the `value` to an output pin. Digital pins: output is set HIGH if `value` is truthy, otherwise LOW. Analog pins: `value` is a float that sets the analog output value. Sets `err` if the pin cannot be used as a digital output or is not configured as an output.
+
+pin.writeSync ( `value` )
+Synchronous version of `pin.write`. Throws on error.
 
 pin.read ( `callback(err, value)` ) 
-Read a digital `value` from a digital input pin. `1` is returned if the value is HIGH, otherwise `0` if LOW. Sets `err` if the pin cannot be used as a digital input or is not configured as an input.  
+Read a digital `value` from a digital input pin. `1` is returned if the value is HIGH, otherwise `0` if LOW. Sets `err` if the pin cannot be used as a digital input or is not configured as an input. An error is given to the callback if the pin cannot be used as a digital input or is not configured as an input.
 
-pin.readSync () *&rarr; number* 
-Reads a digital `value` from a digital input pin synchronously and returns immediately. `1` is returned if the value is HIGH, otherwise `0` if LOW. An error is thrown if the pin cannot be used as a digital input or is not configured as an input.  
-
-
-pin.analogWrite ( `value`, [`callback(err)`] ) 
-Write the analog `value` to an analog output pin. The `value` is a number ranging from `0` to `255`. Sets `err` if the pin cannot be used as an analog output or is not configured as an output.  
-
-pin.analogRead ( `callback(err, value)` )  
-Read the analog `value` from an analog input pin. The `value` is a number ranging from `0` to `1024`. Sets `err` if the pin cannot be used as an analog input or is not configured as an input.  
-
-pin.analogReadSync () *&rarr; number*  
-Read the analog `value` from an analog input pin synchronously and returns immediately. The `value` is a number ranging from `0` to `1024`. An error is thrown if the pin cannot be used as an analog input or is not configured as an input.  
-
-pin.pwmWrite ( `value`, [`callback(err)`] ) 
-Write the analog `value` to a PWM output pin. The `value` is a number ranging from `0` to `255`. Sets `err` if the pin cannot be used as an PWM output or is not configured as an output.  
+pin.readSync () -> number
+Synchronous version of `pin.read`. Throws on error.
 
 
-pin.setRiseListener ( `onrise(err, time)` )  
+pin.watchRise ( `onrise(err, time)` )  
 Sets a listener for a rising signal edge on `pin`.
 
-pin.removeRiseListener ( )  
+pin.unwatchRise ( )  
 Removes the listener for rising signal edge.
 
-pin.setFallListener ( `onfall(err, time)` )  
+pin.watchFall ( `onfall(err, time)` )  
 Sets a listener for a falling signal edge on `pin`.
 
-pin.removeFallListener ( )  
+pin.unwatchFall ( )  
 Removes the listener for the falling signal edge.
 
 
@@ -123,8 +125,8 @@ Writes the array of bytes `writebuf` to the device with the `address` on the bus
 
 A UART channel.
 
-new hardware.UART ( [`idx`] )
-Creates a UART channel.
+new hardware.UART ( [`idx`[, `options`]] )
+Creates a UART channel. Defaults: `{"baudrate": 9600, "dataBits": 8, "parity": "even", "stopBits": 2}`
 
 
 array<number> uart.baudRates 
@@ -136,6 +138,15 @@ Initializes the UART connection.
 
 uart.setBaudRate ( `rate`, `callback(err)` ) 
 Sets the baud `rate` to a valid rate in `baudRates`.
+
+uart.setDataBits ( `bits`, `callback(err)` ) 
+Sets the number of data `bits` to the number 5, 6, 7, or 8.
+
+uart.setStopBits ( `bits`, `callback(err)` ) 
+Sets the number of data `bits` to the number 1 or 2.
+
+uart.setParity ( `parity`, `callback(err)` ) 
+Sets the `parity` to the value "none", "odd", or "even".
 
 
 uart.setDataListener ( `ondata(err, data)` ) 
