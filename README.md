@@ -82,22 +82,22 @@ Creates a SPI channel.
 Initializes the SPI channel.
 
 &#x20;<a href="#api-spi-setClockSpeed-mhz-callback-err-" name="api-spi-setClockSpeed-mhz-callback-err-">#</a> spi<b>.setClockSpeed</b> ( `mhz`, [`callback`(`err`)] )   
-Set the SPI output speed.  
+Set the SPI output speed to the number `mhz`.
 
 &#x20;<a href="#api-spi-setCPOL-cpol-callback-err-" name="api-spi-setCPOL-cpol-callback-err-">#</a> spi<b>.setCPOL</b> ( `cpol`, [`callback`(`err`)] )   
-Set CPOL (SPI polarity).  
+Set CPOL (SPI polarity). 
 
 &#x20;<a href="#api-spi-setCPHA-cpha-callback-err-" name="api-spi-setCPHA-cpha-callback-err-">#</a> spi<b>.setCPHA</b> ( `cpha`, [`callback`(`err`)] )   
-Set CPHA (SPI bit significance).    
+Set CPHA (SPI bit significance).
 
-&#x20;<a href="#api-spi-transfer-txbuf-callback-err-rxbuf-" name="api-spi-transfer-txbuf-callback-err-rxbuf-">#</a> spi<b>.transfer</b> ( `txbuf`, `callback`(`err`, `rxbuf`) )  
-Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`.
+&#x20;<a href="#api-spi-transfer-txbuf-rxbuf-callback-err-rxbuf-" name="api-spi-transfer-txbuf-rxbuf-callback-err-rxbuf-">#</a> spi<b>.transfer</b> ( `txbuf`, [`rxbuf`,] `callback`(`err`, `rxbuf`) )  
+Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
 
 &#x20;<a href="#api-spi-transferSync-txbuf-Buffer" name="api-spi-transferSync-txbuf-Buffer">#</a> spi<b>.transferSync</b> ( `txbuf` ) &rarr; <i>Buffer</i>  
 Synchronous version of `spi.transfer`. Throws on error.
 
-&#x20;<a href="#api-spi-receive-len-callback-err-rxbuf-" name="api-spi-receive-len-callback-err-rxbuf-">#</a> spi<b>.receive</b> ( `len`, `callback`(`err`, `rxbuf`) )   
-Reads `len` bytes from a client.
+&#x20;<a href="#api-spi-receive-len-rxbuf-callback-err-rxbuf-" name="api-spi-receive-len-rxbuf-callback-err-rxbuf-">#</a> spi<b>.receive</b> ( `len`, [`rxbuf`,] `callback`(`err`, `rxbuf`) )   
+Reads `len` bytes from a client. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
 
 &#x20;<a href="#api-spi-receiveSync-len-Buffer" name="api-spi-receiveSync-len-Buffer">#</a> spi<b>.receiveSync</b> ( `len` ) &rarr; <i>Buffer</i>  
 Synchronous version of `spi.receive`. Throws on error.
