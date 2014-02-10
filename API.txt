@@ -89,14 +89,23 @@ spi.setCPHA ( `cpha`, [`callback(err)`] )
 Set CPHA (SPI bit significance).    
 
 
-spi.transfer ( `cs`, `writebuf`, `readcount`, `callback(err, data)` ) 
-`cs` is the chip select pin, or `-1` if no pin should be toggled.  
+spi.transfer ( txbuf, callback(err, rxbuf) )
+Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`.
 
-spi.read ( `cs`, `readcount`, `callback(err, data)` ) 
-`cs` is the chip select pin, or `-1` if no pin should be toggled.  
+spi.transferSync ( txbuf ) -> Buffer
+Synchronous version of `spi.transfer`. Throws on error.
 
-spi.write ( `cs`, `writebuf`, `callback(err)` ) 
-`cs` is the chip select pin, or `-1` if no pin should be toggled.  
+spi.receive ( len, callback(err, rxbuf) ) 
+Reads `len` bytes from a client.
+
+spi.receiveSync ( len ) -> Buffer
+Synchronous version of `spi.receive`. Throws on error.
+
+spi.send ( txbuf, callback(err) ) 
+Sends a Buffer `txbuf` to the client.
+
+spi.sendSync ( txbuf )
+Synchronous version of `spi.send`. Throws on error.
 
 
 # I2C

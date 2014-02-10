@@ -90,14 +90,23 @@ Set CPOL (SPI polarity).
 &#x20;<a href="#api-spi-setCPHA-cpha-callback-err-" name="api-spi-setCPHA-cpha-callback-err-">#</a> spi<b>.setCPHA</b> ( `cpha`, [`callback`(`err`)] )   
 Set CPHA (SPI bit significance).    
 
-&#x20;<a href="#api-spi-transfer-cs-writebuf-readcount-callback-err-data-" name="api-spi-transfer-cs-writebuf-readcount-callback-err-data-">#</a> spi<b>.transfer</b> ( `cs`, `writebuf`, `readcount`, `callback`(`err`, `data`) )   
-`cs` is the chip select pin, or `-1` if no pin should be toggled.  
+&#x20;<a href="#api-spi-transfer-txbuf-callback-err-rxbuf-" name="api-spi-transfer-txbuf-callback-err-rxbuf-">#</a> spi<b>.transfer</b> ( `txbuf`, `callback`(`err`, `rxbuf`) )  
+Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`.
 
-&#x20;<a href="#api-spi-read-cs-readcount-callback-err-data-" name="api-spi-read-cs-readcount-callback-err-data-">#</a> spi<b>.read</b> ( `cs`, `readcount`, `callback`(`err`, `data`) )   
-`cs` is the chip select pin, or `-1` if no pin should be toggled.  
+&#x20;<a href="#api-spi-transferSync-txbuf-Buffer" name="api-spi-transferSync-txbuf-Buffer">#</a> spi<b>.transferSync</b> ( `txbuf` ) &rarr; <i>Buffer</i>  
+Synchronous version of `spi.transfer`. Throws on error.
 
-&#x20;<a href="#api-spi-write-cs-writebuf-callback-err-" name="api-spi-write-cs-writebuf-callback-err-">#</a> spi<b>.write</b> ( `cs`, `writebuf`, `callback`(`err`) )   
-`cs` is the chip select pin, or `-1` if no pin should be toggled.  
+&#x20;<a href="#api-spi-receive-len-callback-err-rxbuf-" name="api-spi-receive-len-callback-err-rxbuf-">#</a> spi<b>.receive</b> ( `len`, `callback`(`err`, `rxbuf`) )   
+Reads `len` bytes from a client.
+
+&#x20;<a href="#api-spi-receiveSync-len-Buffer" name="api-spi-receiveSync-len-Buffer">#</a> spi<b>.receiveSync</b> ( `len` ) &rarr; <i>Buffer</i>  
+Synchronous version of `spi.receive`. Throws on error.
+
+&#x20;<a href="#api-spi-send-txbuf-callback-err-" name="api-spi-send-txbuf-callback-err-">#</a> spi<b>.send</b> ( `txbuf`, `callback`(`err`) )   
+Sends a Buffer `txbuf` to the client.
+
+&#x20;<a href="#api-spi-sendSync-txbuf-" name="api-spi-sendSync-txbuf-">#</a> spi<b>.sendSync</b> ( `txbuf` )  
+Synchronous version of `spi.send`. Throws on error.
 
 ### I2C
 An I2C channel.
