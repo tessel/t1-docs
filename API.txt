@@ -34,7 +34,7 @@ Digital pins: 1. Analog pins: ADC resolution of output pins (e.g. 1024 for Tesse
 string pin.direction
 "output" or "input".
 
-pin.setInput( [`callback(err)`] )
+pin.setInput( [callback(err)] )
 Set `pin` to be an input. Sets `err` if the pin cannot be used as an input. 
 
 pin.setOutput ( [`initial`], [callback(err)] ) 
@@ -54,17 +54,11 @@ pin.readSync () -> number
 Synchronous version of `pin.read`. Throws on error.
 
 
-pin.watchRise ( `onrise(err, time)` )  
-Sets a listener for a rising signal edge on `pin`.
+pin.watch ( [type,] callback(err, time) )  
+Sets a listener for a signal edge on `pin`. `type` can be one of "rise", "fall", "both", or omitted (analogous to "both"). Watched events registers events on the `pin` object, with the same `type` as the event.
 
-pin.unwatchRise ( )  
-Removes the listener for rising signal edge.
-
-pin.watchFall ( `onfall(err, time)` )  
-Sets a listener for a falling signal edge on `pin`.
-
-pin.unwatchFall ( )  
-Removes the listener for the falling signal edge.
+pin.unwatch ( [type,] listener )
+Removes the listener for a signal.
 
 
 # SPI
@@ -75,7 +69,7 @@ new hardware.SPI ( [`idx`] )
 Creates a SPI channel.
 
 
-spi.initialize (`onconnected(err)`)  
+spi.use (`onconnected(err)`)  
 Initializes the SPI channel.
 
 
@@ -112,29 +106,38 @@ Synchronous version of `spi.send`. Throws on error.
 
 An I2C channel.
 
-new hardware.I2C ( [`idx`] )  
-Creates an I2C channel.
+new hardware.I2C ( address, [idx] )  
+Creates an I2C channel for a device of a specific `address`. Multiple I2C channels can be used in parallel.
 
 
-i2c.initialize ( `onconnected(err)` )  
+i2c.use ( `onconnected(err)` )  
 Initializes the I2C channel.
 
 
-i2c.transfer ( `address`, `writebuf`, `readcount`, `callback(err, data)` )  
-Transfers the array of bytes `writebuf` to the device signified by `address` with `readcount` bytes.
+i2c.transfer ( txbuf, [rxbuf,] callback(err, rxbuf) )
+Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
 
-i2c.read ( `address`, `readcount`, `callback(err, data)` )  
-Reads `readcount` bytes from the device with the `address` on the bus.
+i2c.transferSync ( txbuf ) -> Buffer
+Synchronous version of `i2c.transfer`. Throws on error.
 
-i2c.write ( `address`, `writebuf`, `callback(err)` )  
-Writes the array of bytes `writebuf` to the device with the `address` on the bus.
+i2c.receive ( len, [rxbuf,] callback(err, rxbuf) ) 
+Reads `len` bytes from a client. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
+
+i2c.receiveSync ( len ) -> Buffer
+Synchronous version of `i2c.receive`. Throws on error.
+
+i2c.send ( txbuf, callback(err) ) 
+Sends a Buffer `txbuf` to the client.
+
+i2c.sendSync ( txbuf )
+Synchronous version of `i2c.send`. Throws on error.
 
 
 # UART
 
 A UART channel.
 
-new hardware.UART ( [`idx`[, `options`]] )
+new hardware.UART ( [`idx`[, `options`]] ) implements DuplexStream
 Creates a UART channel. Defaults: `{"baudrate": 9600, "dataBits": 8, "parity": "even", "stopBits": 2}`
 
 
@@ -142,7 +145,7 @@ array<number> uart.baudRates
 An array of valid baud rates supported by the system.  
 
 
-uart.initialize ( `onconnected(err)` ) 
+uart.use ( `onconnected(err)` ) 
 Initializes the UART connection.  
 
 uart.setBaudRate ( `rate`, `callback(err)` ) 
@@ -158,17 +161,17 @@ uart.setParity ( `parity`, `callback(err)` )
 Sets the `parity` to the value "none", "odd", or "even".
 
 
-uart.setDataListener ( `ondata(err, data)` ) 
+uart emits "data"
 Set the new data listener function.  
-
-uart.removeDataListener 
-Removes datas listener attached to the port.  
 
 uart.write ( `buf`, `callback(err)` ) 
 Writes a buffer to the UART connection.
 
+uart.writeSync ( `buf` ) 
+Synchronous version of `uart.write`. Throws on error.
 
-# Signal
+
+# Signal [Not yet implemented]
 
 Signal output via buffers and simple animation protocols. High speed signals are implementation-dependent and use their own signal indexing scheme.
 

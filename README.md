@@ -60,17 +60,11 @@ Read a digital `value` from a digital input pin. `1` is returned if the value is
 &#x20;<a href="#api-pin-readSync-number" name="api-pin-readSync-number">#</a> pin<b>.readSync</b> () &rarr; <i>number</i>  
 Synchronous version of `pin.read`. Throws on error.
 
-&#x20;<a href="#api-pin-watchRise-onrise-err-time-" name="api-pin-watchRise-onrise-err-time-">#</a> pin<b>.watchRise</b> ( `onrise`(`err`, `time`) )    
-Sets a listener for a rising signal edge on `pin`.
+&#x20;<a href="#api-pin-watch-type-callback-err-time-" name="api-pin-watch-type-callback-err-time-">#</a> pin<b>.watch</b> ( [`type`,] `callback`(`err`, `time`) )    
+Sets a listener for a signal edge on `pin`. `type` can be one of "rise", "fall", "both", or omitted (analogous to "both"). Watched events registers events on the `pin` object, with the same `type` as the event.
 
-&#x20;<a href="#api-pin-unwatchRise-" name="api-pin-unwatchRise-">#</a> pin<b>.unwatchRise</b> ()    
-Removes the listener for rising signal edge.
-
-&#x20;<a href="#api-pin-watchFall-onfall-err-time-" name="api-pin-watchFall-onfall-err-time-">#</a> pin<b>.watchFall</b> ( `onfall`(`err`, `time`) )    
-Sets a listener for a falling signal edge on `pin`.
-
-&#x20;<a href="#api-pin-unwatchFall-" name="api-pin-unwatchFall-">#</a> pin<b>.unwatchFall</b> ()    
-Removes the listener for the falling signal edge.
+&#x20;<a href="#api-pin-unwatch-type-listener-" name="api-pin-unwatch-type-listener-">#</a> pin<b>.unwatch</b> ( [`type`,] `listener` )  
+Removes the listener for a signal.
 
 ### SPI
 A SPI channel.
@@ -78,7 +72,7 @@ A SPI channel.
 &#x20;<a href="#api-new-hardware-SPI-idx-" name="api-new-hardware-SPI-idx-">#</a> <i>new</i>&nbsp; hardware<b>.SPI</b> ( [`idx`] )    
 Creates a SPI channel.
 
-&#x20;<a href="#api-spi-initialize-onconnected-err-" name="api-spi-initialize-onconnected-err-">#</a> spi<b>.initialize</b> ( `onconnected`(`err`) )    
+&#x20;<a href="#api-spi-use-onconnected-err-" name="api-spi-use-onconnected-err-">#</a> spi<b>.use</b> ( `onconnected`(`err`) )    
 Initializes the SPI channel.
 
 &#x20;<a href="#api-spi-setClockSpeed-mhz-callback-err-" name="api-spi-setClockSpeed-mhz-callback-err-">#</a> spi<b>.setClockSpeed</b> ( `mhz`, [`callback`(`err`)] )   
@@ -111,31 +105,40 @@ Synchronous version of `spi.send`. Throws on error.
 ### I2C
 An I2C channel.
 
-&#x20;<a href="#api-new-hardware-I2C-idx-" name="api-new-hardware-I2C-idx-">#</a> <i>new</i>&nbsp; hardware<b>.I2C</b> ( [`idx`] )    
-Creates an I2C channel.
+&#x20;<a href="#api-new-hardware-I2C-address-idx-" name="api-new-hardware-I2C-address-idx-">#</a> <i>new</i>&nbsp; hardware<b>.I2C</b> ( `address`, [`idx`] )    
+Creates an I2C channel for a device of a specific `address`. Multiple I2C channels can be used in parallel.
 
-&#x20;<a href="#api-i2c-initialize-onconnected-err-" name="api-i2c-initialize-onconnected-err-">#</a> i2c<b>.initialize</b> ( `onconnected`(`err`) )    
+&#x20;<a href="#api-i2c-use-onconnected-err-" name="api-i2c-use-onconnected-err-">#</a> i2c<b>.use</b> ( `onconnected`(`err`) )    
 Initializes the I2C channel.
 
-&#x20;<a href="#api-i2c-transfer-address-writebuf-readcount-callback-err-data-" name="api-i2c-transfer-address-writebuf-readcount-callback-err-data-">#</a> i2c<b>.transfer</b> ( `address`, `writebuf`, `readcount`, `callback`(`err`, `data`) )    
-Transfers the array of bytes `writebuf` to the device signified by `address` with `readcount` bytes.
+&#x20;<a href="#api-i2c-transfer-txbuf-rxbuf-callback-err-rxbuf-" name="api-i2c-transfer-txbuf-rxbuf-callback-err-rxbuf-">#</a> i2c<b>.transfer</b> ( `txbuf`, [`rxbuf`,] `callback`(`err`, `rxbuf`) )  
+Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
 
-&#x20;<a href="#api-i2c-read-address-readcount-callback-err-data-" name="api-i2c-read-address-readcount-callback-err-data-">#</a> i2c<b>.read</b> ( `address`, `readcount`, `callback`(`err`, `data`) )    
-Reads `readcount` bytes from the device with the `address` on the bus.
+&#x20;<a href="#api-i2c-transferSync-txbuf-Buffer" name="api-i2c-transferSync-txbuf-Buffer">#</a> i2c<b>.transferSync</b> ( `txbuf` ) &rarr; <i>Buffer</i>  
+Synchronous version of `i2c.transfer`. Throws on error.
 
-&#x20;<a href="#api-i2c-write-address-writebuf-callback-err-" name="api-i2c-write-address-writebuf-callback-err-">#</a> i2c<b>.write</b> ( `address`, `writebuf`, `callback`(`err`) )    
-Writes the array of bytes `writebuf` to the device with the `address` on the bus.
+&#x20;<a href="#api-i2c-receive-len-rxbuf-callback-err-rxbuf-" name="api-i2c-receive-len-rxbuf-callback-err-rxbuf-">#</a> i2c<b>.receive</b> ( `len`, [`rxbuf`,] `callback`(`err`, `rxbuf`) )   
+Reads `len` bytes from a client. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
+
+&#x20;<a href="#api-i2c-receiveSync-len-Buffer" name="api-i2c-receiveSync-len-Buffer">#</a> i2c<b>.receiveSync</b> ( `len` ) &rarr; <i>Buffer</i>  
+Synchronous version of `i2c.receive`. Throws on error.
+
+&#x20;<a href="#api-i2c-send-txbuf-callback-err-" name="api-i2c-send-txbuf-callback-err-">#</a> i2c<b>.send</b> ( `txbuf`, `callback`(`err`) )   
+Sends a Buffer `txbuf` to the client.
+
+&#x20;<a href="#api-i2c-sendSync-txbuf-" name="api-i2c-sendSync-txbuf-">#</a> i2c<b>.sendSync</b> ( `txbuf` )  
+Synchronous version of `i2c.send`. Throws on error.
 
 ### UART
 A UART channel.
 
-&#x20;<a href="#api-new-hardware-UART-idx-options-" name="api-new-hardware-UART-idx-options-">#</a> <i>new</i>&nbsp; hardware<b>.UART</b> ( [`idx`[, `options`]] )  
+&#x20;<a href="#api-new-hardware-UART-idx-options-implements-DuplexStream" name="api-new-hardware-UART-idx-options-implements-DuplexStream">#</a> <i>new</i>&nbsp; hardware<b>.UART</b> ( [`idx`[, `options`]] ) implements DuplexStream  
 Creates a UART channel. Defaults: `{"baudrate": 9600, "dataBits": 8, "parity": "even", "stopBits": 2}`
 
 &#x20;<a href="#api-array-number-uart-baudRates-" name="api-array-number-uart-baudRates-">#</a> <i>array&lt;number&gt;</i>&nbsp; uart<b>.baudRates</b>   
 An array of valid baud rates supported by the system.  
 
-&#x20;<a href="#api-uart-initialize-onconnected-err-" name="api-uart-initialize-onconnected-err-">#</a> uart<b>.initialize</b> ( `onconnected`(`err`) )   
+&#x20;<a href="#api-uart-use-onconnected-err-" name="api-uart-use-onconnected-err-">#</a> uart<b>.use</b> ( `onconnected`(`err`) )   
 Initializes the UART connection.  
 
 &#x20;<a href="#api-uart-setBaudRate-rate-callback-err-" name="api-uart-setBaudRate-rate-callback-err-">#</a> uart<b>.setBaudRate</b> ( `rate`, `callback`(`err`) )   
@@ -150,16 +153,16 @@ Sets the number of data `bits` to the number 1 or 2.
 &#x20;<a href="#api-uart-setParity-parity-callback-err-" name="api-uart-setParity-parity-callback-err-">#</a> uart<b>.setParity</b> ( `parity`, `callback`(`err`) )   
 Sets the `parity` to the value "none", "odd", or "even".
 
-&#x20;<a href="#api-uart-setDataListener-ondata-err-data-" name="api-uart-setDataListener-ondata-err-data-">#</a> uart<b>.setDataListener</b> ( `ondata`(`err`, `data`) )   
+&#x20;<a href="#api-uart-emits-data-" name="api-uart-emits-data-">#</a> <i>uart</i>&nbsp; emits "data"  
 Set the new data listener function.  
-
-&#x20;<a href="#api-uart-removeDataListener-" name="api-uart-removeDataListener-">#</a> uart<b>.removeDataListener</b>   
-Removes datas listener attached to the port.  
 
 &#x20;<a href="#api-uart-write-buf-callback-err-" name="api-uart-write-buf-callback-err-">#</a> uart<b>.write</b> ( `buf`, `callback`(`err`) )   
 Writes a buffer to the UART connection.
 
-### Signal
+&#x20;<a href="#api-uart-writeSync-buf-" name="api-uart-writeSync-buf-">#</a> uart<b>.writeSync</b> ( `buf` )   
+Synchronous version of `uart.write`. Throws on error.
+
+### Signal [Not yet implemented]
 Signal output via buffers and simple animation protocols. High speed signals are implementation-dependent and use their own signal indexing scheme.
 
 &#x20;<a href="#api-new-hardware-Signal-interface-signalidx-" name="api-new-hardware-Signal-interface-signalidx-">#</a> <i>new</i>&nbsp; hardware<b>.Signal</b> ( `interface`, `signalidx` )    
@@ -193,3 +196,11 @@ Queue a signal for when the current signal completes.
 ## License
 
 MIT
+
+
+<!--
+Inspiration!
+https://github.com/fivdi/onoff
+https://github.com/rwaldron/johnny-five
+https://github.com/jgautier/firmata
+-->
