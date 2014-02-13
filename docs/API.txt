@@ -1,20 +1,37 @@
+# Tessel
+
+You can import Tessel into your project by using `var tessel = require('tessel')`.
+
+array<Port> tessel.port = []
+A list of ports available on Tessel.
+
+```js
+var tessel = require('tessel'); // import tessel
+var gpio = tessel.port['GPIO']; // select the GPIO port
+gpio.digital[1].writeSync(1);  // turn digital pin #1 high
+```
+
+array<Pin> tessel.led = []
+An array of Pins available on the Tessel board.
+
+
 # Pins
 
-GPIO access exists on the hardware interface.
+GPIO access for digital and analog signal lines. Each port exposes its available GPIO lines through the `.digital`, `.analog`, and `.pwm` arrays.
 
 
-array<number> hardware.digital = []
+array<number> port.digital = []
 An array of which pins are digital inputs/outputs.
 
-array<number> hardware.analog = []
+array<number> port.analog = []
 An array of which pins are analog inputs/outputs.
 
-array<number> hardware.pwm = []
+array<number> port.pwm = []
 An array of which pins are PWM outputs (may overlap analog array).
 
 
-new hardware.Pin ( `pin`, `dir` or `initialOutput`, `edge` )
-Create and return `pin` object.
+new port.Pin ( `pin`, `dir` or `initialOutput` )
+Create and return `pin` object. If `dir` is "input" or "output", the direction is set to that value immediately. Otherwise, the pin is written to with the value of `initialOutput`. 
 
 string pin.type
 "digital" or "analog".
@@ -65,7 +82,7 @@ Removes the listener for a signal.
 
 A SPI channel.
 
-new hardware.SPI ( [`idx`] )  
+new port.SPI ( [`idx`] )  
 Creates a SPI channel.
 
 
@@ -106,7 +123,7 @@ Synchronous version of `spi.send`. Throws on error.
 
 An I2C channel.
 
-new hardware.I2C ( address, [idx] )  
+new port.I2C ( address, [idx] )  
 Creates an I2C channel for a device of a specific `address`. Multiple I2C channels can be used in parallel.
 
 
@@ -137,7 +154,7 @@ Synchronous version of `i2c.send`. Throws on error.
 
 A UART channel.
 
-new hardware.UART ( [`idx`[, `options`]] ) implements DuplexStream
+new port.UART ( [`idx`[, `options`]] ) implements DuplexStream
 Creates a UART channel. Defaults: `{"baudrate": 9600, "dataBits": 8, "parity": "even", "stopBits": 2}`
 
 
@@ -175,7 +192,7 @@ Synchronous version of `uart.write`. Throws on error.
 
 Signal output via buffers and simple animation protocols. High speed signals are implementation-dependent and use their own signal indexing scheme.
 
-new hardware.Signal ( `interface`, `signalidx` )  
+new port.Signal ( `interface`, `signalidx` )  
 Creates a signal channel.
 
 number signal.maxSpeed
