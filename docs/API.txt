@@ -2,14 +2,15 @@
 
 You can import Tessel into your project by using `var tessel = require('tessel')`.
 
-array<Port> tessel.port = []
-A list of ports available on Tessel.
-
 ```js
 var tessel = require('tessel'); // import tessel
 var gpio = tessel.port['GPIO']; // select the GPIO port
 gpio.digital[1].writeSync(1);  // turn digital pin #1 high
 ```
+
+
+array<Port> tessel.port = []
+A list of ports available on Tessel.
 
 array<Pin> tessel.led = []
 An array of Pins available on the Tessel board.
@@ -17,7 +18,18 @@ An array of Pins available on the Tessel board.
 
 # Pins
 
-GPIO access for digital and analog signal lines. Each port exposes its available GPIO lines through the `.digital`, `.analog`, and `.pwm` arrays.
+GPIO access for digital and analog signal lines. Each port exposes its available GPIO lines through the `.pin`, `.digital`, `.analog`, and `.pwm` arrays.
+
+```js
+var tessel = require('tessel'); // import tessel
+var gpio = tessel.port['GPIO']; // select the GPIO port
+gpio.digital.map(function (pin, i) {
+	console.log('Value of digital pin', i, '=', pin.readSync());
+})
+gpio.analog.map(function (pin, i) {
+	console.log('Value of analog pin', i, '=', pin.readSync() * pin.resolution, '/', pin.resolution);
+})
+```
 
 
 array<number> port.digital = []
@@ -28,6 +40,9 @@ An array of which pins are analog inputs/outputs.
 
 array<number> port.pwm = []
 An array of which pins are PWM outputs (may overlap analog array).
+
+array<number> port.pin = []
+An array of all pins on the port. You can differentiate them by their `.type` and `.isPWM` attributes.
 
 
 new port.Pin ( `pin`, `dir` or `initialOutput` )
@@ -78,16 +93,26 @@ pin.unwatch ( [type,] listener )
 Removes the listener for a signal.
 
 
+
 # SPI
 
 A SPI channel.
 
-new port.SPI ( [`idx`] )  
-Creates a SPI channel.
+```js
+var port = tessel.port['A'];
+var spi = new port.SPI()
+spi.setClockSpeed(4*1000*1000) // 4MHz
+spi.setCPOL(1) // polarity
+spi.setCPHA(0) // bit significance
+spi.on('ready', function () {
+	spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
+		console.log('buffer returned by SPI slave:', rx);
+	})
+})
+```
 
-
-spi.use (`onconnected(err)`)  
-Initializes the SPI channel.
+new port.SPI ( [idx,] [options] ) 
+Creates a SPI channel. `idx` is an optional index for selecting a SPI port, defaulting to 0. (On Tessel, there is only one SPI channel per port.)
 
 
 spi.setClockSpeed ( mhz, [callback(err)] ) 
@@ -123,6 +148,17 @@ Synchronous version of `spi.send`. Throws on error.
 
 An I2C channel.
 
+```js
+var port = tessel.port['A'];
+var slaveAddress = 0xDE;
+var i2c = new port.I2C(slaveAddress)
+i2c.on('ready', function () {
+	i2c.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
+		console.log('buffer returned by I2C slave ('+slaveAddress.toString(16)+'):', rx);
+	})
+})
+```
+
 new port.I2C ( address, [idx] )  
 Creates an I2C channel for a device of a specific `address`. Multiple I2C channels can be used in parallel.
 
@@ -153,6 +189,19 @@ Synchronous version of `i2c.send`. Throws on error.
 # UART
 
 A UART channel.
+
+```js
+var port = tessel.port['A'];
+var uart = new port.UART({
+	baudrate: 115200
+})
+uart.on('ready', function () {
+	uart.write('ahoy hoy\n')
+	uart.on('data', function (data) {
+		console.log('received:', data);
+	})
+})
+```
 
 new port.UART ( [`idx`[, `options`]] ) implements DuplexStream
 Creates a UART channel. Defaults: `{"baudrate": 9600, "dataBits": 8, "parity": "even", "stopBits": 2}`
