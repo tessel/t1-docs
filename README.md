@@ -15,10 +15,18 @@ gpio.digital[1].writeSync(1);  // turn digital pin #1 high
 ```
 
 &#x20;<a href="#api-array-Port-tessel-port-" name="api-array-Port-tessel-port-">#</a> <i>array&lt;Port&gt;</i>&nbsp; tessel<b>.port</b> = []  
-A list of ports available on Tessel.
+A list of ports available on Tessel. Keys for this are `"A"`, `"B"`, `"C"`, `"D"`, or `"GPIO"`.
 
 &#x20;<a href="#api-array-Pin-tessel-led-" name="api-array-Pin-tessel-led-">#</a> <i>array&lt;Pin&gt;</i>&nbsp; tessel<b>.led</b> = []  
-An array of Pins available on the Tessel board.
+An array of LEDs available on the Tessel board (1&ndash;4). These are [`Pin` objects](#pins).
+
+```js
+// Toggle an LED every 200ms 
+(function blink (value) {
+	tessel.led[1].writeSync(value);
+	setTimeout(blink, 200, !value);
+})(true)
+```
 
 ### Pins
 GPIO access for digital and analog signal lines. Each port exposes its available GPIO lines through the `.pin`, `.digital`, `.analog`, and `.pwm` arrays.

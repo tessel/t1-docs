@@ -10,11 +10,18 @@ gpio.digital[1].writeSync(1);  // turn digital pin #1 high
 
 
 array<Port> tessel.port = []
-A list of ports available on Tessel.
+A list of ports available on Tessel. Keys for this are `"A"`, `"B"`, `"C"`, `"D"`, or `"GPIO"`.
 
 array<Pin> tessel.led = []
-An array of Pins available on the Tessel board.
+An array of LEDs available on the Tessel board (1&ndash;4). These are [`Pin` objects](#pins).
 
+```js
+// Toggle an LED every 200ms 
+(function blink (value) {
+	tessel.led[1].writeSync(value);
+	setTimeout(blink, 200, !value);
+})(true)
+```
 
 # Pins
 
