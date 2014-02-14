@@ -137,6 +137,9 @@ Sends a Buffer `txbuf` to the client.
 &#x20;<a href="#api-spi-sendSync-txbuf-" name="api-spi-sendSync-txbuf-">#</a> spi<b>.sendSync</b> ( txbuf )  
 Synchronous version of `spi.send`. Throws on error.
 
+&#x20;<a href="#api-spi-emits-ready-" name="api-spi-emits-ready-">#</a> spi &rarr; <i>emits "ready"</i>  
+Emitted when the connection has begun. Code should wait until the "ready" event is fired before performing operations.
+
 ### I2C
 An I2C channel.
 
@@ -174,6 +177,9 @@ Sends a Buffer `txbuf` to the client.
 
 &#x20;<a href="#api-i2c-sendSync-txbuf-" name="api-i2c-sendSync-txbuf-">#</a> i2c<b>.sendSync</b> ( txbuf )  
 Synchronous version of `i2c.send`. Throws on error.
+
+&#x20;<a href="#api-i2c-emits-ready-" name="api-i2c-emits-ready-">#</a> i2c &rarr; <i>emits "ready"</i>  
+Emitted when the connection has begun. Code should wait until the "ready" event is fired before performing operations.
 
 ### UART
 A UART channel.
@@ -213,14 +219,17 @@ Sets the number of data `bits` to the number 1 or 2.
 &#x20;<a href="#api-uart-setParity-parity-callback-err-" name="api-uart-setParity-parity-callback-err-">#</a> uart<b>.setParity</b> ( parity, callback(err) )   
 Sets the `parity` to the value "none", "odd", or "even".
 
-&#x20;<a href="#api-uart-emits-data-" name="api-uart-emits-data-">#</a> uart &rarr; <i>emits "data"</i>  
-Set the new data listener function.  
-
 &#x20;<a href="#api-uart-write-buf-callback-err-" name="api-uart-write-buf-callback-err-">#</a> uart<b>.write</b> ( buf, callback(err) )   
 Writes a buffer to the UART connection.
 
 &#x20;<a href="#api-uart-writeSync-buf-" name="api-uart-writeSync-buf-">#</a> uart<b>.writeSync</b> ( buf )   
 Synchronous version of `uart.write`. Throws on error.
+
+&#x20;<a href="#api-uart-emits-ready-" name="api-uart-emits-ready-">#</a> uart &rarr; <i>emits "ready"</i>  
+Emitted when the connection has begun. Code should wait until the "ready" event is fired before performing operations.
+
+&#x20;<a href="#api-uart-emits-data-" name="api-uart-emits-data-">#</a> uart &rarr; <i>emits "data"</i>  
+Data that arrives over the UART channel is sent as a Node.js stream.
 
 ### Signal [Not yet implemented]
 Signal output via buffers and simple animation protocols. High speed signals are implementation-dependent and use their own signal indexing scheme.

@@ -143,6 +143,9 @@ Sends a Buffer `txbuf` to the client.
 spi.sendSync ( txbuf )
 Synchronous version of `spi.send`. Throws on error.
 
+spi -> emits "ready"
+Emitted when the connection has begun. Code should wait until the "ready" event is fired before performing operations.
+
 
 # I2C
 
@@ -163,10 +166,6 @@ new port.I2C ( address, [idx] )
 Creates an I2C channel for a device of a specific `address`. Multiple I2C channels can be used in parallel.
 
 
-i2c.use ( `onconnected(err)` )  
-Initializes the I2C channel.
-
-
 i2c.transfer ( txbuf, [rxbuf,] callback(err, rxbuf) )
 Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
 
@@ -184,6 +183,9 @@ Sends a Buffer `txbuf` to the client.
 
 i2c.sendSync ( txbuf )
 Synchronous version of `i2c.send`. Throws on error.
+
+i2c -> emits "ready"
+Emitted when the connection has begun. Code should wait until the "ready" event is fired before performing operations.
 
 
 # UART
@@ -228,14 +230,18 @@ uart.setParity ( `parity`, `callback(err)` )
 Sets the `parity` to the value "none", "odd", or "even".
 
 
-uart -> emits "data"
-Set the new data listener function.  
-
 uart.write ( `buf`, `callback(err)` ) 
 Writes a buffer to the UART connection.
 
 uart.writeSync ( `buf` ) 
 Synchronous version of `uart.write`. Throws on error.
+
+
+uart -> emits "ready"
+Emitted when the connection has begun. Code should wait until the "ready" event is fired before performing operations.
+
+uart -> emits "data"
+Data that arrives over the UART channel is sent as a Node.js stream.
 
 
 # Signal [Not yet implemented]
