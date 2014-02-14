@@ -188,6 +188,9 @@ uart.on('ready', function () {
 	uart.on('data', function (data) {
 		console.log('received:', data);
 	})
+	// UART objects are streams!
+	// pipe all incoming data to stdout:
+	uart.pipe(process.stdout);
 })
 ```
 
