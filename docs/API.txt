@@ -211,12 +211,9 @@ new port.UART ( [`idx`[, `options`]] ) implements DuplexStream
 Creates a UART channel. Defaults: `{"baudrate": 9600, "dataBits": 8, "parity": "even", "stopBits": 2}`
 
 
-array<number> uart.baudRates 
+array<number> uart.baudRates = []
 An array of valid baud rates supported by the system.  
-
-
-uart.use ( `onconnected(err)` ) 
-Initializes the UART connection.  
+ 
 
 uart.setBaudRate ( `rate`, `callback(err)` ) 
 Sets the baud `rate` to a valid rate in `baudRates`.
@@ -231,7 +228,7 @@ uart.setParity ( `parity`, `callback(err)` )
 Sets the `parity` to the value "none", "odd", or "even".
 
 
-uart emits "data"
+uart -> emits "data"
 Set the new data listener function.  
 
 uart.write ( `buf`, `callback(err)` ) 

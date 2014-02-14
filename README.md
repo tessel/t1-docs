@@ -188,6 +188,7 @@ uart.on('ready', function () {
 	uart.on('data', function (data) {
 		console.log('received:', data);
 	})
+
 	// UART objects are streams!
 	// pipe all incoming data to stdout:
 	uart.pipe(process.stdout);
@@ -197,11 +198,8 @@ uart.on('ready', function () {
 &#x20;<a href="#api-new-port-UART-idx-options-implements-DuplexStream" name="api-new-port-UART-idx-options-implements-DuplexStream">#</a> <i>new</i>&nbsp; port<b>.UART</b> ( [idx[, options]] ) implements DuplexStream  
 Creates a UART channel. Defaults: `{"baudrate": 9600, "dataBits": 8, "parity": "even", "stopBits": 2}`
 
-&#x20;<a href="#api-array-number-uart-baudRates-" name="api-array-number-uart-baudRates-">#</a> <i>array&lt;number&gt;</i>&nbsp; uart<b>.baudRates</b>   
+&#x20;<a href="#api-array-number-uart-baudRates-" name="api-array-number-uart-baudRates-">#</a> <i>array&lt;number&gt;</i>&nbsp; uart<b>.baudRates</b> = []  
 An array of valid baud rates supported by the system.  
-
-&#x20;<a href="#api-uart-use-onconnected-err-" name="api-uart-use-onconnected-err-">#</a> uart<b>.use</b> ( onconnected(err) )   
-Initializes the UART connection.  
 
 &#x20;<a href="#api-uart-setBaudRate-rate-callback-err-" name="api-uart-setBaudRate-rate-callback-err-">#</a> uart<b>.setBaudRate</b> ( rate, callback(err) )   
 Sets the baud `rate` to a valid rate in `baudRates`.
@@ -215,7 +213,7 @@ Sets the number of data `bits` to the number 1 or 2.
 &#x20;<a href="#api-uart-setParity-parity-callback-err-" name="api-uart-setParity-parity-callback-err-">#</a> uart<b>.setParity</b> ( parity, callback(err) )   
 Sets the `parity` to the value "none", "odd", or "even".
 
-&#x20;<a href="#api-uart-emits-data-" name="api-uart-emits-data-">#</a> <i>uart</i>&nbsp; emits "data"  
+&#x20;<a href="#api-uart-emits-data-" name="api-uart-emits-data-">#</a> uart &rarr; <i>emits "data"</i>  
 Set the new data listener function.  
 
 &#x20;<a href="#api-uart-write-buf-callback-err-" name="api-uart-write-buf-callback-err-">#</a> uart<b>.write</b> ( buf, callback(err) )   
