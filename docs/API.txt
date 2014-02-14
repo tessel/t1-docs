@@ -1,6 +1,6 @@
 # Tessel
 
-You can import Tessel into your project by using `var tessel = require('tessel')`.
+Tessel is the root object for each of the different ports on the device.
 
 ```js
 var tessel = require('tessel'); // import tessel
