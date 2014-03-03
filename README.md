@@ -14,6 +14,7 @@ var gpio = tessel.port['GPIO']; // select the GPIO port
 gpio.digital[1].writeSync(1);  // turn digital pin #1 high
 ```
 
+
 &#x20;<a href="#api-array-Port-tessel-port-" name="api-array-Port-tessel-port-">#</a> <i>array&lt;Port&gt;</i>&nbsp; tessel<b>.port</b> = []  
 A list of ports available on Tessel. Keys for this are `"A"`, `"B"`, `"C"`, `"D"`, or `"GPIO"`.
 
@@ -28,6 +29,7 @@ An array of LEDs available on the Tessel board (1&ndash;4). These are [`Pin` obj
 })(true)
 ```
 
+
 ### Pins
 GPIO access for digital and analog signal lines. Each port exposes its available GPIO lines through the `.pin`, `.digital`, `.analog`, and `.pwm` arrays.
 
@@ -41,6 +43,7 @@ gpio.analog.map(function (pin, i) {
 	console.log('Value of analog pin', i, '=', pin.readSync() * pin.resolution, '/', pin.resolution);
 })
 ```
+
 
 &#x20;<a href="#api-array-number-port-digital-" name="api-array-number-port-digital-">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.digital</b> = []  
 An array of which pins are digital inputs/outputs.
@@ -104,10 +107,11 @@ A SPI channel.
 
 ```js
 var port = tessel.port['A'];
-var spi = new port.SPI()
-spi.setClockSpeed(4*1000*1000) // 4MHz
-spi.setCPOL(1) // polarity
-spi.setCPHA(0) // bit significance
+var spi = new port.SPI({
+	clockSpeed: 4*1000*1000, // 4MHz
+	cpol: 1, // polarity
+	cpha: 0, // clock phase
+});
 spi.on('ready', function () {
 	spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
 		console.log('buffer returned by SPI slave:', rx);
@@ -115,17 +119,19 @@ spi.on('ready', function () {
 })
 ```
 
+
 &#x20;<a href="#api-new-port-SPI-idx-options-" name="api-new-port-SPI-idx-options-">#</a> <i>new</i>&nbsp; port<b>.SPI</b> ( [idx,] [options] )   
-Creates a SPI channel. `idx` is an optional index for selecting a SPI port, defaulting to 0. (On Tessel, there is only one SPI channel per port.)
+Creates a SPI object. `idx` is an optional numeric index for selecting a SPI port, and defaults to the first (or only) SPI channel. Options is an object specifying any of the following:
 
-&#x20;<a href="#api-spi-setClockSpeed-mhz-callback-err-" name="api-spi-setClockSpeed-mhz-callback-err-">#</a> spi<b>.setClockSpeed</b> ( mhz, [callback(err)] )   
-Set the SPI output speed to the number `mhz`.
-
-&#x20;<a href="#api-spi-setCPOL-cpol-callback-err-" name="api-spi-setCPOL-cpol-callback-err-">#</a> spi<b>.setCPOL</b> ( cpol, [callback(err)] )   
-Set CPOL (SPI polarity). 
-
-&#x20;<a href="#api-spi-setCPHA-cpha-callback-err-" name="api-spi-setCPHA-cpha-callback-err-">#</a> spi<b>.setCPHA</b> ( cpha, [callback(err)] )   
-Set CPHA (SPI bit significance).
+* **clockSpeed** (default `100000`) &mdash; SPI clock speed in MHz.
+* **cpol** (default `0`) &mdash; Clock polarity. Options are 0 or 1, or 'low' and 'high'.
+* **cpha** (default `0`) &mdash; Clock phase. Options are 0 or 1, or 'first' and 'second'.
+* **dataMode** (default `0`) &mdash; An alternative to defining **cpol** and **cpha** explicitly, you can [use mode numbers](http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus#Mode_numbers).
+* **bitOrder** (default `"msb"`) &mdash; Bit order, most significant bit first or least. Options are 'msb' or 'lsb'.
+* **frameMode** (default `"normal"`) &mdash; SPI frame format. Only one format is supported at the moment, `"normal"`.
+* **chipSelect** (default `null`) &mdash; Pin to use as a default chip select pin. If a pin is specified, this pin is toggled in master mode whenever data is to be sent/received on the bus.
+* **chipSelectActive** (default `"low"`) &mdash; If a **chipSelect** pin is specified, this defines the polarity of the CS line when *active*.
+* **slave** (default `false`) &mdash; Create a SPI channel in "slave" mode. (Currently not supported.)
 
 &#x20;<a href="#api-spi-transfer-txbuf-rxbuf-callback-err-rxbuf-" name="api-spi-transfer-txbuf-rxbuf-callback-err-rxbuf-">#</a> spi<b>.transfer</b> ( txbuf, [rxbuf,] callback(err, rxbuf) )  
 Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
@@ -161,6 +167,7 @@ i2c.on('ready', function () {
 	})
 })
 ```
+
 
 &#x20;<a href="#api-new-port-I2C-address-idx-" name="api-new-port-I2C-address-idx-">#</a> <i>new</i>&nbsp; port<b>.I2C</b> ( address, [idx] )    
 Creates an I2C channel for a device of a specific `address`. Multiple I2C channels can be used in parallel.
@@ -205,6 +212,7 @@ uart.on('ready', function () {
 	uart.pipe(process.stdout);
 })
 ```
+
 
 &#x20;<a href="#api-new-port-UART-idx-options-implements-DuplexStream" name="api-new-port-UART-idx-options-implements-DuplexStream">#</a> <i>new</i>&nbsp; port<b>.UART</b> ( [idx[, options]] ) implements DuplexStream  
 Creates a UART channel. Defaults: `{"baudrate": 9600, "dataBits": 8, "parity": "even", "stopBits": 2}`

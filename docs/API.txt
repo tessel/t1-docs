@@ -107,10 +107,11 @@ A SPI channel.
 
 ```js
 var port = tessel.port['A'];
-var spi = new port.SPI()
-spi.setClockSpeed(4*1000*1000) // 4MHz
-spi.setCPOL(1) // polarity
-spi.setCPHA(0) // bit significance
+var spi = new port.SPI({
+	clockSpeed: 4*1000*1000, // 4MHz
+	cpol: 1, // polarity
+	cpha: 0, // clock phase
+});
 spi.on('ready', function () {
 	spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
 		console.log('buffer returned by SPI slave:', rx);
@@ -119,8 +120,19 @@ spi.on('ready', function () {
 ```
 
 new port.SPI ( [idx,] [options] ) 
-Creates a SPI channel. `idx` is an optional index for selecting a SPI port, defaulting to 0. (On Tessel, there is only one SPI channel per port.)
+Creates a SPI object. `idx` is an optional numeric index for selecting a SPI port, and defaults to the first (or only) SPI channel. Options is an object specifying any of the following:
 
+* **clockSpeed** (default `100000`) &mdash; SPI clock speed in MHz.
+* **cpol** (default `0`) &mdash; Clock polarity. Options are 0 or 1, or 'low' and 'high'.
+* **cpha** (default `0`) &mdash; Clock phase. Options are 0 or 1, or 'first' and 'second'.
+* **dataMode** (default `0`) &mdash; An alternative to defining **cpol** and **cpha** explicitly, you can [use mode numbers](http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus#Mode_numbers).
+* **bitOrder** (default `"msb"`) &mdash; Bit order, most significant bit first or least. Options are 'msb' or 'lsb'.
+* **frameMode** (default `"normal"`) &mdash; SPI frame format. Only one format is supported at the moment, `"normal"`.
+* **chipSelect** (default `null`) &mdash; Pin to use as a default chip select pin. If a pin is specified, this pin is toggled in master mode whenever data is to be sent/received on the bus.
+* **chipSelectActive** (default `"low"`) &mdash; If a **chipSelect** pin is specified, this defines the polarity of the CS line when *active*.
+* **slave** (default `false`) &mdash; Create a SPI channel in "slave" mode. (Currently not supported.)
+
+/*
 
 spi.setClockSpeed ( mhz, [callback(err)] ) 
 Set the SPI output speed to the number `mhz`.
@@ -131,6 +143,7 @@ Set CPOL (SPI polarity).
 spi.setCPHA ( `cpha`, [`callback(err)`] ) 
 Set CPHA (SPI bit significance).
 
+*/
 
 spi.transfer ( txbuf, [rxbuf,] callback(err, rxbuf) )
 Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
