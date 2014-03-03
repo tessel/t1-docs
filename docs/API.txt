@@ -147,19 +147,19 @@ Set CPHA (SPI bit significance).
 */
 
 spi.transfer ( txbuf, callback(err, rxbuf) )
-Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. 
+Transfers a Buffer `txbuf` to the slave and receives a response in `rxbuf`. 
 
 spi.transferSync ( txbuf ) -> Buffer
 Synchronous version of `spi.transfer`. Throws on error.
 
 spi.receive ( len, callback(err, rxbuf) ) 
-Reads `len` bytes from a client.
+Reads `len` bytes from a slave.
 
 spi.receiveSync ( len ) -> Buffer
 Synchronous version of `spi.receive`. Throws on error.
 
 spi.send ( txbuf, callback(err) ) 
-Sends a Buffer `txbuf` to the client.
+Sends a Buffer `txbuf` to the slave.
 
 spi.sendSync ( txbuf )
 Synchronous version of `spi.send`. Throws on error.
