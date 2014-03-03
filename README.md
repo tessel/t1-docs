@@ -120,10 +120,11 @@ spi.on('ready', function () {
 ```
 
 
-&#x20;<a href="#api-new-port-SPI-idx-options" name="api-new-port-SPI-idx-options">#</a> <i>new</i>&nbsp; port<b>.SPI</b> ( [idx,] [options] )   
-Creates a SPI object. `idx` is an optional numeric index for selecting a SPI port, and defaults to the first (or only) SPI channel. Options is an object specifying any of the following:
+&#x20;<a href="#api-new-port-SPI-options" name="api-new-port-SPI-options">#</a> <i>new</i>&nbsp; port<b>.SPI</b> ( [options] )   
+Creates a SPI object. Options is an object specifying any of the following:
 
-* **clockSpeed** (default `100000`) &mdash; SPI clock speed in MHz.
+* **channel** (optional) &mdash; An optional numeric index for selecting a SPI channel. Defaults to the first (or only) SPI channel.
+* **clockSpeed** (default `100000`) &mdash; SPI clock speed in Hz.
 * **cpol** (default `0`) &mdash; Clock polarity. Options are 0 or 1, or 'low' and 'high'.
 * **cpha** (default `0`) &mdash; Clock phase. Options are 0 or 1, or 'first' and 'second'.
 * **dataMode** (default `0`) &mdash; An alternative to defining **cpol** and **cpha** explicitly, you can [use mode numbers](http://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus#Mode_numbers).
@@ -131,7 +132,7 @@ Creates a SPI object. `idx` is an optional numeric index for selecting a SPI por
 * **frameMode** (default `"normal"`) &mdash; SPI frame format. Only one format is supported at the moment, `"normal"`.
 * **chipSelect** (default `null`) &mdash; Pin to use as a default chip select pin. If a pin is specified, this pin is toggled in master mode whenever data is to be sent/received on the bus.
 * **chipSelectActive** (default `"low"`) &mdash; If a **chipSelect** pin is specified, this defines the polarity of the CS line when *active*.
-* **slave** (default `false`) &mdash; Create a SPI channel in "slave" mode. (Currently not supported.)
+* **role** (default `master`) &mdash; Determines the role the SPI channel plays, either "master" or "slave". (Currently not supported.)
 
 &#x20;<a href="#api-spi-transfer-txbuf-rxbuf-callback-err-rxbuf" name="api-spi-transfer-txbuf-rxbuf-callback-err-rxbuf">#</a> spi<b>.transfer</b> ( txbuf, [rxbuf,] callback(err, rxbuf) )  
 Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
