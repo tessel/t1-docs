@@ -134,14 +134,14 @@ Creates a SPI object. Options is an object specifying any of the following:
 * **chipSelectActive** (default `"low"`) &mdash; If a **chipSelect** pin is specified, this defines the polarity of the CS line when *active*.
 * **role** (default `master`) &mdash; Determines the role the SPI channel plays, either "master" or "slave". (Currently not supported.)
 
-&#x20;<a href="#api-spi-transfer-txbuf-rxbuf-callback-err-rxbuf" name="api-spi-transfer-txbuf-rxbuf-callback-err-rxbuf">#</a> spi<b>.transfer</b> ( txbuf, [rxbuf,] callback(err, rxbuf) )  
-Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
+&#x20;<a href="#api-spi-transfer-txbuf-callback-err-rxbuf" name="api-spi-transfer-txbuf-callback-err-rxbuf">#</a> spi<b>.transfer</b> ( txbuf, callback(err, rxbuf) )  
+Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. 
 
 &#x20;<a href="#api-spi-transferSync-txbuf-Buffer" name="api-spi-transferSync-txbuf-Buffer">#</a> spi<b>.transferSync</b> ( txbuf ) &rarr; <i>Buffer</i>  
 Synchronous version of `spi.transfer`. Throws on error.
 
-&#x20;<a href="#api-spi-receive-len-rxbuf-callback-err-rxbuf" name="api-spi-receive-len-rxbuf-callback-err-rxbuf">#</a> spi<b>.receive</b> ( len, [rxbuf,] callback(err, rxbuf) )   
-Reads `len` bytes from a client. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
+&#x20;<a href="#api-spi-receive-len-callback-err-rxbuf" name="api-spi-receive-len-callback-err-rxbuf">#</a> spi<b>.receive</b> ( len, callback(err, rxbuf) )   
+Reads `len` bytes from a client.
 
 &#x20;<a href="#api-spi-receiveSync-len-Buffer" name="api-spi-receiveSync-len-Buffer">#</a> spi<b>.receiveSync</b> ( len ) &rarr; <i>Buffer</i>  
 Synchronous version of `spi.receive`. Throws on error.

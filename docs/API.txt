@@ -146,14 +146,14 @@ Set CPHA (SPI bit significance).
 
 */
 
-spi.transfer ( txbuf, [rxbuf,] callback(err, rxbuf) )
-Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
+spi.transfer ( txbuf, callback(err, rxbuf) )
+Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. 
 
 spi.transferSync ( txbuf ) -> Buffer
 Synchronous version of `spi.transfer`. Throws on error.
 
-spi.receive ( len, [rxbuf,] callback(err, rxbuf) ) 
-Reads `len` bytes from a client. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
+spi.receive ( len, callback(err, rxbuf) ) 
+Reads `len` bytes from a client.
 
 spi.receiveSync ( len ) -> Buffer
 Synchronous version of `spi.receive`. Throws on error.
