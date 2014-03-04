@@ -9,7 +9,7 @@ gpio.digital[1].writeSync(1);  // turn digital pin #1 high
 ```
 
 
-array<Port> tessel.port = []
+map<Port> tessel.port = {}
 A list of ports available on Tessel. Keys for this are `"A"`, `"B"`, `"C"`, `"D"`, or `"GPIO"`.
 
 array<Pin> tessel.led = []
@@ -37,6 +37,9 @@ gpio.analog.map(function (pin, i) {
 	console.log('Value of analog pin', i, '=', pin.readSync() * pin.resolution, '/', pin.resolution);
 })
 ```
+
+string port.id
+The unique ID of this port. On Tessel, this would be one of `"A"`, `"B"`, `"C"`, `"D"`, or `"GPIO"`.
 
 
 array<number> port.digital = []

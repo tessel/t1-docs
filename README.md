@@ -15,7 +15,7 @@ gpio.digital[1].writeSync(1);  // turn digital pin #1 high
 ```
 
 
-&#x20;<a href="#api-array-Port-tessel-port" name="api-array-Port-tessel-port">#</a> <i>array&lt;Port&gt;</i>&nbsp; tessel<b>.port</b> = []  
+&#x20;<a href="#api-map-Port-tessel-port" name="api-map-Port-tessel-port">#</a> <i>map&lt;Port&gt;</i>&nbsp; tessel<b>.port</b> = {}  
 A list of ports available on Tessel. Keys for this are `"A"`, `"B"`, `"C"`, `"D"`, or `"GPIO"`.
 
 &#x20;<a href="#api-array-Pin-tessel-led" name="api-array-Pin-tessel-led">#</a> <i>array&lt;Pin&gt;</i>&nbsp; tessel<b>.led</b> = []  
@@ -44,6 +44,9 @@ gpio.analog.map(function (pin, i) {
 })
 ```
 
+
+&#x20;<a href="#api-string-port-id" name="api-string-port-id">#</a> <i>string</i>&nbsp; port<b>.id</b>  
+The unique ID of this port. On Tessel, this would be one of `"A"`, `"B"`, `"C"`, `"D"`, or `"GPIO"`.
 
 &#x20;<a href="#api-array-number-port-digital" name="api-array-number-port-digital">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.digital</b> = []  
 An array of which pins are digital inputs/outputs.
