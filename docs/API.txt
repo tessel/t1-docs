@@ -134,7 +134,7 @@ Creates a SPI object. Options is an object specifying any of the following:
 * **frameMode** (default `"normal"`) &mdash; SPI frame format. Only one format is supported at the moment, `"normal"`.
 * **chipSelect** (default `null`) &mdash; Pin to use as a default chip select pin. If a pin is specified, this pin is toggled in master mode whenever data is to be sent/received on the bus.
 * **chipSelectActive** (default `"low"`) &mdash; If a **chipSelect** pin is specified, this defines the polarity of the CS line when *active*.
-* **role** (default `master`) &mdash; Determines the role the SPI channel plays, either "master" or "slave". (Currently not supported.)
+* **role** (default `master`) &mdash; Determines the role the SPI channel plays, either "master" or "slave". (Slave currently not supported.)
 
 /*
 
@@ -186,9 +186,10 @@ i2c.on('ready', function () {
 })
 ```
 
-new port.I2C ( address, [idx] )  
-Creates an I2C channel for a device of a specific `address`. Multiple I2C channels can be used in parallel.
+new port.I2C ( address, options, [idx] )  
+Creates an I2C channel for a device of a specific `address`. Multiple I2C channels can be used in parallel. Options is an object specifying any of the following:
 
+* **role** (default `master`) &mdash; Determines the role the I2C channel plays, either "master" or "slave".
 
 i2c.transfer ( txbuf, [rxbuf,] callback(err, rxbuf) )
 Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
