@@ -99,8 +99,8 @@ Read a digital `value` from a digital input pin. `1` is returned if the value is
 &#x20;<a href="#api-pin-readSync-number" name="api-pin-readSync-number">#</a> pin<b>.readSync</b> () &rarr; <i>number</i>  
 Synchronous version of `pin.read`. Throws on error.
 
-&#x20;<a href="#api-pin-watch-type-callback-err-time" name="api-pin-watch-type-callback-err-time">#</a> pin<b>.watch</b> ( [type,] callback(err, time) )    
-Sets a listener for a signal edge on `pin`. `type` can be one of "rise", "fall", "both", or omitted (analogous to "both"). Watched events registers events on the `pin` object, with the same `type` as the event.
+&#x20;<a href="#api-pin-watch-type-callback-err-time" name="api-pin-watch-type-callback-err-time">#</a> pin<b>.watch</b> ( [type,] callback(err, time, type) )    
+Sets a listener for a signal edge on `pin`. `type` can be one of "rise", "fall", "change", or omitted (analogous to "change"). Watched events registers events on the `pin` object, with the same `type` as the event.
 
 &#x20;<a href="#api-pin-unwatch-type-listener" name="api-pin-unwatch-type-listener">#</a> pin<b>.unwatch</b> ( [type,] listener )  
 Removes the listener for a signal.
