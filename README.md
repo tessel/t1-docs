@@ -276,37 +276,6 @@ Emitted when the connection has begun. Code should wait until the "ready" event 
 &#x20;<a href="#api-uart-emits-data" name="api-uart-emits-data">#</a> uart &rarr; <i>emits "data"</i>  
 Data that arrives over the UART channel is sent as a Node.js stream.
 
-### Signal [Not yet implemented]
-
-Signal output via buffers and simple animation protocols. High speed signals are implementation-dependent and use their own signal indexing scheme.
-
-&#x20;<a href="#api-new-port-Signal-interface-signalidx" name="api-new-port-Signal-interface-signalidx">#</a> <i>new</i>&nbsp; port<b>.Signal</b> ( interface, signalidx )  
-Creates a signal channel.
-
-&#x20;<a href="#api-number-signal-maxSpeed" name="api-number-signal-maxSpeed">#</a> <i>number</i>&nbsp; signal<b>.maxSpeed</b>  
-The maximum speed (in MHz) at which a signal can be emitted.
-
-&#x20;<a href="#api-number-signal-idleBit-0" name="api-number-signal-idleBit-0">#</a> <i>number</i>&nbsp; signal<b>.idleBit</b> = 0  
-The bit, truthy for HIGH and otherwise LOW, to be output while there is no signal. This value is writeable.
-
-&#x20;<a href="#api-signal-initialize-onconnected-err" name="api-signal-initialize-onconnected-err">#</a> signal<b>.initialize</b> ( onconnected(err) )  
-Initializes the signal connection.
-
-&#x20;<a href="#api-signal-setClockSpeed-MHz-callback-err" name="api-signal-setClockSpeed-MHz-callback-err">#</a> signal<b>.setClockSpeed</b> ( MHz, [callback(err)] )  
-Set the signal output speed from `0` to `maxSpeed`.
-
-&#x20;<a href="#api-signal-stop-callback-err" name="api-signal-stop-callback-err">#</a> signal<b>.stop</b> ( [callback(err)] )  
-Stop an ongoing signal.
-
-&#x20;<a href="#api-signal-loop-buf-onrepeat-err" name="api-signal-loop-buf-onrepeat-err">#</a> signal<b>.loop</b> ( buf, [onrepeat(err)] )  
-Repeat the buffered signal.
-
-&#x20;<a href="#api-signal-send-buf-onfinished-err" name="api-signal-send-buf-onfinished-err">#</a> signal<b>.send</b> ( buf, [onfinished(err)] )  
-Send a signal, calling the callback when completed.
-
-&#x20;<a href="#api-signal-queue-buf-onfinished-err" name="api-signal-queue-buf-onfinished-err">#</a> signal<b>.queue</b> ( buf, [onfinished(err)] )  
-Queue a signal for when the current signal completes.
-
 <!--/markdocs:generated-->
 
 ## License
