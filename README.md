@@ -14,7 +14,6 @@ Documentation for Tessel's hardware APIs. These are available for code running o
 * [SPI](https://github.com/tessel/docs#spi)
 * [I2C](https://github.com/tessel/docs#i2c)
 * [UART](https://github.com/tessel/docs#uart)
-* [Signal](https://github.com/tessel/docs#signal-not-yet-implemented)
 
 <!--markdocs:generated-->
 
@@ -50,6 +49,7 @@ API Documentation for each of Tessel's modules can be found on the individual mo
 
  * [Accelerometer<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/accel-mma84)
  * [Ambient<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ambient-attx4)
+ * [Climate<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/climate-si7005)
  * [GPS<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/gps-a2235h)
  * [Relay<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/relay-mono)
  * [Servo<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/servo-pca9685)
