@@ -49,9 +49,16 @@ API Documentation for each of Tessel's modules can be found on the individual mo
 
  * [Accelerometer<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/accel-mma84)
  * [Ambient<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ambient-attx4)
+ * [Audio<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/audio-vs1053b)
+ * [Bluetooth Low Energh<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ble-ble113a)
+ * [Camera<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/camera-vc0706)
  * [Climate<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/climate-si7005)
+ * [GPRS/2G/SIM<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/gprs-sim900)
  * [GPS<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/gps-a2235h)
+ * [Infrared<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ir-attx4)
+ * [NRF24<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/rf-nrf24)
  * [Relay<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/relay-mono)
+ * [RFID<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/rfid-pn532)
  * [Servo<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/servo-pca9685)
 
 ### Pins
