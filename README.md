@@ -45,25 +45,25 @@ An array of LEDs available on the Tessel board (1&ndash;4). These are [`Pin` obj
 
 ### Modules
 
-API Documentation for each of Tessel's modules can be found on the individual modules' pages. We are in the process of opening up the module repos. So far, we have available:  
+API Documentation for each of Tessel's modules can be found on the individual modules' pages. We are in the process of opening up the module repos. So far, we have available:
 
- * [Accelerometer<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/accel-mma84)
- * [Ambient<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ambient-attx4)
- * [Audio<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/audio-vs1053b)
- * [Bluetooth Low Energy<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ble-ble113a)
- * [Camera<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/camera-vc0706)
- * [Climate<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/climate-si7005)
- * [GPRS/2G/SIM<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/gprs-sim900)
- * [GPS<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/gps-a2235h)
- * [Infrared<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ir-attx4)
- * [NRF24<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/rf-nrf24)
- * [Relay<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/relay-mono)
- * [RFID<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/rfid-pn532)
- * [Servo<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/servo-pca9685)
+* [Accelerometer<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/accel-mma84)
+* [Ambient<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ambient-attx4)
+* [Audio<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/audio-vs1053b)
+* [Bluetooth Low Energy<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ble-ble113a)
+* [Camera<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/camera-vc0706)
+* [Climate<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/climate-si7005)
+* [GPRS/2G/SIM<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/gprs-sim900)
+* [GPS<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/gps-a2235h)
+* [Infrared<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ir-attx4)
+* [NRF24<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/rf-nrf24)
+* [Relay<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/relay-mono)
+* [RFID<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/rfid-pn532)
+* [Servo<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/servo-pca9685)
 
 ### Pins
 
-GPIO access for digital and analog signal lines. Each port exposes its available GPIO lines through the `.pin`, `.digital`, `.analog`, and `.pwm` arrays.
+GPIO access for digital and analog signal lines. Each port exposes its available pins through the `.pin`, `.digital`, `.analog`, and `.pwm` arrays.
 
 ```js
 var tessel = require('tessel'); // import tessel
@@ -77,28 +77,48 @@ gpio.analog.map(function (pin, i) {
 ```
 
 
+&#x20;<a href="#api-Ports-A-B-C-and-D-have-3-digital-pins-which-can-be-addressed-as-such" name="api-Ports-A-B-C-and-D-have-3-digital-pins-which-can-be-addressed-as-such">#</a> <i>Ports</i>&nbsp; A, B, C, and D have 3 digital pins which can be addressed as such:  
+
+
+```js
+tessel.port['A'].digital[0];
+tessel.port['A'].digital[1];
+tessel.port['A'].digital[2];
+```
+
+
+&#x20;<a href="#api-Additionally-the-pins-can-be-addressed-by-the-silkscreen-printed-on-Tessel" name="api-Additionally-the-pins-can-be-addressed-by-the-silkscreen-printed-on-Tessel">#</a> <i>Additionally</i>&nbsp; the pins can be addressed by the silkscreen printed on Tessel:  
+
+
+```js
+tessel.port['A'].pin['g1']; // this is the same as digital[0]
+tessel.port['A'].pin['g2']; // this is the same as digital[1]
+tessel.port['A'].pin['g3']; // this is the same as digital[2]
+```
+
+
 &#x20;<a href="#api-string-port-id" name="api-string-port-id">#</a> <i>string</i>&nbsp; port<b>.id</b>  
 The unique ID of this port. On Tessel, this would be one of `"A"`, `"B"`, `"C"`, `"D"`, or `"GPIO"`.
 
 &#x20;<a href="#api-array-number-port-digital" name="api-array-number-port-digital">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.digital</b> = []  
-An array of which pins are digital inputs/outputs.
+An array of which pins are digital inputs/outputs. Has 3 pins for ports A, B, C, and D and 6 pins for the GPIO port.
 
 &#x20;<a href="#api-array-number-port-analog" name="api-array-number-port-analog">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.analog</b> = []  
-An array of which pins are analog inputs/outputs.
+An array of which pins are analog inputs/outputs. Is only available on the GPIO port.
 
 &#x20;<a href="#api-array-number-port-pwm" name="api-array-number-port-pwm">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.pwm</b> = []  
-An array of which pins are PWM outputs (may overlap analog array).
+An array of which pins are PWM outputs (may overlap analog array). ***Currently not implemented.***
 
 &#x20;<a href="#api-array-number-port-pin" name="api-array-number-port-pin">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.pin</b> = []  
-An array of all pins on the port. You can differentiate them by their `.type` and `.isPWM` attributes.
+An array of all pins on the port. You can differentiate them by their `.type` and `.isPWM` attributes. ***.isPWM is currently not implemented***
 
-&#x20;<a href="#api-new-port-Pin-pin-dir-or-initialOutput" name="api-new-port-Pin-pin-dir-or-initialOutput">#</a> <i>new</i>&nbsp; port<b>.Pin</b> ( pin, <i>dir</i>&nbsp; or initialOutput )  
-Create and return `pin` object. If `dir` is "input" or "output", the direction is set to that value immediately. Otherwise, the pin is written to with the value of `initialOutput`.
+&#x20;<a href="#api-new-port-Pin-pin" name="api-new-port-Pin-pin">#</a> <i>new</i>&nbsp; port<b>.Pin</b> ( pin )  
+Create and return `pin` object. 
 
 &#x20;<a href="#api-string-pin-type" name="api-string-pin-type">#</a> <i>string</i>&nbsp; pin<b>.type</b>  
 "digital" or "analog".
 
-&#x20;<a href="#api-boolean-pin-isPWM" name="api-boolean-pin-isPWM">#</a> <i>boolean</i>&nbsp; pin<b>.isPWM</b>  
+&#x20;<a href="#api-boolean-pin-isPWM" name="api-boolean-pin-isPWM">#</a> <!--boolean pin<b>.isPWM</b>  
 Whether the `pin.type` is set to `"analog"` and output type is PWM (thus not true analog).
 
 &#x20;<a href="#api-boolean-pin-readable" name="api-boolean-pin-readable">#</a> <i>boolean</i>&nbsp; pin<b>.readable</b>  
@@ -107,34 +127,43 @@ Whether the pin is readable.
 &#x20;<a href="#api-boolean-pin-writeable" name="api-boolean-pin-writeable">#</a> <i>boolean</i>&nbsp; pin<b>.writeable</b>  
 Whether the pin is writeable.
 
-&#x20;<a href="#api-number-pin-resolution" name="api-number-pin-resolution">#</a> <i>number</i>&nbsp; pin<b>.resolution</b>  
-Digital pins: 1. Analog pins: ADC resolution of output pins (e.g. 1024 for Tessel).
+&#x20;<a href="#api-" name="api-">#</a> -->  
+number pin.resolution
+
+&#x20;<a href="#api-Digital-pins-1-Analog-pins-ADC-resolution-of-output-pins-e-g-1024-for-Tessel" name="api-Digital-pins-1-Analog-pins-ADC-resolution-of-output-pins-e-g-1024-for-Tessel">#</a> <i>Digital</i>&nbsp; pins: 1. Analog pins: ADC resolution of output <b>pins</b> ( <i>e\.g\.</i>&nbsp; 1024 for Tessel ).  
+<!--
 
 &#x20;<a href="#api-string-pin-direction" name="api-string-pin-direction">#</a> <i>string</i>&nbsp; pin<b>.direction</b>  
-"output" or "input".
+"output" or "input".-->
 
-&#x20;<a href="#api-pin-setInput-callback-err" name="api-pin-setInput-callback-err">#</a> pin<b>.setInput</b>( [callback(err)] )  
-Set `pin` to be an input. Sets `err` if the pin cannot be used as an input.
+&#x20;<a href="#api-pin-input" name="api-pin-input">#</a> pin<b>.input</b>()  
+Set `pin` to be an input. 
 
-&#x20;<a href="#api-pin-setOutput-initial-callback-err" name="api-pin-setOutput-initial-callback-err">#</a> pin<b>.setOutput</b> ( [initial], [callback(err)] )  
-Set `pin` to be an output. Sets `err` if the pin cannot be used as an output.
+&#x20;<a href="#api-pin-output-value" name="api-pin-output-value">#</a> pin<b>.output</b> ( value )  
+Set `pin` to be an output with value `value`.
 
-&#x20;<a href="#api-pin-write-value-callback-err" name="api-pin-write-value-callback-err">#</a> pin<b>.write</b> ( value, [callback(err)] )  
-Write the `value` to an output pin. Digital pins: output is set HIGH if `value` is truthy, otherwise LOW. Analog pins: `value` is a float that sets the analog output value. Sets `err` if the pin cannot be used as a digital output or is not configured as an output.
+&#x20;<a href="#api-pin-rawDirection-isOutput" name="api-pin-rawDirection-isOutput">#</a> pin<b>.rawDirection</b>( isOutput )  
+Set `pin` as input or output.
 
-&#x20;<a href="#api-pin-writeSync-value" name="api-pin-writeSync-value">#</a> pin<b>.writeSync</b> ( value )  
-Synchronous version of `pin.write`. Throws on error.
+&#x20;<a href="#api-pin-write-value" name="api-pin-write-value">#</a> pin<b>.write</b> ( value )  
+Behaves the same as `pin.output`. Sets pin as an output with `value`. Digital pins: output is set HIGH if `value` is truthy, otherwise LOW. Analog pins: `value` is a float that sets the analog output value. 
 
-&#x20;<a href="#api-pin-read-callback-err-value" name="api-pin-read-callback-err-value">#</a> pin<b>.read</b> ( callback(err, value) )  
-Read a digital `value` from a digital input pin. `1` is returned if the value is HIGH, otherwise `0` if LOW. Sets `err` if the pin cannot be used as a digital input or is not configured as an input. An error is given to the callback if the pin cannot be used as a digital input or is not configured as an input.
+&#x20;<a href="#api-pin-rawWrite-value" name="api-pin-rawWrite-value">#</a> pin<b>.rawWrite</b> ( value )  
+Sets the pin to `value`. Does not change the direction of the pin.
 
-&#x20;<a href="#api-pin-readSync-number" name="api-pin-readSync-number">#</a> pin<b>.readSync</b> () &rarr; <i>number</i>  
-Synchronous version of `pin.read`. Throws on error.
+&#x20;<a href="#api-pin-read" name="api-pin-read">#</a> pin<b>.read</b> ()  
+Sets the pin as an input and reads a digital or analog `value`. For digital pins, `1` is returned if the value is HIGH, otherwise `0` if LOW. For analog pins the range is between [1-0] inclusive. 
+
+&#x20;<a href="#api-pin-rawRead" name="api-pin-rawRead">#</a> pin<b>.rawRead</b> ()  
+Reads from the pin ***without** first setting the direction as an input. Only available on digital pins.
+
+&#x20;<a href="#api-pin-mode-mode" name="api-pin-mode-mode">#</a> pin<b>.mode</b> ( [mode] )  
+Sets the pin as a pullup, pulldown, or neutral pin. Mode is one of `pullup`, `pulldown` or `default`. If no `mode` argument is given, this will return the current mode of the pin.
 
 &#x20;<a href="#api-pin-watch-type-callback-err-time-type" name="api-pin-watch-type-callback-err-time-type">#</a> pin<b>.watch</b> ( [type,] callback(err, time, type) )  
 Sets a listener for a signal edge on `pin`. `type` can be one of "rise", "fall", "change", or omitted (analogous to "change"). Watched events registers events on the `pin` object, with the same `type` as the event.
 
-&#x20;<a href="#api-pin-unwatch-type-listener" name="api-pin-unwatch-type-listener">#</a> pin<b>.unwatch</b> ( [type,] listener )  
+&#x20;<a href="#api-pin-cancelWatch-type-listener" name="api-pin-cancelWatch-type-listener">#</a> pin<b>.cancelWatch</b> ( [type,] listener )  
 Removes the listener for a signal.
 
 ### SPI
