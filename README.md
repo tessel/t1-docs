@@ -8,8 +8,7 @@ Documentation for Tessel's hardware APIs. These are available for code running o
 
 ### Contents
 
-* [Tessel](https://github.com/tessel/docs#tessel)
-* [Modules](https://github.com/tessel/docs#modules)
+* [Ports and LEDs (Tessel)](https://github.com/tessel/docs#tessel)
 * [Pins](https://github.com/tessel/docs#pins)
 * [SPI](https://github.com/tessel/docs#spi)
 * [I2C](https://github.com/tessel/docs#i2c)
@@ -41,25 +40,6 @@ An array of LEDs available on the Tessel board (1&ndash;4). These are [`Pin` obj
 	setTimeout(blink, 200, !value);
 })(true)
 ```
-
-
-### Modules
-
-API Documentation for each of Tessel's modules can be found on the individual modules' pages:
-
-* [Accelerometer<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/accel-mma84)
-* [Ambient<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ambient-attx4)
-* [Audio<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/audio-vs1053b)
-* [Bluetooth Low Energy<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ble-ble113a)
-* [Camera<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/camera-vc0706)
-* [Climate<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/climate-si7005)
-* [GPRS/2G/SIM<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/gprs-sim900)
-* [GPS<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/gps-a2235h)
-* [Infrared<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ir-attx4)
-* [NRF24<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/rf-nrf24)
-* [Relay<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/relay-mono)
-* [RFID<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/rfid-pn532)
-* [Servo<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/servo-pca9685)
 
 ### Pins
 
