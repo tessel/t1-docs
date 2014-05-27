@@ -41,6 +41,7 @@ An array of LEDs available on the Tessel board (1&ndash;4). These are [`Pin` obj
 })(true)
 ```
 
+
 ### Pins
 
 GPIO access for digital and analog signal lines. Each port exposes its available pins through the `.pin`, `.digital`, `.analog`, and `.pwm` arrays.
@@ -57,7 +58,7 @@ gpio.analog.map(function (pin, i) {
 ```
 
 
-Ports A, B, C, and D have 3 digital pins which can be addressed as such:  
+&#x20;<a href="#api-Ports-A-B-C-and-D-have-3-digital-pins-which-can-be-addressed-as-such" name="api-Ports-A-B-C-and-D-have-3-digital-pins-which-can-be-addressed-as-such">#</a> <i>Ports</i>&nbsp; A, B, C, and D have 3 digital pins which can be addressed as such:  
 
 
 ```js
@@ -67,7 +68,7 @@ tessel.port['A'].digital[2];
 ```
 
 
-Additionally the pins can be addressed by the silkscreen printed on Tessel:  
+&#x20;<a href="#api-Additionally-the-pins-can-be-addressed-by-the-silkscreen-printed-on-Tessel" name="api-Additionally-the-pins-can-be-addressed-by-the-silkscreen-printed-on-Tessel">#</a> <i>Additionally</i>&nbsp; the pins can be addressed by the silkscreen printed on Tessel:  
 
 
 ```js
@@ -98,23 +99,8 @@ Create and return `pin` object.
 &#x20;<a href="#api-string-pin-type" name="api-string-pin-type">#</a> <i>string</i>&nbsp; pin<b>.type</b>  
 "digital" or "analog".
 
-&#x20;<a href="#api-boolean-pin-isPWM" name="api-boolean-pin-isPWM">#</a> <!--boolean pin<b>.isPWM</b>  
-Whether the `pin.type` is set to `"analog"` and output type is PWM (thus not true analog).
-
-&#x20;<a href="#api-boolean-pin-readable" name="api-boolean-pin-readable">#</a> <i>boolean</i>&nbsp; pin<b>.readable</b>  
-Whether the pin is readable.
-
-&#x20;<a href="#api-boolean-pin-writeable" name="api-boolean-pin-writeable">#</a> <i>boolean</i>&nbsp; pin<b>.writeable</b>  
-Whether the pin is writeable.
-
-&#x20;<a href="#api-" name="api-">#</a> -->  
-number pin.resolution
-
-&#x20;<a href="#api-Digital-pins-1-Analog-pins-ADC-resolution-of-output-pins-e-g-1024-for-Tessel" name="api-Digital-pins-1-Analog-pins-ADC-resolution-of-output-pins-e-g-1024-for-Tessel">#</a> <i>Digital</i>&nbsp; pins: 1. Analog pins: ADC resolution of output <b>pins</b> ( <i>e\.g\.</i>&nbsp; 1024 for Tessel ).  
-<!--
-
-&#x20;<a href="#api-string-pin-direction" name="api-string-pin-direction">#</a> <i>string</i>&nbsp; pin<b>.direction</b>  
-"output" or "input".-->
+&#x20;<a href="#api-number-pin-resolution" name="api-number-pin-resolution">#</a> <i>number</i>&nbsp; pin<b>.resolution</b>  
+Digital pins: 1. Analog pins: ADC resolution of output pins ( e\.g\. 1024 for Tessel ).
 
 &#x20;<a href="#api-pin-input" name="api-pin-input">#</a> pin<b>.input</b>()  
 Set `pin` to be an input.
