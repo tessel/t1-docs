@@ -77,7 +77,7 @@ gpio.analog.map(function (pin, i) {
 ```
 
 
-&#x20;<a href="#api-Ports-A-B-C-and-D-have-3-digital-pins-which-can-be-addressed-as-such" name="api-Ports-A-B-C-and-D-have-3-digital-pins-which-can-be-addressed-as-such">#</a> <i>Ports</i>&nbsp; A, B, C, and D have 3 digital pins which can be addressed as such:  
+Ports A, B, C, and D have 3 digital pins which can be addressed as such:  
 
 
 ```js
@@ -87,7 +87,7 @@ tessel.port['A'].digital[2];
 ```
 
 
-&#x20;<a href="#api-Additionally-the-pins-can-be-addressed-by-the-silkscreen-printed-on-Tessel" name="api-Additionally-the-pins-can-be-addressed-by-the-silkscreen-printed-on-Tessel">#</a> <i>Additionally</i>&nbsp; the pins can be addressed by the silkscreen printed on Tessel:  
+Additionally the pins can be addressed by the silkscreen printed on Tessel:  
 
 
 ```js
