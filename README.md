@@ -45,7 +45,7 @@ An array of LEDs available on the Tessel board (1&ndash;4). These are [`Pin` obj
 
 ### Modules
 
-API Documentation for each of Tessel's modules can be found on the individual modules' pages. We are in the process of opening up the module repos. So far, we have available:
+API Documentation for each of Tessel's modules can be found on the individual modules' pages:
 
 * [Accelerometer<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/accel-mma84)
 * [Ambient<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ambient-attx4)
@@ -113,7 +113,7 @@ An array of which pins are PWM outputs (may overlap analog array). ***Currently 
 An array of all pins on the port. You can differentiate them by their `.type` and `.isPWM` attributes. ***.isPWM is currently not implemented***
 
 &#x20;<a href="#api-new-port-Pin-pin" name="api-new-port-Pin-pin">#</a> <i>new</i>&nbsp; port<b>.Pin</b> ( pin )  
-Create and return `pin` object. 
+Create and return `pin` object.
 
 &#x20;<a href="#api-string-pin-type" name="api-string-pin-type">#</a> <i>string</i>&nbsp; pin<b>.type</b>  
 "digital" or "analog".
@@ -137,7 +137,7 @@ number pin.resolution
 "output" or "input".-->
 
 &#x20;<a href="#api-pin-input" name="api-pin-input">#</a> pin<b>.input</b>()  
-Set `pin` to be an input. 
+Set `pin` to be an input.
 
 &#x20;<a href="#api-pin-output-value" name="api-pin-output-value">#</a> pin<b>.output</b> ( value )  
 Set `pin` to be an output with value `value`.
@@ -146,13 +146,13 @@ Set `pin` to be an output with value `value`.
 Set `pin` as input or output.
 
 &#x20;<a href="#api-pin-write-value" name="api-pin-write-value">#</a> pin<b>.write</b> ( value )  
-Behaves the same as `pin.output`. Sets pin as an output with `value`. Digital pins: output is set HIGH if `value` is truthy, otherwise LOW. Analog pins: `value` is a float that sets the analog output value. 
+Behaves the same as `pin.output`. Sets pin as an output with `value`. Digital pins: output is set HIGH if `value` is truthy, otherwise LOW. Analog pins: `value` is a float that sets the analog output value.
 
 &#x20;<a href="#api-pin-rawWrite-value" name="api-pin-rawWrite-value">#</a> pin<b>.rawWrite</b> ( value )  
 Sets the pin to `value`. Does not change the direction of the pin.
 
 &#x20;<a href="#api-pin-read" name="api-pin-read">#</a> pin<b>.read</b> ()  
-Sets the pin as an input and reads a digital or analog `value`. For digital pins, `1` is returned if the value is HIGH, otherwise `0` if LOW. For analog pins the range is between [1-0] inclusive. 
+Sets the pin as an input and reads a digital or analog `value`. For digital pins, `1` is returned if the value is HIGH, otherwise `0` if LOW. For analog pins the range is between [1-0] inclusive.
 
 &#x20;<a href="#api-pin-rawRead" name="api-pin-rawRead">#</a> pin<b>.rawRead</b> ()  
 Reads from the pin ***without** first setting the direction as an input. Only available on digital pins.
