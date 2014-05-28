@@ -28,7 +28,7 @@ Tessel is the root object for each of the different ports on the device.
 ```js
 var tessel = require('tessel'); // import tessel
 var gpio = tessel.port['GPIO']; // select the GPIO port
-gpio.digital[1].writeSync(1);  // turn digital pin #1 high
+gpio.digital[1].write(1);  // turn digital pin #1 high
 ```
 
 
@@ -41,8 +41,8 @@ An array of LEDs available on the Tessel board (1&ndash;4). These are [`Pin` obj
 ```js
 // Toggle an LED every 200ms
 (function blink (value) {
-	tessel.led[1].writeSync(value);
-	setTimeout(blink, 200, !value);
+  tessel.led[1].writeSync(value);
+  setTimeout(blink, 200, !value);
 })(true)
 ```
 
@@ -55,10 +55,10 @@ GPIO access for digital and analog signal lines. Each port exposes its available
 var tessel = require('tessel'); // import tessel
 var gpio = tessel.port['GPIO']; // select the GPIO port
 gpio.digital.map(function (pin, i) {
-	console.log('Value of digital pin', i, '=', pin.readSync());
+  console.log('Value of digital pin', i, '=', pin.readSync());
 })
 gpio.analog.map(function (pin, i) {
-	console.log('Value of analog pin', i, '=', pin.readSync() * pin.resolution, '/', pin.resolution);
+  console.log('Value of analog pin', i, '=', pin.readSync() * pin.resolution, '/', pin.resolution);
 })
 ```
 
@@ -133,11 +133,19 @@ Sets the pin as a pullup, pulldown, or neutral pin. Mode is one of `pullup`, `pu
 &#x20;<a href="#api-pin-mode" name="api-pin-mode">#</a> pin<b>.mode</b> ()  
 Returns the mode of the pin.
 
-&#x20;<a href="#api-pin-watch-type-callback-err-time-type" name="api-pin-watch-type-callback-err-time-type">#</a> pin<b>.watch</b> ( [type,] callback(err, time, type) )  
-Sets a listener for a signal edge on `pin`. `type` can be one of "rise", "fall", "change", or omitted (analogous to "change"). Watched events registers events on the `pin` object, with the same `type` as the event.
+External GPIO Interrupts can be used much like regular Node EventEmitters. There are seven external interrupts you can work with.
 
-&#x20;<a href="#api-pin-cancelWatch-type-listener" name="api-pin-cancelWatch-type-listener">#</a> pin<b>.cancelWatch</b> ( [type,] listener )  
-Removes the listener for a signal.
+&#x20;<a href="#api-pin-on-type-callback-time-type" name="api-pin-watch-type-callback-time-type">#</a> pin<b>.on</b> ( type, callback(time, type) )  
+Sets a listener for a signal edge on `pin`. `time` is the milliseconds since boot up and `type` can be one of `rise`, `fall`, `change`. The `high` and `low` level triggers cannot be used with `on` because they would fire repeatedly and wreak havoc on the runtime.
+
+&#x20;<a href="#api-pin-once-type-callback-time-type" name="api-pin-once-type-callback-time-type">#</a> pin<b>.once</b> ( type, callback(time, type) )  
+Sets a listener for a a single event of the trigger type on the `pin`. `time` is the milliseconds since boot up and `type` can be one of `rise`, `fall`, `change`, `high`, or `fall`.
+
+&#x20;<a href="#api-pin-removeListener-type-listener" name="api-pin-removeListener-type-listener">#</a> pin<b>.removeListener</b> ( type, listener )  
+Removes the `listener` callback for a given `type` of trigger (eg. 'rise' or 'high') on a pin.
+
+&#x20;<a href="#api-pin-removeListener-type-listener" name="api-pin-removeListener-type-listener">#</a> pin<b>.removeAllListeners</b> ( type )  
+Removes all of the listeners for a given trigger `type` on a `pin`. 
 
 ### SPI
 
@@ -146,14 +154,14 @@ A SPI channel.
 ```js
 var port = tessel.port['A'];
 var spi = new port.SPI({
-	clockSpeed: 4*1000*1000, // 4MHz
-	cpol: 1, // polarity
-	cpha: 0, // clock phase
+  clockSpeed: 4*1000*1000, // 4MHz
+  cpol: 1, // polarity
+  cpha: 0, // clock phase
 });
 spi.on('ready', function () {
-	spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
-		console.log('buffer returned by SPI slave:', rx);
-	})
+  spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
+    console.log('buffer returned by SPI slave:', rx);
+  })
 })
 ```
 
@@ -211,7 +219,7 @@ var port = tessel.port['A'];
 var slaveAddress = 0xDE;
 var i2c = new port.I2C(slaveAddress)
 i2c.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
-	console.log('buffer returned by I2C slave ('+slaveAddress.toString(16)+'):', rx);
+  console.log('buffer returned by I2C slave ('+slaveAddress.toString(16)+'):', rx);
 })
 ```
 
@@ -235,17 +243,17 @@ A UART channel.
 ```js
 var port = tessel.port['A'];
 var uart = new port.UART({
-	baudrate: 115200
+  baudrate: 115200
 })
 uart.on('ready', function () {
-	uart.write('ahoy hoy\n')
-	uart.on('data', function (data) {
-		console.log('received:', data);
-	})
+  uart.write('ahoy hoy\n')
+  uart.on('data', function (data) {
+    console.log('received:', data);
+  })
 
-	// UART objects are streams!
-	// pipe all incoming data to stdout:
-	uart.pipe(process.stdout);
+  // UART objects are streams!
+  // pipe all incoming data to stdout:
+  uart.pipe(process.stdout);
 })
 ```
 
