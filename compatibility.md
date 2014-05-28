@@ -1,3 +1,5 @@
+[JavaScript](https://github.com/tessel/docs/blob/master/compatibility.md#tessel-is-programmed-in-javascript) | [Node](https://github.com/tessel/docs/blob/master/compatibility.md#node) | [Coffeescript](https://github.com/tessel/docs/blob/master/compatibility.md#coffeescript)
+
 #Tessel is programmed in JavaScript.
 
 Tessel is programmed in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), which automatically compiles to Lua when you run code on Tessel.
@@ -11,7 +13,7 @@ Tessel is currently compatible with the most common and applicable [Node](http:/
 
 Documentation for Node can be found [here](http://nodejs.org/api/).
 
-Supported (not exhaustive):
+###Supported (not exhaustive):
 * [assert](http://nodejs.org/api/assert.html)
 * [buffer](http://nodejs.org/api/buffer.html)
 * [console](http://nodejs.org/api/console.html)
@@ -43,7 +45,7 @@ Supported (not exhaustive):
 * [colors](https://www.npmjs.org/package/colors)
 * [underscore](https://www.npmjs.org/package/underscore)
 
-Support under development:
+###Support under development:
 * [vm](http://nodejs.org/api/vm.html)
 * [child_process](http://nodejs.org/api/child_process.html)
 * [readline](http://nodejs.org/api/readline.html)
@@ -52,7 +54,7 @@ Support under development:
 * [debugger](http://nodejs.org/api/debugger.html)
 * [zlib](http://nodejs.org/api/zlib.html)
 
-Not supported:
+###No plans to support:
 * [cluster](https://www.npmjs.org/package/cluster)
 * [domain](http://nodejs.org/api/domain.html)
 
