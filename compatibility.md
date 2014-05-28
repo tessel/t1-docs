@@ -1,6 +1,5 @@
-[JavaScript](https://github.com/tessel/docs/blob/master/compatibility.md#tessel-is-programmed-in-javascript) | [Node](https://github.com/tessel/docs/blob/master/compatibility.md#node) | [Coffeescript](https://github.com/tessel/docs/blob/master/compatibility.md#coffeescript)
-
 #Tessel is programmed in JavaScript.
+[JavaScript](https://github.com/tessel/docs/blob/master/compatibility.md#tessel-is-programmed-in-javascript) | [Node](https://github.com/tessel/docs/blob/master/compatibility.md#node) | [Coffeescript](https://github.com/tessel/docs/blob/master/compatibility.md#coffeescript)
 
 Tessel is programmed in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), which automatically compiles to Lua when you run code on Tessel.
 
