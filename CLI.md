@@ -17,10 +17,28 @@ npm install -g http://s3.amazonaws.com/builds.tessel.io/cli/tessel-cli-current.t
 #####`tessel list`
 #####`tessel logs`
 #####`tessel push <filename> [options]`
-Push a file into flash memory (persists across power cycles). Request more information with `tessel push --help`
+Push a file into flash memory (persists across power cycles).
+Options:
+* `-a, --args`      Arguments to passin as process.argv
+* `-q, --quiet`     [Tessel] Hide tessel deployment messages
+* `-m, --messages`  [Tessel] Forward stdin as child process messages
+* `-l, --logs`      [Tessel] Stay connected and print logs
+* `-s, --single`    [Tessel] Push a single script file to Tessel
+* `-h, --help`      Show usage for tessel push
+
 #####`tessel run <filename> [options]`
 Run a script temporarily without writing it to flash.
-`-s` to push the specified file only (by default, we push the associated files and modules as well)
+Options:
+* `-a, --args`          Arguments to passin as process.argv
+* `-i, --interactive`   Enter the REPL
+* `-q, --quiet`         [Tessel] Hide tessel deployment messages
+* `-m, --messages`      [Tessel] Forward stdin as child process messages
+* `-l, --logs`          [Tessel] Stay connected and print logs
+* `-s, --single`        [Tessel] Push a single script file to Tessel
+* `-u --upload-dir`     Directory where uploads from process.sendfile should be saved
+* `-v, --version`       Print tessel-node's version
+* `-h, --help`          Show usage for tessel push
+
 #####`tessel repl`
 Interactive JavaScript shell
 #####`tessel wifi -n <ssid> -p <password> [-s <security (wep/wpa/wpa2 by default)>]`
