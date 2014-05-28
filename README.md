@@ -58,7 +58,7 @@ gpio.analog.map(function (pin, i) {
 ```
 
 
-&#x20;<a href="#api-Ports-A-B-C-and-D-have-3-digital-pins-which-can-be-addressed-as-such" name="api-Ports-A-B-C-and-D-have-3-digital-pins-which-can-be-addressed-as-such">#</a> <i>Ports</i>&nbsp; A, B, C, and D have 3 digital pins which can be addressed as such:  
+Ports A, B, C, and D have 3 digital pins which can be addressed as such:  
 
 
 ```js
@@ -67,14 +67,13 @@ tessel.port['A'].digital[1];
 tessel.port['A'].digital[2];
 ```
 
-
-&#x20;<a href="#api-Additionally-the-pins-can-be-addressed-by-the-silkscreen-printed-on-Tessel" name="api-Additionally-the-pins-can-be-addressed-by-the-silkscreen-printed-on-Tessel">#</a> <i>Additionally</i>&nbsp; the pins can be addressed by the silkscreen printed on Tessel:  
+Additionally the pins can be addressed by the silkscreen printed on Tessel:  
 
 
 ```js
-tessel.port['A'].pin['g1']; // this is the same as digital[0]
-tessel.port['A'].pin['g2']; // this is the same as digital[1]
-tessel.port['A'].pin['g3']; // this is the same as digital[2]
+tessel.port['A'].pin['G1']; // this is the same as digital[0]
+tessel.port['A'].pin['G2']; // this is the same as digital[1]
+tessel.port['A'].pin['G3']; // this is the same as digital[2]
 ```
 
 
@@ -123,8 +122,11 @@ Sets the pin as an input and reads a digital or analog `value`. For digital pins
 &#x20;<a href="#api-pin-rawRead" name="api-pin-rawRead">#</a> pin<b>.rawRead</b> ()  
 Reads from the pin ***without** first setting the direction as an input. Only available on digital pins.
 
-&#x20;<a href="#api-pin-mode-mode" name="api-pin-mode-mode">#</a> pin<b>.mode</b> ( [mode] )  
-Sets the pin as a pullup, pulldown, or neutral pin. Mode is one of `pullup`, `pulldown` or `default`. If no `mode` argument is given, this will return the current mode of the pin.
+&#x20;<a href="#api-pin-pull-mode" name="api-pin-pull-mode">#</a> pin<b>.pull</b> ( mode )  
+Sets the pin as a pullup, pulldown, or neutral pin. Mode is one of `pullup`, `pulldown` or `none`. Passing in no argument is equivalent to `none`.
+
+&#x20;<a href="#api-pin-mode" name="api-pin-mode">#</a> pin<b>.mode</b> ()  
+Returns the mode of the pin.
 
 &#x20;<a href="#api-pin-watch-type-callback-err-time-type" name="api-pin-watch-type-callback-err-time-type">#</a> pin<b>.watch</b> ( [type,] callback(err, time, type) )  
 Sets a listener for a signal edge on `pin`. `type` can be one of "rise", "fall", "change", or omitted (analogous to "change"). Watched events registers events on the `pin` object, with the same `type` as the event.
@@ -165,26 +167,35 @@ Creates a SPI object. Options is an object specifying any of the following:
 * **chipSelectActive** (default `"low"`) &mdash; If a **chipSelect** pin is specified, this defines the polarity of the CS line when *active*.
 * **role** (default `master`) &mdash; Determines the role the SPI channel plays, either "master" or "slave". (Currently not supported.)
 
+&#x20;<a href="#api-spi-emits-ready" name="api-spi-emits-ready">#</a> spi &rarr; <i>emits "ready"</i>  
+Emitted when the connection has begun. Code should wait until the "ready" event is fired before performing operations.
+
 &#x20;<a href="#api-spi-transfer-txbuf-callback-err-rxbuf" name="api-spi-transfer-txbuf-callback-err-rxbuf">#</a> spi<b>.transfer</b> ( txbuf, callback(err, rxbuf) )  
 Transfers a Buffer `txbuf` to the slave and receives a response in `rxbuf`.
 
-&#x20;<a href="#api-spi-transferSync-txbuf-Buffer" name="api-spi-transferSync-txbuf-Buffer">#</a> spi<b>.transferSync</b> ( txbuf ) &rarr; <i>Buffer</i>  
-Synchronous version of `spi.transfer`. Throws on error.
-
 &#x20;<a href="#api-spi-receive-len-callback-err-rxbuf" name="api-spi-receive-len-callback-err-rxbuf">#</a> spi<b>.receive</b> ( len, callback(err, rxbuf) )  
-Reads `len` bytes from a slave.
-
-&#x20;<a href="#api-spi-receiveSync-len-Buffer" name="api-spi-receiveSync-len-Buffer">#</a> spi<b>.receiveSync</b> ( len ) &rarr; <i>Buffer</i>  
-Synchronous version of `spi.receive`. Throws on error.
+Reads `len` bytes from a slave. Returns a buffer.
 
 &#x20;<a href="#api-spi-send-txbuf-callback-err" name="api-spi-send-txbuf-callback-err">#</a> spi<b>.send</b> ( txbuf, callback(err) )  
 Sends a Buffer `txbuf` to the slave.
 
-&#x20;<a href="#api-spi-sendSync-txbuf" name="api-spi-sendSync-txbuf">#</a> spi<b>.sendSync</b> ( txbuf )  
-Synchronous version of `spi.send`. Throws on error.
+&#x20;<a href="#api-spi-setClockSpeed-clockspeed" name="api-spi-setClockSpeed-clockspeed">#</a> spi<b>.setClockSpeed</b> ( clockspeed )   
+Sets the clockspeed.
 
-&#x20;<a href="#api-spi-emits-ready" name="api-spi-emits-ready">#</a> spi &rarr; <i>emits "ready"</i>  
-Emitted when the connection has begun. Code should wait until the "ready" event is fired before performing operations.
+&#x20;<a href="#api-spi-setDataMode-mode" name="api-spi-setDataMode-mode">#</a> spi<b>.setDataMode</b> ( mode )   
+Sets the data mode.
+
+&#x20;<a href="#api-spi-setFrameMode-mode" name="api-spi-setFrameMode-mode">#</a> spi<b>.setFrameMode</b> ( mode )   
+Sets the frame mode.
+
+&#x20;<a href="#api-spi-setRole-role" name="api-spi-setRole-role">#</a> spi<b>.setRole</b> ( role )   
+Sets the role.
+
+&#x20;<a href="#api-spi-setChipSelectMode-mode" name="api-spi-setChipSelectMode-mode">#</a> spi<b>.setChipSelectMode</b> ( mode )   
+Sets the chip select settings.
+
+&#x20;<a href="#api-spi-lock-callback" name="api-spi-lock-callback">#</a> spi<b>.lock</b> ( callback )   
+Locks SPI so that only one SPI port is communicating at a time.
 
 ### I2C
 
@@ -194,10 +205,8 @@ An I2C channel.
 var port = tessel.port['A'];
 var slaveAddress = 0xDE;
 var i2c = new port.I2C(slaveAddress)
-i2c.on('ready', function () {
-	i2c.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
-		console.log('buffer returned by I2C slave ('+slaveAddress.toString(16)+'):', rx);
-	})
+i2c.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
+	console.log('buffer returned by I2C slave ('+slaveAddress.toString(16)+'):', rx);
 })
 ```
 
@@ -205,26 +214,14 @@ i2c.on('ready', function () {
 &#x20;<a href="#api-new-port-I2C-address-idx" name="api-new-port-I2C-address-idx">#</a> <i>new</i>&nbsp; port<b>.I2C</b> ( address, [idx] )  
 Creates an I2C channel for a device of a specific `address`. Multiple I2C channels can be used in parallel.
 
-&#x20;<a href="#api-i2c-transfer-txbuf-rxbuf-callback-err-rxbuf" name="api-i2c-transfer-txbuf-rxbuf-callback-err-rxbuf">#</a> i2c<b>.transfer</b> ( txbuf, [rxbuf,] callback(err, rxbuf) )  
-Transfers a Buffer `txbuf` to the client and receives a response in `rxbuf`. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
+&#x20;<a href="#api-i2c-transfer-txbuf-rxbuf_len-callback-err-rxbuf" name="api-i2c-transfer-txbuf-rxbuf_len-callback-err-rxbuf">#</a> i2c<b>.transfer</b> ( txbuf, rxbuf_len, callback(err, rxbuf) )  
+Transfers a Buffer `txbuf` to the client and receives a response of length `rxbuf_len`.
 
-&#x20;<a href="#api-i2c-transferSync-txbuf-Buffer" name="api-i2c-transferSync-txbuf-Buffer">#</a> i2c<b>.transferSync</b> ( txbuf ) &rarr; <i>Buffer</i>  
-Synchronous version of `i2c.transfer`. Throws on error.
-
-&#x20;<a href="#api-i2c-receive-len-rxbuf-callback-err-rxbuf" name="api-i2c-receive-len-rxbuf-callback-err-rxbuf">#</a> i2c<b>.receive</b> ( len, [rxbuf,] callback(err, rxbuf) )  
-Reads `len` bytes from a client. If `rxbuf` is passed in, it is used as the receive buffer. Otherwise, a new buffer is allocated.
-
-&#x20;<a href="#api-i2c-receiveSync-len-Buffer" name="api-i2c-receiveSync-len-Buffer">#</a> i2c<b>.receiveSync</b> ( len ) &rarr; <i>Buffer</i>  
-Synchronous version of `i2c.receive`. Throws on error.
+&#x20;<a href="#api-i2c-receive-rxbuf_len-callback-err-rxbuf" name="api-i2c-receive-rxbuf_len-callback-err-rxbuf">#</a> i2c<b>.receive</b> ( rxbuf_len, callback(err, rxbuf) )  
+Reads `rxbuf_len` bytes from a client.
 
 &#x20;<a href="#api-i2c-send-txbuf-callback-err" name="api-i2c-send-txbuf-callback-err">#</a> i2c<b>.send</b> ( txbuf, callback(err) )  
 Sends a Buffer `txbuf` to the client.
-
-&#x20;<a href="#api-i2c-sendSync-txbuf" name="api-i2c-sendSync-txbuf">#</a> i2c<b>.sendSync</b> ( txbuf )  
-Synchronous version of `i2c.send`. Throws on error.
-
-&#x20;<a href="#api-i2c-emits-ready" name="api-i2c-emits-ready">#</a> i2c &rarr; <i>emits "ready"</i>  
-Emitted when the connection has begun. Code should wait until the "ready" event is fired before performing operations.
 
 ### UART
 
@@ -254,26 +251,20 @@ Creates a UART channel. Defaults: `{"baudrate": 9600, "dataBits": 8, "parity": "
 &#x20;<a href="#api-array-number-uart-baudRates" name="api-array-number-uart-baudRates">#</a> <i>array&lt;number&gt;</i>&nbsp; uart<b>.baudRates</b> = []  
 An array of valid baud rates supported by the system.
 
-&#x20;<a href="#api-uart-setBaudRate-rate-callback-err" name="api-uart-setBaudRate-rate-callback-err">#</a> uart<b>.setBaudRate</b> ( rate, callback(err) )  
+&#x20;<a href="#api-uart-setBaudRate-rate" name="api-uart-setBaudRate-rate">#</a> uart<b>.setBaudRate</b> ( rate )  
 Sets the baud `rate` to a valid rate in `baudRates`.
 
-&#x20;<a href="#api-uart-setDataBits-bits-callback-err" name="api-uart-setDataBits-bits-callback-err">#</a> uart<b>.setDataBits</b> ( bits, callback(err) )  
+&#x20;<a href="#api-uart-setDataBits-bits" name="api-uart-setDataBits-bits">#</a> uart<b>.setDataBits</b> ( bits )  
 Sets the number of data `bits` to the number 5, 6, 7, or 8.
 
-&#x20;<a href="#api-uart-setStopBits-bits-callback-err" name="api-uart-setStopBits-bits-callback-err">#</a> uart<b>.setStopBits</b> ( bits, callback(err) )  
+&#x20;<a href="#api-uart-setStopBits-bits" name="api-uart-setStopBits-bits">#</a> uart<b>.setStopBits</b> ( bits )  
 Sets the number of data `bits` to the number 1 or 2.
 
-&#x20;<a href="#api-uart-setParity-parity-callback-err" name="api-uart-setParity-parity-callback-err">#</a> uart<b>.setParity</b> ( parity, callback(err) )  
+&#x20;<a href="#api-uart-setParity-parity" name="api-uart-setParity-parity">#</a> uart<b>.setParity</b> ( parity )  
 Sets the `parity` to the value "none", "odd", or "even".
 
-&#x20;<a href="#api-uart-write-buf-callback-err" name="api-uart-write-buf-callback-err">#</a> uart<b>.write</b> ( buf, callback(err) )  
+&#x20;<a href="#api-uart-write-buf" name="api-uart-write-buf">#</a> uart<b>.write</b> ( buf )  
 Writes a buffer to the UART connection.
-
-&#x20;<a href="#api-uart-writeSync-buf" name="api-uart-writeSync-buf">#</a> uart<b>.writeSync</b> ( buf )  
-Synchronous version of `uart.write`. Throws on error.
-
-&#x20;<a href="#api-uart-emits-ready" name="api-uart-emits-ready">#</a> uart &rarr; <i>emits "ready"</i>  
-Emitted when the connection has begun. Code should wait until the "ready" event is fired before performing operations.
 
 &#x20;<a href="#api-uart-emits-data" name="api-uart-emits-data">#</a> uart &rarr; <i>emits "data"</i>  
 Data that arrives over the UART channel is sent as a Node.js stream.
