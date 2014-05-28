@@ -158,11 +158,11 @@ var spi = new port.SPI({
   cpol: 1, // polarity
   cpha: 0, // clock phase
 });
-spi.on('ready', function () {
-  spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
-    console.log('buffer returned by SPI slave:', rx);
-  })
+
+spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
+  console.log('buffer returned by SPI slave:', rx);
 })
+
 ```
 
 
@@ -179,9 +179,6 @@ Creates a SPI object. Options is an object specifying any of the following:
 * **chipSelect** (default `null`) &mdash; Pin to use as a default chip select pin. If a pin is specified, this pin is toggled in master mode whenever data is to be sent/received on the bus.
 * **chipSelectActive** (default `"low"`) &mdash; If a **chipSelect** pin is specified, this defines the polarity of the CS line when *active*.
 * **role** (default `master`) &mdash; Determines the role the SPI channel plays, either "master" or "slave". (Currently not supported.)
-
-&#x20;<a href="#api-spi-emits-ready" name="api-spi-emits-ready">#</a> spi &rarr; <i>emits "ready"</i>  
-Emitted when the connection has begun. Code should wait until the "ready" event is fired before performing operations.
 
 &#x20;<a href="#api-spi-transfer-txbuf-callback-err-rxbuf" name="api-spi-transfer-txbuf-callback-err-rxbuf">#</a> spi<b>.transfer</b> ( txbuf, callback(err, rxbuf) )  
 Transfers a Buffer `txbuf` to the slave and receives a response in `rxbuf`.
@@ -245,15 +242,15 @@ var port = tessel.port['A'];
 var uart = new port.UART({
   baudrate: 115200
 })
-uart.on('ready', function () {
-  uart.write('ahoy hoy\n')
-  uart.on('data', function (data) {
-    console.log('received:', data);
-  })
 
-  // UART objects are streams!
-  // pipe all incoming data to stdout:
-  uart.pipe(process.stdout);
+uart.write('ahoy hoy\n')
+uart.on('data', function (data) {
+  console.log('received:', data);
+})
+
+// UART objects are streams!
+// pipe all incoming data to stdout:
+uart.pipe(process.stdout);
 })
 ```
 
