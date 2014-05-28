@@ -41,7 +41,7 @@ An array of LEDs available on the Tessel board (1&ndash;4). These are [`Pin` obj
 ```js
 // Toggle an LED every 200ms
 (function blink (value) {
-  tessel.led[1].writeSync(value);
+  tessel.led[1].write(value);
   setTimeout(blink, 200, !value);
 })(true)
 ```
