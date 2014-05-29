@@ -163,6 +163,7 @@ tessel.button.on('release', function(time) {
   console.log('button was released', time);
 });
 ```
+Please note that the button `press` and `release` events will use one of the seven External GPIO Interrupts (for one or both events).
 
 The buttons can also be used to put the board into DFU Mode which can be understood as the stage just prior to reprogramming the board. This is useful if the board is no longer able to communicate like typical with a host computer. To activate DFU mode, hold down the `config` button while pressing and releasing the `reset` button so that the `config` button is pressed down when the board comes out of a reset. Then release the `config button`.
 
