@@ -133,7 +133,7 @@ Sets the pin as a pullup, pulldown, or neutral pin. Mode is one of `pullup`, `pu
 &#x20;<a href="#api-pin-mode" name="api-pin-mode">#</a> pin<b>.mode</b> ()  
 Returns the mode of the pin.
 
-External GPIO Interrupts can be used much like regular Node EventEmitters. There are seven external interrupts you can work with.
+External GPIO Interrupts can be used much like regular Node EventEmitters. There are seven external interrupts you can work with. You can read more in depth discussion about gpio interrupts in [our External GPIO Walkthrough](https://github.com/tessel/docs/blob/master/detailedWalkthroughs/gpioInterrupts.md).
 
 &#x20;<a href="#api-pin-on-type-callback-time-type" name="api-pin-watch-type-callback-time-type">#</a> pin<b>.on</b> ( type, callback(time, type) )  
 Sets a listener for a signal edge on `pin`. `time` is the milliseconds since boot up and `type` can be one of `rise`, `fall`, `change`. The `high` and `low` level triggers cannot be used with `on` because they would fire repeatedly and wreak havoc on the runtime.
@@ -162,7 +162,7 @@ tessel.button.on('press', function(time) {
 tessel.button.on('release', function(time) {
   console.log('button was released', time);
 });
-
+```
 
 The buttons can also be used to put the board into DFU Mode which can be understood as the stage just prior to reprogramming the board. This is useful if the board is no longer able to communicate like typical with a host computer. To activate DFU mode, hold down the `config` button while pressing and releasing the `reset` button so that the `config` button is pressed down when the board comes out of a reset. Then release the `config button`.
 
@@ -224,7 +224,8 @@ Sets the role.
 Sets the chip select settings.
 
 &#x20;<a href="#api-spi-lock-callback" name="api-spi-lock-callback">#</a> spi<b>.lock</b> ( callback )   
-Locks SPI so that only one SPI port is communicating at a time.
+Locks SPI so that only one SPI port is communicating at a time. To read more about SPI Bus Locking, check out our discussion about the [Bus Locking and Raw Transfers API](https://github.com/tessel/docs/blob/master/detailedWalkthroughs/spiLocksRawTransfers.md).
+
 
 ### I2C
 
