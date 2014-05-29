@@ -14,7 +14,7 @@ Documentation for Tessel's hardware APIs. These are available for code running o
 ### Contents
 
 * [Ports and LEDs (Tessel)](https://github.com/tessel/docs#tessel)
-* [Pins](https://github.com/tessel/docs#pins)
+* [Pins and Buttons](https://github.com/tessel/docs#pins)
 * [SPI](https://github.com/tessel/docs#spi)
 * [I2C](https://github.com/tessel/docs#i2c)
 * [UART](https://github.com/tessel/docs#uart)
@@ -146,6 +146,25 @@ Removes the `listener` callback for a given `type` of trigger (eg. 'rise' or 'hi
 
 &#x20;<a href="#api-pin-removeListener-type-listener" name="api-pin-removeListener-type-listener">#</a> pin<b>.removeAllListeners</b> ( type )  
 Removes all of the listeners for a given trigger `type` on a `pin`. 
+
+### Buttons
+
+Tessel has two buttons. The `reset` button (nearer to the edge of the board) will stop running any program that is currently executing and restart the microcontroller (erasing any memory in RAM).
+
+The `config` button will eventually be used for other purposes but is currently a simple way to get user feedback into a script:
+```.js
+var tessel = require('tessel');
+
+tessel.button.on('press', function(time) {
+  console.log('the button was pressed!', time);
+});
+
+tessel.button.on('release', function(time) {
+  console.log('button was released', time);
+});
+
+
+The buttons can also be used to put the board into DFU Mode which can be understood as the stage just prior to reprogramming the board. This is useful if the board is no longer able to communicate like typical with a host computer. To activate DFU mode, hold down the `config` button while pressing and releasing the `reset` button so that the `config` button is pressed down when the board comes out of a reset. Then release the `config button`.
 
 ### SPI
 
