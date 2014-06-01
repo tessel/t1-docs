@@ -14,12 +14,12 @@ Documentation for Tessel's hardware APIs. These are available for code running o
 
 ### Contents
 
-* [Ports and LEDs (Tessel)](https://github.com/tessel/docs#tessel)
-* [Pins and Buttons](https://github.com/tessel/docs#pins)
-* [SPI](https://github.com/tessel/docs#spi)
-* [I2C](https://github.com/tessel/docs#i2c)
-* [UART](https://github.com/tessel/docs#uart)
-* [System](https://github.com/tessel/docs#system)
+* [Ports and LEDs (Tessel)](https://github.com/tessel/docs/blob/master/README.md#tessel)
+* [Pins and Buttons](https://github.com/tessel/docs/blob/master/README.md#pins)
+* [SPI](https://github.com/tessel/docs/blob/master/README.md#spi)
+* [I2C](https://github.com/tessel/docs/blob/master/README.md#i2c)
+* [UART](https://github.com/tessel/docs/blob/master/README.md#uart)
+* [System](https://github.com/tessel/docs/blob/master/README.md#system)
 
 
 ### Tessel
