@@ -55,10 +55,10 @@ GPIO access for digital and analog signal lines. Each port exposes its available
 var tessel = require('tessel'); // import tessel
 var gpio = tessel.port['GPIO']; // select the GPIO port
 gpio.digital.map(function (pin, i) {
-  console.log('Value of digital pin', i, '=', pin.readSync());
+  console.log('Value of digital pin', i, '=', pin.read();
 })
 gpio.analog.map(function (pin, i) {
-  console.log('Value of analog pin', i, '=', pin.readSync() * pin.resolution, '/', pin.resolution);
+  console.log('Value of analog pin', i, '=', pin.read() * pin.resolution, '/', pin.resolution);
 })
 ```
 
