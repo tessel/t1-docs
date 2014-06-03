@@ -2,7 +2,10 @@
 
 Tessel CLI is the command line interface for the Tessel microcontroller (http://tessel.io).
 
-##Install
+* [Installation](#installation)
+* [Commands](#commands)
+
+##Installation
 Node.js is a prerequisite for installing the Tessel command line. You can install it from the official website, or if you have brew installed:
 ```.bash
 brew install node
