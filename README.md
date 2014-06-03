@@ -2,9 +2,9 @@
 
 # Tessel docs
 
-* [Module docs](/module-apis.md)
-* [Tessel CLI usage](/cli.md)
-* [Tessel compatability with Node](/compatibility.md)
+* [Module docs](https://github.com/tessel/docs/blob/master/module-apis.md)
+* [Tessel CLI usage](https://github.com/tessel/docs/blob/master/cli.md)
+* [Tessel compatability with Node](https://github.com/tessel/docs/blob/master/compatibility.md)
 
 ## Tessel API Documentation
 
