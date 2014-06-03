@@ -1,5 +1,9 @@
 #Tessel is programmed in JavaScript.
-[JavaScript](https://github.com/tessel/docs/blob/master/compatibility.md#tessel-is-programmed-in-javascript) | [Node](https://github.com/tessel/docs/blob/master/compatibility.md#node) | [Coffeescript](https://github.com/tessel/docs/blob/master/compatibility.md#coffeescript)
+* [JavaScript](#javascript)
+* [Node](#node)
+* [CoffeeScript](#coffeescript)
+
+##JavaScript
 
 Tessel is programmed in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), which automatically compiles to Lua when you run code on Tessel.
 
@@ -148,5 +152,7 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
 * [cluster](https://www.npmjs.org/package/cluster)
 * [domain](http://nodejs.org/api/domain.html)
 
-##Coffeescript
-Tessel supports Coffeescript.
+##CoffeeScript
+Tessel supports [CoffeeScript](http://coffeescript.org/).
+
+(Tessel pre-compiles CoffeeScript into [JavaScript](#javascript).) 
