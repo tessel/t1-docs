@@ -1,4 +1,9 @@
 #Modules
+
+* [Setup](#setup)
+* [APIs](#apis)
+
+##Setup
 Tessel has four module ports, labeled A, B, C, and D.
 
 <img width="400px" src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/tessel-ports.jpg">
@@ -14,7 +19,9 @@ Face down:
 
 <img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/tessel-all-plugged-back-sm.jpg">
 
-##API Documentation for each of Tessel's modules can be found on the individual modules' pages:
+##APIs
+
+Documentation for each of Tessel's modules can be found on the individual modules' pages:
 
 * [Accelerometer<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/accel-mma84)
 * [Ambient<img src="https://s3.amazonaws.com/technicalmachine-assets/fre+assets/external-link.png">](https://github.com/tessel/ambient-attx4)
