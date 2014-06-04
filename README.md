@@ -16,7 +16,9 @@ Tessel was designed for web developers to work in the world of hardware for the 
 
 If there's anything you can't find, something that isn't working, or documentation that we should add, please don't hesitate to <b>reach out to us</b> on the [Tessel forums](forums.tessel.io).
 
-We look forward to seeing what you make.
+Technical Machine is open source, hardware and software. We welcome your pull requests, and  we encourage you to design your own modules and products based on our designs.
+
+We look forward to seeing what you make!
 
 Sincerely,<br/>
 the Technical Machine Team<br/>
