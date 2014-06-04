@@ -2,7 +2,7 @@ Tessel Documentation
 ====
 This is Tessel. Think of it as a tiny server, or a tiny robot you can control from the internet.
 
-<img src='https://camo.githubusercontent.com/91de5f5f53fc25b931a1648e82bfb560d35cb772/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f746563686e6963616c6d616368696e652d6173736574732f646f632b70696374757265732f68617264776172655f64657369676e5f646f63732f544d2d30302d30342d706f7274732e706e67'>
+<img src='https://s3.amazonaws.com/technicalmachine-assets/doc+pictures/hardware_design_docs/TM-00-04-ports.png'>
 
 Tessel is programmed in JavaScript, and comes with Wifi built in. Capabilities such as sensing, and actuation can be added to Tessel with plug-and-play modules, or you can do your own wiring through the GPIO bank.
 
