@@ -20,6 +20,22 @@ Once that yellow light is on, you're connected to Wifi!
 
 <img src='https://s3.amazonaws.com/technicalmachine-assets/fre+assets/wifi.JPG'>
 
+##Wifi Commands
+```.sh
+tessel wifi -n <ssid> -p <password> [-s <security (wep/wpa/wpa2 by default)>]
+```
+Connects to wifi
+
+```.sh
+tessel wifi -n <ssid>
+```
+Connects to a wifi network without a password
+
+```.sh
+tessel wifi -l
+```
+See current wifi status
+
 ##Example
 Here is an example of requesting a website over Tessel's Wifi connection:
 
