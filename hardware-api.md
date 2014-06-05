@@ -90,13 +90,13 @@ The unique ID of this port. On Tessel, this would be one of `"A"`, `"B"`, `"C"`,
 An array of which pins are digital inputs/outputs. Has 3 pins for ports A, B, C, and D and 6 pins for the GPIO port.
 
 &#x20;<a href="#api-array-number-port-analog" name="api-array-number-port-analog">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.analog</b> = []  
-An array of which pins are analog inputs/outputs. Is only available on the GPIO port.
+An array of which pins are analog inputs. Is only available on the GPIO port.
 
 &#x20;<a href="#api-array-number-port-pwm" name="api-array-number-port-pwm">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.pwm</b> = []  
-An array of which pins are PWM outputs (may overlap analog array). ***Currently not implemented.***
+An array of which pins are PWM outputs (may overlap analog array).
 
 &#x20;<a href="#api-array-number-port-pin" name="api-array-number-port-pin">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.pin</b> = []  
-An array of all pins on the port. You can differentiate them by their `.type` and `.isPWM` attributes. ***.isPWM is currently not implemented***
+An array of all pins on the port. You can differentiate them by their `.type` and `.isPWM` attributes.
 
 &#x20;<a href="#api-new-port-Pin-pin" name="api-new-port-Pin-pin">#</a> <i>new</i>&nbsp; port<b>.Pin</b> ( pin )  
 Create and return `pin` object.
@@ -105,19 +105,19 @@ Create and return `pin` object.
 "digital" or "analog".
 
 &#x20;<a href="#api-number-pin-resolution" name="api-number-pin-resolution">#</a> <i>number</i>&nbsp; pin<b>.resolution</b>  
-Digital pins: 1. Analog pins: ADC resolution of output pins ( e\.g\. 1024 for Tessel ).
+Digital pins: 1. Analog pins: ADC resolution of output pins ( e\.g\. 1023 for Tessel ).
 
 &#x20;<a href="#api-pin-input" name="api-pin-input">#</a> pin<b>.input</b>()  
 Set `pin` to be an input.
 
 &#x20;<a href="#api-pin-output-value" name="api-pin-output-value">#</a> pin<b>.output</b> ( value )  
-Set `pin` to be an output with value `value`.
+Set `pin` to be an output with value `value`. Note that the Analog pins cannot be outputs. 
 
 &#x20;<a href="#api-pin-rawDirection-isOutput" name="api-pin-rawDirection-isOutput">#</a> pin<b>.rawDirection</b>( isOutput )  
 Set `pin` as input or output.
 
 &#x20;<a href="#api-pin-write-value" name="api-pin-write-value">#</a> pin<b>.write</b> ( value )  
-Behaves the same as `pin.output`. Sets pin as an output with `value`. Digital pins: output is set HIGH if `value` is truthy, otherwise LOW. Analog pins: `value` is a float that sets the analog output value.
+Behaves the same as `pin.output`. Sets pin as an output with `value`. Digital pins: output is set HIGH if `value` is truthy, otherwise LOW.
 
 &#x20;<a href="#api-pin-rawWrite-value" name="api-pin-rawWrite-value">#</a> pin<b>.rawWrite</b> ( value )  
 Sets the pin to `value`. Does not change the direction of the pin.
