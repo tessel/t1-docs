@@ -77,7 +77,6 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
 * [modules](http://nodejs.org/api/modules.html)
 * [net](http://nodejs.org/api/net.html)
  - [net.createConnections](http://nodejs.org/api/net.html#net_net_createconnection_options_connectionlistener) not implemented yet
- - [net.createConnection](http://nodejs.org/api/net.html#net_net_createconnection_port_host_connectlistener) not implemented yet
  - [server.address](http://nodejs.org/api/net.html#net_server_address) not implemented yet
  - [server.unref](http://nodejs.org/api/net.html#net_server_unref) not implemented yet
  - [server.ref](http://nodejs.org/api/net.html#net_server_ref) not implemented yet
