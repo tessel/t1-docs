@@ -6,9 +6,9 @@ The data is passed via a [UART](http://en.wikipedia.org/wiki/Uart) bridge. Ardui
 
 UART works through having TX (transmit) and RX (recieve) pins. A TX of one device is hooked up to the RX of another device like this:
 
-Tessel TX  <---> Arduino RX
-Tessel RX  <---> Arduino TX
-Tessel GND <---> Arduino GND
+* Tessel TX  <---> Arduino RX
+* Tessel RX  <---> Arduino TX
+* Tessel GND <---> Arduino GND
 
 ##Step 1: Get an Arduino
 
@@ -32,11 +32,11 @@ There are 3 pins that need to be hooked up, UART TX, UART RX, and Ground.
 
 In the code example, we're going to be using Arduino's SoftwareSerial on pins 10 and 11.
 
-![https://s3.amazonaws.com/technicalmachine-assets/doc+pictures/arduino-tessel-wiring-uart.jpg](wiring an arduino to a tessel)
+![wiring an arduino to a tessel](https://s3.amazonaws.com/technicalmachine-assets/doc+pictures/arduino-tessel-wiring-uart.jpg)
 
-Arduino Pin 10 (orange wire) <--> Tessel Port D, pin TX/G1
-Arduino Pin 11 (white wire)  <--> Tessel Port D, pin RX/G2
-Arduino Ground (brown wire)  <--> Tessel Ground
+* Arduino Pin 10 (orange wire) <--> Tessel Port D, pin TX/G1
+* Arduino Pin 11 (white wire)  <--> Tessel Port D, pin RX/G2
+* Arduino Ground (brown wire)  <--> Tessel Ground
 
 ##Step 3: Program the Arduino
 
@@ -113,6 +113,6 @@ setInterval(function(){
 Run the code with `tessel run uart.js`, or if you want this to be persistant through power cycles, `tessel push uart.js`.
 
 ##Step 5: Test it
-You should be able to go into the Arduino console and see the LEDs on Tessel change as you enter a "1" or a "2".
+You should be able to go into the Arduino console and see the blue and green LEDs on Tessel change as you enter a "1" or a "2".
 
-![https://s3.amazonaws.com/technicalmachine-assets/doc+pictures/arduino-to-tessel.jpg](terminal)
+![terminal](https://s3.amazonaws.com/technicalmachine-assets/doc+pictures/arduino-to-tessel.jpg)
