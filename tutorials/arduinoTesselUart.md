@@ -32,7 +32,7 @@ There are 3 pins that need to be hooked up, UART TX, UART RX, and Ground.
 
 In the code example, we're going to be using Arduino's SoftwareSerial on pins 10 and 11.
 
-![https://s3.amazonaws.com/technicalmachine-assets/doc+pictures/arduino-tessel-wiring-uart.jpg](wiring an arduino to a tessel)
+![wiring an arduino to a tessel](https://s3.amazonaws.com/technicalmachine-assets/doc+pictures/arduino-tessel-wiring-uart.jpg)
 
 Arduino Pin 10 (orange wire) <--> Tessel Port D, pin TX/G1
 Arduino Pin 11 (white wire)  <--> Tessel Port D, pin RX/G2
@@ -115,4 +115,4 @@ Run the code with `tessel run uart.js`, or if you want this to be persistant thr
 ##Step 5: Test it
 You should be able to go into the Arduino console and see the LEDs on Tessel change as you enter a "1" or a "2".
 
-![https://s3.amazonaws.com/technicalmachine-assets/doc+pictures/arduino-to-tessel.jpg](terminal)
+![terminal](https://s3.amazonaws.com/technicalmachine-assets/doc+pictures/arduino-to-tessel.jpg)
