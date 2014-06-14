@@ -10,7 +10,7 @@ console.log("Can Tessel add?", 3 == tessel.add(1, 2));
 ```
 
 1. Clone down the [tessel/firmware](https://github.com/tessel/firmware) repo.
-2. Set up the firmware according to the [tessel/firmware wiki](https://github.com/tessel/firmware/wiki). 
+2. Set up the firmware according to the [tessel/firmware readme](https://github.com/tessel/firmware/blob/master/README.md). 
 3. Open up `src/tessel.c`. Add these lines 
 
 	```c
