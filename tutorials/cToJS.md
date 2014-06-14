@@ -96,7 +96,7 @@ console.log("Can Tessel add?", 3 == tessel.add(1, 2));
 11. Overwrite the Tessel firmware with the new firmware you just built. In the `Release` directory:
 
 	`tessel update ./tessel-firmware.bin`
-	Don't forget that `./` before tessel-firmware. It specifies a local path. Otherwise `tessel update` will look for firmware patches on our [build server](builds.tessel.io)
+	Don't forget that `./` before tessel-firmware. It specifies a local path. Otherwise `tessel update` will look for firmware patches on our build server.
 
 12. Now run the test code you have for this function and it should pass.
 
