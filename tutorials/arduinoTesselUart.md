@@ -42,7 +42,7 @@ In the code example, we're going to be using Arduino's SoftwareSerial on pins 10
 
 Run this code on the Arduino
 
-```
+```c
 #include <SoftwareSerial.h>
 #define rxPin 10 // connect to TX of other device
 #define txPin 11 // connect to RX of other device
@@ -79,7 +79,7 @@ cd arduinoBridge; touch uart.js;
 
 Put this in the uart.js file.
 
-```
+```js
 var tessel = require('tessel');
 var led1 = tessel.led[0].output(0);
 var led2 = tessel.led[1].output(0);
