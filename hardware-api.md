@@ -29,7 +29,14 @@ gpio.digital[1].write(1);  // turn digital pin #1 high
 A list of ports available on Tessel. Keys for this are `"A"`, `"B"`, `"C"`, `"D"`, or `"GPIO"`.
 
 &#x20;<a href="#api-array-Pin-tessel-led" name="api-array-Pin-tessel-led">#</a> <i>array&lt;Pin&gt;</i>&nbsp; tessel<b>.led</b> = []  
-An array of LEDs available on the Tessel board (1&ndash;4). These are [`Pin` objects](#pins).
+An array of 4 LEDs available on the Tessel board. These are [`Pin` objects](#pins). Their board order is different than their array index order; they're in rainbow order on the board. See below:
+
+| Index | Position (from micro-USB) | Color | Name  |
+|-------| ------------------------- | ----- | ----- |
+|   0   | 3rd                       | Green | LED1  |
+|   1   | 4th                       | Blue  | LED2  |
+|   2   | 1st                       | Red   | Error |
+|   3   | 2nd                       | Amber | Conn  |
 
 ```js
 // Toggle an LED every 200ms
