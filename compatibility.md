@@ -7,14 +7,14 @@
 
 Tessel is programmed in [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), which automatically compiles to Lua when you run code on Tessel.
 
-Tessel aims for full JavaScript compatibility, with the exception of `eval()`. If you run into compilation error, please file an issue on our Github repo.
+Tessel aims for full JavaScript compatibility, with the exception of `eval()`. If you run into compilation error, please file an issue on our GitHub repo.
 
 Documentation for the JavaScript programming language can be found [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference).
 
 ##Node
 Tessel is currently compatible with the most common and applicable core [Node](http://nodejs.org/about/) libraries. Most non-core libraries should also work however we don't yet support libraries with binary dependencies. If your module is not working, please email us! Greater Node compatibility is an area of active development. 
 
-Node library support is proioritized by which libraries are most relevant to Tessel usage. 
+Node library support is prioritized by which libraries are most relevant to Tessel usage. 
 
 Documentation for Node can be found [here](http://nodejs.org/api/).
 
@@ -153,6 +153,4 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
 * [domain](http://nodejs.org/api/domain.html)
 
 ##CoffeeScript
-Tessel supports [CoffeeScript](http://coffeescript.org/).
-
-(Tessel pre-compiles CoffeeScript into [JavaScript](#javascript).) 
+Tessel precompiles [CoffeeScript](http://coffeescript.org/) into [JavaScript](#javascript).
