@@ -313,8 +313,6 @@ Data that arrives over the UART channel is sent as a Node.js stream.
 
 &#x20;<a href="#api-process-sendfile-filename-buf" name="api-process-sendfile-filename-buf">#</a> process<b>.sendfile</b> ( filename, buffer )  A `buffer` can be sent over USB to a file named `filename` on a host computer's file system. You must start the script with -u and the argument of which directory to save the folder. For example, `tessel run test.js -u ./recordings` will save the file in the recordings directory.
 
-&#x20;<a href="#api-sleep" name="api-sleep">#</a> tessel<b>.sleep</b> ( ms )  Stop executing code for `ms` number of milliseconds.
-
 &#x20;<a href="#api-deviceId" name="api-deviceId">#</a> tessel<b>.deviceId</b> (  )  Get the Inique ID of your Tessel.
 
 ## License
