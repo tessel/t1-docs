@@ -96,7 +96,7 @@ An array of which pins are analog inputs. Is only available on the GPIO port.
 An array of which pins are PWM outputs (may overlap analog array).
 
 &#x20;<a href="#api-number-port-setPWMFrequency" name="api-number-port-setPWMFrequency">#</a> port<b>.setPWMFrequency</b> ( frequency )
-Sets the frequency of PWM for a given port. Only the GPIO bank supports PWM pins on Tessel. Default is 1kHz.
+Sets the frequency of PWM for a given port. Only the GPIO bank supports PWM pins on Tessel.
 
 &#x20;<a href="#api-array-number-port-pin" name="api-array-number-port-pin">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.pin</b> = []  
 An array of all pins on the port. You can differentiate them by their `.type` and `.isPWM` attributes.
@@ -122,8 +122,8 @@ Set `pin` as input or output.
 &#x20;<a href="#api-pin-write-value" name="api-pin-write-value">#</a> pin<b>.write</b> ( value )  
 Behaves the same as `pin.output`. Sets pin as an output with `value`. Digital pins: output is set HIGH if `value` is truthy, otherwise LOW.
 
-&#x20;<a href="#api-pin-pwm-value" name="api-pin-pwm-value">#</a> pin<b>.pwm</b> ( dutyCycleFloat )  
-Creates a PWM signal with a duty cycle of `dutyCycleFloat`. Only works with pins with true property of `isPWM`. 
+&#x20;<a href="#api-pin-pwmDutyCycle-value" name="api-pin-pwmDutyCycle-value">#</a> pin<b>.pwmDutyCycle</b> ( dutyCycleFloat )  
+Creates a PWM signal with a duty cycle of `dutyCycleFloat`. Range is between [0-1] inclusive. Only works with pins with true property of `isPWM`. 
 
 &#x20;<a href="#api-pin-rawWrite-value" name="api-pin-rawWrite-value">#</a> pin<b>.rawWrite</b> ( value )  
 Sets the pin to `value`. Does not change the direction of the pin.
