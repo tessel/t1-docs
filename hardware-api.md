@@ -95,7 +95,7 @@ An array of which pins are analog inputs. Is only available on the GPIO port.
 &#x20;<a href="#api-array-number-port-pwm" name="api-array-number-port-pwm">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.pwm</b> = []  
 An array of which pins are PWM outputs (may overlap analog array).
 
-&#x20;<a href="#api-number-port-setPWMFrequency" name="api-number-port-setPWMFrequency">#</a> port<b>.setPWMFrequency</b> ( frequency )
+&#x20;<a href="#api-number-port-pwmFrequency" name="api-number-port-pwmFrequency">#</a> port<b>.pwmFrequency</b> ( frequency )  
 Sets the frequency of PWM for a given port. Only the GPIO bank supports PWM pins on Tessel.
 
 &#x20;<a href="#api-array-number-port-pin" name="api-array-number-port-pin">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.pin</b> = []  
@@ -114,7 +114,7 @@ Digital pins: 1. Analog pins: ADC resolution of output pins ( e\.g\. 1023 for Te
 Set `pin` to be an input.
 
 &#x20;<a href="#api-pin-output-value" name="api-pin-output-value">#</a> pin<b>.output</b> ( value )  
-Set `pin` to be an output with value `value`. Note that the Analog pins cannot be outputs. 
+Set `pin` to be an output with value `value`. Note that the Analog pins cannot be outputs.
 
 &#x20;<a href="#api-pin-rawDirection-isOutput" name="api-pin-rawDirection-isOutput">#</a> pin<b>.rawDirection</b>( isOutput )  
 Set `pin` as input or output.
@@ -123,7 +123,7 @@ Set `pin` as input or output.
 Behaves the same as `pin.output`. Sets pin as an output with `value`. Digital pins: output is set HIGH if `value` is truthy, otherwise LOW.
 
 &#x20;<a href="#api-pin-pwmDutyCycle-value" name="api-pin-pwmDutyCycle-value">#</a> pin<b>.pwmDutyCycle</b> ( dutyCycleFloat )  
-Creates a PWM signal with a duty cycle of `dutyCycleFloat`. Range is between [0-1] inclusive. Only works with pins with true property of `isPWM`. 
+Creates a PWM signal with a duty cycle of `dutyCycleFloat`, the fraction of the PWM period in which the signal is high. Range is between [0-1] inclusive. Only works with pins with true property of `isPWM`.
 
 &#x20;<a href="#api-pin-rawWrite-value" name="api-pin-rawWrite-value">#</a> pin<b>.rawWrite</b> ( value )  
 Sets the pin to `value`. Does not change the direction of the pin.
@@ -152,7 +152,7 @@ Sets a listener for a a single event of the trigger type on the `pin`. `time` is
 Removes the `listener` callback for a given `type` of trigger (eg. 'rise' or 'high') on a pin.
 
 &#x20;<a href="#api-pin-removeListener-type-listener" name="api-pin-removeListener-type-listener">#</a> pin<b>.removeAllListeners</b> ( type )  
-Removes all of the listeners for a given trigger `type` on a `pin`. 
+Removes all of the listeners for a given trigger `type` on a `pin`.
 
 ### Buttons
 
@@ -216,22 +216,22 @@ Reads `len` bytes from a slave. Returns a buffer.
 &#x20;<a href="#api-spi-send-txbuf-callback-err" name="api-spi-send-txbuf-callback-err">#</a> spi<b>.send</b> ( txbuf, callback(err) )  
 Sends a Buffer `txbuf` to the slave.
 
-&#x20;<a href="#api-spi-setClockSpeed-clockspeed" name="api-spi-setClockSpeed-clockspeed">#</a> spi<b>.setClockSpeed</b> ( clockspeed )   
+&#x20;<a href="#api-spi-setClockSpeed-clockspeed" name="api-spi-setClockSpeed-clockspeed">#</a> spi<b>.setClockSpeed</b> ( clockspeed )
 Sets the clockspeed.
 
-&#x20;<a href="#api-spi-setDataMode-mode" name="api-spi-setDataMode-mode">#</a> spi<b>.setDataMode</b> ( mode )   
+&#x20;<a href="#api-spi-setDataMode-mode" name="api-spi-setDataMode-mode">#</a> spi<b>.setDataMode</b> ( mode )
 Sets the data mode.
 
-&#x20;<a href="#api-spi-setFrameMode-mode" name="api-spi-setFrameMode-mode">#</a> spi<b>.setFrameMode</b> ( mode )   
+&#x20;<a href="#api-spi-setFrameMode-mode" name="api-spi-setFrameMode-mode">#</a> spi<b>.setFrameMode</b> ( mode )
 Sets the frame mode.
 
-&#x20;<a href="#api-spi-setRole-role" name="api-spi-setRole-role">#</a> spi<b>.setRole</b> ( role )   
+&#x20;<a href="#api-spi-setRole-role" name="api-spi-setRole-role">#</a> spi<b>.setRole</b> ( role )
 Sets the role.
 
-&#x20;<a href="#api-spi-setChipSelectMode-mode" name="api-spi-setChipSelectMode-mode">#</a> spi<b>.setChipSelectMode</b> ( mode )   
+&#x20;<a href="#api-spi-setChipSelectMode-mode" name="api-spi-setChipSelectMode-mode">#</a> spi<b>.setChipSelectMode</b> ( mode )
 Sets the chip select settings.
 
-&#x20;<a href="#api-spi-lock-callback" name="api-spi-lock-callback">#</a> spi<b>.lock</b> ( callback )   
+&#x20;<a href="#api-spi-lock-callback" name="api-spi-lock-callback">#</a> spi<b>.lock</b> ( callback )
 Locks SPI so that only one SPI port is communicating at a time. To read more about SPI Bus Locking, check out our discussion about the [Bus Locking and Raw Transfers API](https://github.com/tessel/docs/blob/master/detailedWalkthroughs/spiLocksRawTransfers.md).
 
 
