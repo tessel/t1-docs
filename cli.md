@@ -59,8 +59,16 @@ No tag given: list available tags
 Relative or absolute filepath: push a local binary to tessel
 #####`tessel blink`
 Run test script to make LEDs blink back and forth
-#####`tessel update [--list] [-b build] [-u <url>]`
-Updates tessel to the newest released firmware. Optionally can list all builds. Can specify by build or url to download the firmware from
+#####`tessel update <filepath|url>`
+Updates tessel to the newest released firmware localed at filepath or url.
+#####`tessel update [options]`
+Updates tessel's firmware
+Options:
+* `-l, --list`   List firmware versions
+* `-w, --wifi`   Optional version of CC3000 wifi firmware to install
+* `-b, --build`  Optional build of the firmware version (does not update wifi)
+* `-f, --force`  Forcibly reload firmware onto Tessel
+* `-d, --dfu`    Apply firmware update to device in DFU mode
 #####`tessel debug [script]`
 Runs through debug script and uploads logs
 #####`tessel version`
