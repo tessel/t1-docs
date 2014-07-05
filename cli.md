@@ -69,6 +69,7 @@ Options:
 * `-b, --build`  Optional build of the firmware version (does not update wifi)
 * `-f, --force`  Forcibly reload firmware onto Tessel
 * `-d, --dfu`    Apply firmware update to device in DFU mode
+
 #####`tessel debug [script]`
 Runs through debug script and uploads logs
 #####`tessel version`
