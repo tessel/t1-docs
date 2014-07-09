@@ -101,8 +101,8 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
  - [Event:'timeout'](http://nodejs.org/api/net.html#net_event_timeout) not implemented yet
  - [Event:'drain'](http://nodejs.org/api/net.html#net_event_drain) not implemented yet
  - [Net.isIP](http://nodejs.org/api/net.html#net_net_isip_input) not implemented yet
- - [Net.isIPV4](http://nodejs.org/api/net.html#net_net_isip_input) not implemented yet
- - [Net.isIPV6](http://nodejs.org/api/net.html#net_net_isip_input) not implemented yet
+ - [Net.isIPV4](http://nodejs.org/api/net.html#net_net_isipv4_input) not implemented yet
+ - [Net.isIPV6](http://nodejs.org/api/net.html#net_net_isipv6_input) not implemented yet
  
 * [os](http://nodejs.org/api/os.html)
 * [path](http://nodejs.org/api/path.html)
@@ -121,8 +121,6 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
 * [timers](http://nodejs.org/api/timers.html)
 * [tracing](http://nodejs.org/api/tracing.html)
 * [url](http://nodejs.org/api/url.html)
- - [url.format](http://nodejs.org/api/url.html#url_url_format_urlobj) not yet implemented
-  - [url.resolve](http://nodejs.org/api/url.html#url_url_resolve_from_to) not yet implemented
 * [util](http://nodejs.org/api/util.html)
  - [format](http://nodejs.org/api/util.html#util_util_format_format) not implemented yet
  - [debug](http://nodejs.org/api/util.html#util_util_debug_string) not implemented yet
@@ -152,4 +150,6 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
 * [domain](http://nodejs.org/api/domain.html)
 
 ##CoffeeScript
-Tessel precompiles [CoffeeScript](http://coffeescript.org/) into [JavaScript](#javascript).
+Tessel plans to eventually support [CoffeeScript](http://coffeescript.org/).
+
+(Tessel can currently run pre-compiled CoffeeScript into [JavaScript](#javascript).) 
