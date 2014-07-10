@@ -5,7 +5,7 @@ You can debug Tessel by soldering [JTAG headers](https://s3.amazonaws.com/techni
 ## Setup
 1. Install OpenOCD. You need version >= 0.8.0.
   * This version is not in Ubuntu 14.04, but the [packages from Ubuntu Utopic work fine there](https://launchpad.net/ubuntu/+source/openocd)
-  * `brew install open-ocd` installs >= 0.8.0.
+  * `brew install libusb libftdi open-ocd` installs >= 0.8.0.
 
 1. Acquire a configuration script for your Bus Blaster. Included in the firmware repo is `tools/tessel-busblaster.cfg`.
 
