@@ -139,7 +139,7 @@ Sets the pin as a pullup, pulldown, or neutral pin. Mode is one of `pullup`, `pu
 &#x20;<a href="#api-pin-mode" name="api-pin-mode">#</a> pin<b>.mode</b> ()  
 Returns the mode of the pin.
 
-External GPIO Interrupts can be used much like regular Node EventEmitters. There are seven external interrupts you can work with. You can read more in depth discussion about gpio interrupts in [our External GPIO Walkthrough](https://github.com/tessel/docs/blob/master/detailedWalkthroughs/gpioInterrupts.md).
+External GPIO Interrupts can be used much like regular Node EventEmitters. There are seven external interrupts you can work with. You can read more in depth discussion about gpio interrupts in [our External GPIO Walkthrough](https://github.com/tessel/docs/blob/master/tutorials/gpio-interrupts.md).
 
 &#x20;<a href="#api-pin-on-type-callback-time-type" name="api-pin-watch-type-callback-time-type">#</a> pin<b>.on</b> ( type, callback(time, type) )  
 Sets a listener for a signal edge on `pin`. `time` is the milliseconds since boot up and `type` can be one of `rise`, `fall`, `change`. The `high` and `low` level triggers cannot be used with `on` because they would fire repeatedly and wreak havoc on the runtime.
