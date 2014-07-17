@@ -216,10 +216,10 @@ Creates a SPI object. Options is an object specifying any of the following:
 Transfers a Buffer `txbuf` to the slave and receives a response in `rxbuf`.
 
 &#x20;<a href="#api-spi-transfer-batch-txbuf-callback-err-rxbuf" name="api-spi-transfer-batch-txbuf-callback-err-rxbuf">#</a> spi<b>.transferBatch</b> ( txbuf, [options], callback(err, rxbuf) )  
-Transfers a series of commands stored in a Buffer `txbuf` by splitting txbuf into chunks of a specified size. Sends each command in txbuf to the slave and receives a response in `rxbuf`. Options is an object specifying any of the following:
+Transfers a series of commands stored in a Buffer `txbuf` by splitting `txbuf` into chunks of a specified size. Sends each command in `txbuf` to the slave and receives a response in `rxbuf`. Options is an object specifying any of the following:
 
-* **chunkSize** (optional) &mdash; An optional value specifying the interval size. Defaults to txbuf.length.
-* **repeat** (optional) &mdash; An optional value specifying how many times the txbuf will be transmitted. Used for transmitting the same buffer multiple times. Defaults to 1.
+* **chunkSize** (optional) &mdash; An optional value specifying the interval size. Defaults to `txbuf.length`.
+* **repeat** (optional) &mdash; An optional value specifying how many times the `txbuf` will be transmitted. Used for transmitting the same buffer multiple times. Defaults to 1.
 
 &#x20;<a href="#api-spi-receive-len-callback-err-rxbuf" name="api-spi-receive-len-callback-err-rxbuf">#</a> spi<b>.receive</b> ( len, callback(err, rxbuf) )  
 Reads `len` bytes from a slave. Returns a buffer.
@@ -228,10 +228,10 @@ Reads `len` bytes from a slave. Returns a buffer.
 Sends a Buffer `txbuf` to the slave.
 
 &#x20;<a href="#api-spi-send-batch-txbuf-callback-err" name="api-spi-send-batch-txbuf-callback-err">#</a> spi<b>.sendBatch</b> ( txbuf, [options], callback(err) )  
-Sends a series of commands stored in a Buffer `txbuf` by splitting txbuf into chunks of a specified size. Sends each command in txbuf to the slave. Options is an object specifying any of the following:
+Sends a series of commands stored in a Buffer `txbuf` by splitting txbuf into chunks of a specified size. Sends each command in `txbuf` to the slave. Options is an object specifying any of the following:
 
-* **chunkSize** (optional) &mdash; An optional value specifying the interval size. Defaults to txbuf.length.
-* **repeat** (optional) &mdash; An optional value specifying how many times the txbuf will be transmitted. Used for transmitting the same buffer multiple times. Defaults to 1.
+* **chunkSize** (optional) &mdash; An optional value specifying the interval size. Defaults to `txbuf.length`.
+* **repeat** (optional) &mdash; An optional value specifying how many times the `txbuf` will be transmitted. Used for transmitting the same buffer multiple times. Defaults to 1.
 
 &#x20;<a href="#api-spi-setClockSpeed-clockspeed" name="api-spi-setClockSpeed-clockspeed">#</a> spi<b>.setClockSpeed</b> ( clockspeed )
 Sets the clockspeed.
