@@ -187,8 +187,14 @@ var spi = new port.SPI({
 
 spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
   console.log('buffer returned by SPI slave:', rx);
-})
+});
 
+spi.transferBatch(new Buffer([0xc0, 0xd0, 0xc1, 0xd1]), {chunkSize:2}, function (err, rx) {
+// Equivalent to
+//    spi.transfer(new Buffer[0xc0, 0xd0]); 
+//    spi.transfer(new Buffer[0xc1, 0xd1]); 
+// Faster than doing separate transfers because only 1 JS call is made
+});
 ```
 
 
@@ -209,11 +215,23 @@ Creates a SPI object. Options is an object specifying any of the following:
 &#x20;<a href="#api-spi-transfer-txbuf-callback-err-rxbuf" name="api-spi-transfer-txbuf-callback-err-rxbuf">#</a> spi<b>.transfer</b> ( txbuf, callback(err, rxbuf) )  
 Transfers a Buffer `txbuf` to the slave and receives a response in `rxbuf`.
 
+&#x20;<a href="#api-spi-transfer-batch-txbuf-callback-err-rxbuf" name="api-spi-transfer-batch-txbuf-callback-err-rxbuf">#</a> spi<b>.transferBatch</b> ( txbuf, [options], callback(err, rxbuf) )  
+Transfers a series of commands stored in a Buffer `txbuf` by splitting txbuf into chunks of a specified size. Sends each command in txbuf to the slave and receives a response in `rxbuf`. Options is an object specifying any of the following:
+
+* **chunkSize** (optional) &mdash; An optional value specifying the interval size. Defaults to txbuf.length.
+* **repeat** (optional) &mdash; An optional value specifying how many times the txbuf will be transmitted. Used for transmitting the same buffer multiple times. Defaults to 1.
+
 &#x20;<a href="#api-spi-receive-len-callback-err-rxbuf" name="api-spi-receive-len-callback-err-rxbuf">#</a> spi<b>.receive</b> ( len, callback(err, rxbuf) )  
 Reads `len` bytes from a slave. Returns a buffer.
 
 &#x20;<a href="#api-spi-send-txbuf-callback-err" name="api-spi-send-txbuf-callback-err">#</a> spi<b>.send</b> ( txbuf, callback(err) )  
 Sends a Buffer `txbuf` to the slave.
+
+&#x20;<a href="#api-spi-send-batch-txbuf-callback-err" name="api-spi-send-batch-txbuf-callback-err">#</a> spi<b>.sendBatch</b> ( txbuf, [options], callback(err) )  
+Sends a series of commands stored in a Buffer `txbuf` by splitting txbuf into chunks of a specified size. Sends each command in txbuf to the slave. Options is an object specifying any of the following:
+
+* **chunkSize** (optional) &mdash; An optional value specifying the interval size. Defaults to txbuf.length.
+* **repeat** (optional) &mdash; An optional value specifying how many times the txbuf will be transmitted. Used for transmitting the same buffer multiple times. Defaults to 1.
 
 &#x20;<a href="#api-spi-setClockSpeed-clockspeed" name="api-spi-setClockSpeed-clockspeed">#</a> spi<b>.setClockSpeed</b> ( clockspeed )
 Sets the clockspeed.
