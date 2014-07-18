@@ -14,7 +14,7 @@ Tessel was designed for web developers to work in the world of hardware for the 
 
 <b>For details on Tessel and Tessel's modules,</b> including API and hardware design information, explore the links here.
 
-If there's anything you can't find, something that isn't working, or documentation that we should add, please don't hesitate to <b>reach out to us</b> on the [Tessel forums](forums.tessel.io).
+If there's anything you can't find, something that isn't working, or documentation that we should add, please don't hesitate to <b>reach out to us</b> on the [Tessel forums](http://forums.tessel.io).
 
 Technical Machine is open source, [hardware](https://github.com/tessel/hardware) and [software](https://github.com/tessel/firmware). We welcome your pull requests, and  we encourage you to design your own modules and products based on our designs.
 
