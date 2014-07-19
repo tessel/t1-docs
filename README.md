@@ -1,5 +1,8 @@
 Tessel Documentation
 ====
+
+###New: Check out the [contribution guide](https://forums.tessel.io/t/tessel-contribution-guide/524)!
+
 This is Tessel. Think of it as a tiny server, or a tiny robot you can control from the internet.
 
 <img src='https://s3.amazonaws.com/technicalmachine-assets/doc+pictures/hardware_design_docs/TM-00-04-ports.png'>
@@ -16,7 +19,7 @@ Tessel was designed for web developers to work in the world of hardware for the 
 
 If there's anything you can't find, something that isn't working, or documentation that we should add, please don't hesitate to <b>reach out to us</b> on the [Tessel forums](http://forums.tessel.io).
 
-Technical Machine is open source, [hardware](https://github.com/tessel/hardware) and [software](https://github.com/tessel/firmware). We welcome your pull requests, and  we encourage you to design your own modules and products based on our designs.
+Technical Machine is open source, [hardware](https://github.com/tessel/hardware) and [software](https://github.com/tessel/firmware). We welcome your pull requests, and  we encourage you to design your own modules and products based on our designs. Check out the [contribution guide](https://github.com/tessel/contribution-guide) for more details.
 
 We look forward to seeing what you make!
 
