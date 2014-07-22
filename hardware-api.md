@@ -7,7 +7,7 @@ Documentation for Tessel's hardware APIs. These are available for code running o
 ### Contents
 
 * [Ports and LEDs (Tessel)](#tessel)
-* [Pins and Buttons](#pins)
+* [GPIO, Pins and Buttons](#pins)
 * [SPI](#spi)
 * [I2C](#i2c)
 * [UART](#uart)
@@ -46,24 +46,89 @@ An array of 4 LEDs available on the Tessel board. These are [`Pin` objects](#pin
 })(true)
 ```
 
-
 ### Pins
 
-GPIO access for digital and analog signal lines. Each port exposes its available pins through the `.pin`, `.digital`, `.analog`, and `.pwm` arrays.
+General purpose input-output (GPIO) provides access for digital and analog signal lines. Available pins are exposed through the `.pin`, `.digital`, `.analog`, and `.pwm` arrays.
 
+By default, all of the pins are pulled high if not specifically set.
+
+You may find it useful to cross-reference this section with the hardware documentation for [Pins and Ports](https://tessel.io/docs/hardware#pins-and-ports).
+
+**Digital pins** are either high (3.3V) or low (GND/0V).
+
+Tessel has six digital pins on the GPIO bank, and three more on each of the four module ports.
+
+This example shows the reading and writing of a digital pin:
+```js
+var tessel = require('tessel'); // import tessel
+var gpio = tessel.port['GPIO']; // select the GPIO port
+var myPin = gpio.digital[0]; // on GPIO, can be gpio.digital[0] through 5 or gpio.pin['G3'] through ‘G6’
+// Turn on the pin
+myPin.output(1); // setting ‘true’ has the same effect
+// Read the pin
+console.log('Reading pin:', myPin.read());
+// Turn off the pin
+myPin.output(0); // setting ‘false’ has the same effect. We could also call myPin.toggle() here.
+// Read the pin
+console.log('Reading pin:', myPin.read());
+```
+
+**Analog pins** can be any value between 0 and 1 (GND/0V and 3.3V).
+
+Tessel has six analog pins on the GPIO bank. All six can be used as inputs, but only one ('A1'/analog[0]) can be used as an output.
+
+Here is an example of reading and writing analog values on GPIO pin ‘A1’. The same read syntax can be used to read any of the other analog pins:
+```js
+var tessel = require('tessel'); // import tessel
+var gpio = tessel.port['GPIO']; // select the GPIO port
+var myPin = gpio.analog[0]; // can read on any of gpio.analog[0-5] or gpio.pin['A1'] through A6
+// Write a value - only available on GPIO bank A1/analog[0]
+myPin.write(0.5); // myPin.output(0.5) would do exactly the same thing
+// Read the pin
+console.log('Reading pin:', myPin.read());
+// Write a different value - only available on GPIO bank A1/analog[0]
+myPin.write(0.2);
+// Read the pin
+console.log('Reading pin:', myPin.read());
+```
+
+**PWM pins** are pulse-width modulated pins ([wiki link](http://en.wikipedia.org/wiki/Pulse-width_modulation)). Essentially, PWM is a digital signal that spends between 0% and 100% of its time on (this is its "duty cycle"). You can set the PWM pins to any value between 0 and 1 to approximate an analog signal. PWM is often used to control servo speeds or LED brightness.
+
+Tessel has three PWM pins: G4, G5, and G6 on the GPIO bank.
+
+If you try to read a PWM pin, you will always get back 0 or 1, depending on which part of the duty cycle your .read() call happened to hit.
+
+Here is an example of setting a PWM pin:
+```js
+var tessel = require('tessel'); // import tessel
+var gpio = tessel.port['GPIO']; // select the GPIO port
+var myPin = gpio.pwm[0]; // can be gpio.pwm[0] through 3 or gpio.pin['G4'] through ‘G6’
+// Set the duty cycle
+myPin.output(0.6); // set the pin to be on 60% of the time
+```
+
+#### GPIO bank
+Tessel's GPIO bank is designed to be breadboardable, so you can interact easily with sensors and actuators beyond our pre-built modules.
+
+This example logs the value of each digital and analog pin from the GPIO bank:
 ```js
 var tessel = require('tessel'); // import tessel
 var gpio = tessel.port['GPIO']; // select the GPIO port
 gpio.digital.forEach(function (pin, i) {
   console.log('Value of digital pin', i, '=', pin.read());
-})
+});
 gpio.analog.forEach(function (pin, i) {
   console.log('Value of analog pin', i, '=', pin.read() * pin.resolution, '/', pin.resolution);
-})
+});
 ```
 
+#### Module port pins
 
-Ports A, B, C, and D have 3 digital pins which can be addressed as such:  
+You can also address each of the pins in the module ports.
+
+Ports A, B, C, and D each have 3 digital pins which can be addressed in two ways:
+
+Digital pins addressed as items in an array:  
 
 
 ```js
@@ -72,7 +137,7 @@ tessel.port['A'].digital[1];
 tessel.port['A'].digital[2];
 ```
 
-Additionally the pins can be addressed by the silkscreen printed on Tessel:  
+Digital pins addressed by the silkscreen printed on Tessel:  
 
 
 ```js
@@ -80,6 +145,8 @@ tessel.port['A'].pin['G1']; // this is the same as digital[0]
 tessel.port['A'].pin['G2']; // this is the same as digital[1]
 tessel.port['A'].pin['G3']; // this is the same as digital[2]
 ```
+
+#### Pin API
 
 
 &#x20;<a href="#api-string-port-id" name="api-string-port-id">#</a> <i>string</i>&nbsp; port<b>.id</b>  
