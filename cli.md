@@ -1,9 +1,11 @@
 #Tessel CLI
 
 Tessel CLI is the command line interface for the Tessel microcontroller (http://tessel.io).
+[[CLI source.](https://github.com/tessel/cli)]
 
 * [Installation](#installation)
 * [Commands](#commands)
+* [REPL](#repl)
 
 ##Installation
 Node.js is a prerequisite for installing the Tessel command line. You can install it from the official website, or if you have brew installed:
@@ -43,7 +45,7 @@ Options:
 * `-h, --help`          Show usage for tessel push
 
 #####`tessel repl`
-Interactive JavaScript shell
+Interactive JavaScript shell - see [REPL docs below](#REPL)
 #####`tessel wifi -n <ssid> -p <password> [-s <security (wep/wpa/wpa2 by default)>]`
 Connects to wifi
 #####`tessel wifi -n <ssid>`
@@ -76,3 +78,14 @@ Runs through debug script and uploads logs
 Show version of CLI
 #####`tessel version --board`
 Show version of the connected Tessel
+
+##REPL
+*Source: [tessel-repl](https://github.com/tessel/cli/blob/master/src/commands.js) or [tessel-run](https://github.com/tessel/cli/blob/master/bin/tessel-run.js) with the interactive flag set.*
+
+Tessel has a REPL, an interactive JavaScript shell. Enter the REPL by running `tessel repl`.
+
+Require tessel as usual with `var tessel = require('tessel')`
+
+Now play! Try `tessel.led[1].toggle()` to turn one of the LEDs on or off.
+
+Tessel REPL is under development; feel free to [contribute](https://github.com/tessel/contribution-guide).
