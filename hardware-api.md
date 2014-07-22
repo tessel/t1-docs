@@ -54,6 +54,21 @@ By default, all of the pins are pulled high if not specifically set.
 
 You may find it useful to cross-reference this section with the hardware documentation for [Pins and Ports](https://tessel.io/docs/hardware#pins-and-ports).
 
+#### GPIO bank
+Tessel's GPIO bank is designed to be breadboardable, so you can interact easily with sensors and actuators beyond our pre-built modules.
+
+This example logs the value of each digital and analog pin from the GPIO bank:
+```js
+var tessel = require('tessel'); // import tessel
+var gpio = tessel.port['GPIO']; // select the GPIO port
+gpio.digital.forEach(function (pin, i) {
+  console.log('Value of digital pin', i, '=', pin.read());
+});
+gpio.analog.forEach(function (pin, i) {
+  console.log('Value of analog pin', i, '=', pin.read() * pin.resolution, '/', pin.resolution);
+});
+```
+
 **Digital pins** are either high (3.3V) or low (GND/0V).
 
 Tessel has six digital pins on the GPIO bank, and three more on each of the four module ports.
@@ -107,24 +122,11 @@ var myPin = gpio.pwm[0]; // can be gpio.pwm[0] through 3 or gpio.pin['G4'] throu
 myPin.output(0.6); // set the pin to be on 60% of the time
 ```
 
-#### GPIO bank
-Tessel's GPIO bank is designed to be breadboardable, so you can interact easily with sensors and actuators beyond our pre-built modules.
-
-This example logs the value of each digital and analog pin from the GPIO bank:
-```js
-var tessel = require('tessel'); // import tessel
-var gpio = tessel.port['GPIO']; // select the GPIO port
-gpio.digital.forEach(function (pin, i) {
-  console.log('Value of digital pin', i, '=', pin.read());
-});
-gpio.analog.forEach(function (pin, i) {
-  console.log('Value of analog pin', i, '=', pin.read() * pin.resolution, '/', pin.resolution);
-});
-```
+**Other pins:** For more details on addressing the other pins on the GPIO bank, see the sections on [SPI](#spi), [I2C](#i2c), and [UART](#uart).
 
 #### Module port pins
 
-You can also address each of the pins in the module ports.
+You can address each of the pins in the module ports.
 
 Ports A, B, C, and D each have 3 digital pins which can be addressed in two ways:
 
@@ -145,6 +147,8 @@ tessel.port['A'].pin['G1']; // this is the same as digital[0]
 tessel.port['A'].pin['G2']; // this is the same as digital[1]
 tessel.port['A'].pin['G3']; // this is the same as digital[2]
 ```
+
+For more details on addressing the other pins on the module ports, see the sections on [SPI](#spi), [I2C](#i2c), and [UART](#uart).
 
 #### Pin API
 
