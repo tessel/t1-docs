@@ -246,7 +246,7 @@ The buttons can also be used to put the board into DFU Mode which can be underst
 
 ### SPI
 
-A SPI channel.
+A SPI channel. For details on connecting the hardware to Tessel see [the Pins and Ports section of the Hardware documentation](https://tessel.io/docs/hardware#pins-and-ports).
 
 ```js
 var port = tessel.port['A'];
@@ -325,7 +325,7 @@ Locks SPI so that only one SPI port is communicating at a time. To read more abo
 
 ### I2C
 
-An I2C channel.
+An I2C channel. For details on connecting the hardware to Tessel see [the Pins and Ports section of the Hardware documentation](https://tessel.io/docs/hardware#pins-and-ports).
 
 ```js
 var port = tessel.port['A'];
@@ -351,7 +351,7 @@ Sends a Buffer `txbuf` to the client.
 
 ### UART
 
-A UART channel.
+A UART channel. For details on connecting the hardware to Tessel see [the Pins and Ports section of the Hardware documentation](https://tessel.io/docs/hardware#pins-and-ports).
 
 ```js
 var port = tessel.port['A'];
