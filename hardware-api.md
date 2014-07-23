@@ -90,19 +90,13 @@ console.log('Reading pin:', myPin.read());
 
 **Analog pins** can be any value between 0 and 1 (GND/0V and 3.3V).
 
-Tessel has six analog pins on the GPIO bank. All six can be used as inputs, but only one ('A1'/analog[0]) can be used as an output.
+Tessel has six analog pins on the GPIO bank. All six can be used as inputs, but should not be used as outputs.
 
-Here is an example of reading and writing analog values on GPIO pin ‘A1’. The same read syntax can be used to read any of the other analog pins:
+Here is an example of reading analog values.
 ```js
 var tessel = require('tessel'); // import tessel
 var gpio = tessel.port['GPIO']; // select the GPIO port
 var myPin = gpio.analog[0]; // can read on any of gpio.analog[0-5] or gpio.pin['A1'] through A6
-// Write a value - only available on GPIO bank A1/analog[0]
-myPin.write(0.5); // myPin.output(0.5) would do exactly the same thing
-// Read the pin
-console.log('Reading pin:', myPin.read());
-// Write a different value - only available on GPIO bank A1/analog[0]
-myPin.write(0.2);
 // Read the pin
 console.log('Reading pin:', myPin.read());
 ```
