@@ -64,15 +64,15 @@ BLE, on the other hand, exchanges data through a database located on one of the 
 There are some devices, such as cell phones and computers, which need to be able to connect to both types of devices. These devices will have Bluetooth hardware that separately supports both versions. This class of devices is referred to as **dual-mode**, contrary to a **single-mode** device, which is only compatible with same-version devices and dual-mode devices.
 
 ### BLE Roles
-The BLE specification allows a device to take on various roles that define the specific actions the device may be capable of.
+The BLE specification allows a device to take on various roles that define the specific actions the device may be capable of. There are really two types of roles, with each device in a network fulfilling one of each type of role. The two types are **central** or **peripheral**, and **client** or **server**.
 
 #### Central vs Peripheral
-The role of the central device is that of master. The central device searches for and establishes a connection with one or more peripheral devices.
+The central and peripheral roles describe the order of command in a BLE network. The role of the central device is similar to that of the master in Bluetooth Classic. The central device is responsible for searching for and establishing a connection with one or more peripheral devices.
 
-The role of the peripheral device is that of slave. The peripheral device advertises its connect-ability, as well as any services it might provide. The central can use that data to decide if it should connect to the peripheral or not.
+The role of the peripheral device is similar to that of the slave in Bluetooth Classic. The peripheral device advertises whether or not it is connectable, as well as any services it might provide. The central can use that data to decide if it should connect to the peripheral or not.
 
 #### Client vs Server
-In a typical connection, the central device will take on the role of client - requesting and sending data from and to one or more server devices.
+The client and server roles describe the data ownership and transmission relationship in a BLE network. In a typical network, the central device will take on the role of client - requesting and sending data from and to one or more server devices.
 
 Peripheral devices will typically take on the role of server. Servers keep a database of attributes that a connected client can write to, and read or subscribe to changes from.
 
@@ -86,7 +86,7 @@ Generic Attribute Profiles (GATT Profiles) are used to define the hierarchical s
 A characteristic represents one data attribute that a client can access. Each characteristic can store only a single value at a time. Each characteristic can have different access permissions such as read, write, and notify.
 
 ### Services
-A service is used to group a category of characteristics. All characteristics must belong to a service.
+A service is used to group a category of characteristics. All characteristics must belong to a service. Usually when central devices are looking for a device to connect to, they will look to see if they support a particular service, rather than an individual characteristic.
 
 ### UUIDs
 Every service and every characteristic must be assigned its own Universally Unique Identifier (UUID). This UUID is how devices will look for and recognize if another device supports a particular attribute. There is a set of reserved 16-bit and 32-bit UUIDs outlined in the core specification that have a predefined or reserved use across both services and characteristics. The list of profiles linked above makes use of this reserved space. If you are looking to create your own profile, the best way to get UUIDs is through the command line tool `uuidgen` if you are on OS X or Linux, or through a simple online service like http://www.uuidgen.com/.
@@ -213,7 +213,7 @@ Since beacons generally aren't meant to connect to other devices, this is pretty
 
 
 ## Connecting
-Now that we understand how peripherals let central devices know they're available, how does the central find them and initiate the connection?
+Now that we understand how peripherals let central devices know they're available, let's look at how the central finds them and initiates a connection.
 
 ### Scan for Peripherals
 The first step in discovering advertising peripherals is with a device scan. In the scanning process, the central will listen for advertisements and report when it finds one. On most platforms, there will be scanning options that let you filter discovered peripherals by the service UUIDs in their advertisements, and also prevent reporting of duplicate devices. Once you have discovered a suitable device to connect to, just send a connect command and you're ready to start exchanging data!
