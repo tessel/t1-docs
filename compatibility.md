@@ -82,6 +82,10 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
  - [server.ref](http://nodejs.org/api/net.html#net_server_ref) not implemented yet
  - [server.maxConnections](http://nodejs.org/api/net.html#net_server_maxconnections) not implemented yet
  - [server.getConnections](http://nodejs.org/api/net.html#net_server_getconnections_callback) not implemented yet
+ - [Event:'listening'](http://nodejs.org/api/net.html#net_event_listening) not implemented yet
+ - [Event:'connection'](http://nodejs.org/api/net.html#net_event_connection) not implemented yet
+ - [Event:'close'](http://nodejs.org/api/net.html#net_event_close) not implemented yet
+ - [Event:'error'](http://nodejs.org/api/net.html#net_event_error) not implemented yet
  - [socket.bufferSize](http://nodejs.org/api/net.html#net_socket_buffersize) not implemented yet
  - [socket.setEncoding](http://nodejs.org/api/net.html#net_socket_setencoding_encoding) not implemented yet
  - [socket.pause](http://nodejs.org/api/net.html#net_socket_pause) not implemented yet
