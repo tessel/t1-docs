@@ -1,0 +1,120 @@
+# USB communication between Tessel and Node on your PC
+
+Both Tessel and Node run JS, but you don't want all your host-side code on the Tessel. To keep your code and modules separate between the computer and the Tessel, we'll put the Tessel code in a subdirectory. The host and device each have their own `node_modules` for npm packages.
+
+```
+mkdir node_modules
+mkdir device
+mkdir device/node_modules
+```
+
+The `tessel` command line tool can also function as a library. You'll write a Node script that takes the place of `tessel run`, and not only deploys your code to the Tessel, but also communicates with it.
+
+```
+npm install tessel
+```
+Here's the code that runs on the PC. Put it in `host.js`.
+
+When we `require('tessel')` here, this is not the same as the `tessel` module for hardware access on the Tessel itself. This module is the library for Tessel USB communication.
+
+`tessel.findTessel` finds a Tessel connected to this computer and connects to it. 
+
+Once we've found a Tessel, we tell it to run our script. This works just like `tessel run` and bundles the `device/` directory. It bundles only `device/` and not the host code because `device/` has its own `node_modules`.
+
+With the script running, we connect the stdout and stderr of the process running on Tessel to the console, so that our `console.log` messages show.
+
+`device.send(msg)` sends an object to Tessel.
+
+`device.on('message', function (msg) { ... })` receives an event when an object is received from Tessel.
+
+The end of the file contains the code to exit cleanly when you Ctrl-C or if the Tessel script ends.
+
+---
+
+`host.js`
+~~~~
+var tessel = require('tessel');
+
+var script =  require.resolve('./device/index.js');
+
+var opts = {
+  stop: true, // stop existing script, if any
+  serial: process.env.TESSEL_SERIAL, // serial number (`undefined` picks the first one)
+};
+
+var args = [];
+ 
+tessel.findTessel(opts, function(err, device) {
+    if (err) throw err;
+    
+    device.run(script, args, {}, function () {
+          // Connect Tessel stdout / stderr to the console
+          device.stdout.resume();
+          device.stdout.pipe(process.stdout);
+          device.stderr.resume();
+          device.stderr.pipe(process.stderr);
+ 
+          var count = 0;
+ 
+          setInterval(function(){
+            device.send({count:count++, data: {obj: 'demo'}})
+          }, 4000);
+          
+          device.on('message', function (m) {
+            console.log('[PC] Message from Tessel:', m);
+          });
+ 
+          // Stop on Ctrl+C.
+          process.on('SIGINT', function() {
+            // Try to stop the process on the Tessel
+            device.stop();
+
+            setTimeout(function () {
+              // But if that fails, just exit
+              logs.info('Script aborted');
+              process.exit(131);
+            }, 200);
+          });
+ 
+          // When the script on Tessel exits, shut down
+          // USB communications and exit
+          device.once('script-stop', function (code) {
+            device.close(function () {
+              process.exit(code);
+            });
+          });
+    });
+});
+~~~~
+
+
+The code that runs on Tessel is very simple:
+
+When a message is received from the computer, the `process.on('message', function(msg) {` event triggers.
+  
+To send a message to the computer, call `process.send(msg)`
+
+---
+`device/index.js`
+~~~.js
+// device/index.js
+var tessel = require('tessel');
+
+// When we receive a message from the PC
+process.on('message', function(msg) {
+  console.log("[Tessel] Message from PC:", msg);
+});
+
+var counter = 0;
+
+// Every 5 seconds...
+setInterval(function() {
+  // Send a message to the computer
+  process.send({count: counter++});
+}, 5000);
+
+// Keep the event loop alive 
+process.ref();
+~~~
+
+Code examples in this document are placed in the [public domain](http://creativecommons.org/publicdomain/zero/1.0/).
