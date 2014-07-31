@@ -8,7 +8,7 @@ We've built an example for you to expand on:
 
 ```
 git clone https://github.com/tessel/docs.git
-cd docs/tutorial/usb_messages
+cd docs/tutorials/usb_messages
 npm install
 ```
 The directory structure looks like:
