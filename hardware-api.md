@@ -480,6 +480,12 @@ Called when wifi drops.
 &#x20;<a href="#api-wifi-on-timeout-callback-err" name="api-wifi-on-timeout-callback-err">#</a> wifi<b>.on</b>( 'timeout', callback(err) )  
 Called when the CC3k times out after the `.connect` call.
 
+&#x20;<a href="#api-wifi-on-error-callback-err" name="api-wifi-on-error-callback-err">#</a> wifi<b>.on</b>( 'error', callback(err) )  
+The `error` event will be called for any of the following actions:
+1. tried to disconnect while not connected
+2. tried to disconnect while in the middle of trying to connect
+1. tried to initialize a connection without first waiting for a timeout or a disconnect
+
 ## License
 
 MIT
