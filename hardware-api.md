@@ -12,6 +12,7 @@ Documentation for Tessel's hardware APIs. These are available for code running o
 * [I2C](#i2c)
 * [UART](#uart)
 * [System](#system)
+* [Wifi](#wifi)
 
 
 ### Tessel
@@ -161,7 +162,7 @@ An array of which pins are analog inputs. Is only available on the GPIO port.
 &#x20;<a href="#api-array-number-port-pwm" name="api-array-number-port-pwm">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.pwm</b> = []  
 An array of which pins are PWM outputs (may overlap analog array).
 
-&#x20;<a href="#api-number-port-pwmFrequency" name="api-number-port-pwmFrequency">#</a> port<b>.pwmFrequency</b> ( frequency )  
+&#x20;<a href="#api-port-pwmFrequency-frequency" name="api-port-pwmFrequency-frequency">#</a> port<b>.pwmFrequency</b> ( frequency )  
 Sets the frequency of PWM for a given port. Only the GPIO bank supports PWM pins on Tessel.
 
 &#x20;<a href="#api-array-number-port-pin" name="api-array-number-port-pin">#</a> <i>array&lt;number&gt;</i>&nbsp; port<b>.pin</b> = []  
@@ -188,7 +189,7 @@ Set `pin` as input or output.
 &#x20;<a href="#api-pin-write-value" name="api-pin-write-value">#</a> pin<b>.write</b> ( value )  
 Behaves the same as `pin.output`. Sets pin as an output with `value`. Digital pins: output is set HIGH if `value` is truthy, otherwise LOW.
 
-&#x20;<a href="#api-pin-pwmDutyCycle-value" name="api-pin-pwmDutyCycle-value">#</a> pin<b>.pwmDutyCycle</b> ( dutyCycleFloat )  
+&#x20;<a href="#api-pin-pwmDutyCycle-dutyCycleFloat" name="api-pin-pwmDutyCycle-dutyCycleFloat">#</a> pin<b>.pwmDutyCycle</b> ( dutyCycleFloat )  
 Creates a PWM signal with a duty cycle of `dutyCycleFloat`, the fraction of the PWM period in which the signal is high. Range is between [0-1] inclusive. Only works with pins with true property of `isPWM`.
 
 &#x20;<a href="#api-pin-rawWrite-value" name="api-pin-rawWrite-value">#</a> pin<b>.rawWrite</b> ( value )  
@@ -208,7 +209,7 @@ Returns the mode of the pin.
 
 External GPIO Interrupts can be used much like regular Node EventEmitters. There are seven external interrupts you can work with. You can read more in depth discussion about gpio interrupts in [our External GPIO Walkthrough](https://github.com/tessel/docs/blob/master/tutorials/gpio-interrupts.md).
 
-&#x20;<a href="#api-pin-on-type-callback-time-type" name="api-pin-watch-type-callback-time-type">#</a> pin<b>.on</b> ( type, callback(time, type) )  
+&#x20;<a href="#api-pin-on-type-callback-time-type" name="api-pin-on-type-callback-time-type">#</a> pin<b>.on</b> ( type, callback(time, type) )  
 Sets a listener for a signal edge on `pin`. `time` is the milliseconds since boot up and `type` can be one of `rise`, `fall`, `change`. The `high` and `low` level triggers cannot be used with `on` because they would fire repeatedly and wreak havoc on the runtime.
 
 &#x20;<a href="#api-pin-once-type-callback-time-type" name="api-pin-once-type-callback-time-type">#</a> pin<b>.once</b> ( type, callback(time, type) )  
@@ -217,7 +218,7 @@ Sets a listener for a a single event of the trigger type on the `pin`. `time` is
 &#x20;<a href="#api-pin-removeListener-type-listener" name="api-pin-removeListener-type-listener">#</a> pin<b>.removeListener</b> ( type, listener )  
 Removes the `listener` callback for a given `type` of trigger (eg. 'rise' or 'high') on a pin.
 
-&#x20;<a href="#api-pin-removeListener-type-listener" name="api-pin-removeListener-type-listener">#</a> pin<b>.removeAllListeners</b> ( type )  
+&#x20;<a href="#api-pin-removeAllListeners-type" name="api-pin-removeAllListeners-type">#</a> pin<b>.removeAllListeners</b> ( type )  
 Removes all of the listeners for a given trigger `type` on a `pin`.
 
 ### Buttons
@@ -282,7 +283,7 @@ Creates a SPI object. Options is an object specifying any of the following:
 &#x20;<a href="#api-spi-transfer-txbuf-callback-err-rxbuf" name="api-spi-transfer-txbuf-callback-err-rxbuf">#</a> spi<b>.transfer</b> ( txbuf, callback(err, rxbuf) )  
 Transfers a Buffer `txbuf` to the slave and receives a response in `rxbuf`.
 
-&#x20;<a href="#api-spi-transfer-batch-txbuf-callback-err-rxbuf" name="api-spi-transfer-batch-txbuf-callback-err-rxbuf">#</a> spi<b>.transferBatch</b> ( txbuf, [options], callback(err, rxbuf) )  
+&#x20;<a href="#api-spi-transferBatch-txbuf-options-callback-err-rxbuf" name="api-spi-transferBatch-txbuf-options-callback-err-rxbuf">#</a> spi<b>.transferBatch</b> ( txbuf, [options], callback(err, rxbuf) )  
 Transfers a series of commands stored in a Buffer `txbuf` by splitting `txbuf` into chunks of a specified size. Sends each command in `txbuf` to the slave and receives a response in `rxbuf`. Options is an object specifying any of the following:
 
 * **chunkSize** (optional) &mdash; An optional value specifying the interval size. Defaults to `txbuf.length`.
@@ -294,28 +295,28 @@ Reads `len` bytes from a slave. Returns a buffer.
 &#x20;<a href="#api-spi-send-txbuf-callback-err" name="api-spi-send-txbuf-callback-err">#</a> spi<b>.send</b> ( txbuf, callback(err) )  
 Sends a Buffer `txbuf` to the slave.
 
-&#x20;<a href="#api-spi-send-batch-txbuf-callback-err" name="api-spi-send-batch-txbuf-callback-err">#</a> spi<b>.sendBatch</b> ( txbuf, [options], callback(err) )  
+&#x20;<a href="#api-spi-sendBatch-txbuf-options-callback-err" name="api-spi-sendBatch-txbuf-options-callback-err">#</a> spi<b>.sendBatch</b> ( txbuf, [options], callback(err) )  
 Sends a series of commands stored in a Buffer `txbuf` by splitting txbuf into chunks of a specified size. Sends each command in `txbuf` to the slave. Options is an object specifying any of the following:
 
 * **chunkSize** (optional) &mdash; An optional value specifying the interval size. Defaults to `txbuf.length`.
 * **repeat** (optional) &mdash; An optional value specifying how many times the `txbuf` will be transmitted. Used for transmitting the same buffer multiple times. Defaults to 1.
 
-&#x20;<a href="#api-spi-setClockSpeed-clockspeed" name="api-spi-setClockSpeed-clockspeed">#</a> spi<b>.setClockSpeed</b> ( clockspeed )
+&#x20;<a href="#api-spi-setClockSpeed-clockspeed" name="api-spi-setClockSpeed-clockspeed">#</a> spi<b>.setClockSpeed</b> ( clockspeed )  
 Sets the clockspeed.
 
-&#x20;<a href="#api-spi-setDataMode-mode" name="api-spi-setDataMode-mode">#</a> spi<b>.setDataMode</b> ( mode )
+&#x20;<a href="#api-spi-setDataMode-mode" name="api-spi-setDataMode-mode">#</a> spi<b>.setDataMode</b> ( mode )  
 Sets the data mode.
 
-&#x20;<a href="#api-spi-setFrameMode-mode" name="api-spi-setFrameMode-mode">#</a> spi<b>.setFrameMode</b> ( mode )
+&#x20;<a href="#api-spi-setFrameMode-mode" name="api-spi-setFrameMode-mode">#</a> spi<b>.setFrameMode</b> ( mode )  
 Sets the frame mode.
 
-&#x20;<a href="#api-spi-setRole-role" name="api-spi-setRole-role">#</a> spi<b>.setRole</b> ( role )
+&#x20;<a href="#api-spi-setRole-role" name="api-spi-setRole-role">#</a> spi<b>.setRole</b> ( role )  
 Sets the role.
 
-&#x20;<a href="#api-spi-setChipSelectMode-mode" name="api-spi-setChipSelectMode-mode">#</a> spi<b>.setChipSelectMode</b> ( mode )
+&#x20;<a href="#api-spi-setChipSelectMode-mode" name="api-spi-setChipSelectMode-mode">#</a> spi<b>.setChipSelectMode</b> ( mode )  
 Sets the chip select settings.
 
-&#x20;<a href="#api-spi-lock-callback" name="api-spi-lock-callback">#</a> spi<b>.lock</b> ( callback )
+&#x20;<a href="#api-spi-lock-callback" name="api-spi-lock-callback">#</a> spi<b>.lock</b> ( callback )  
 Locks SPI so that only one SPI port is communicating at a time. To read more about SPI Bus Locking, check out our discussion about the [Bus Locking and Raw Transfers API](https://github.com/tessel/docs/blob/master/detailedWalkthroughs/spiLocksRawTransfers.md).
 
 
@@ -367,7 +368,8 @@ uart.pipe(process.stdout);
 ```
 
 
-&#x20;<a href="#api-new-port-UART-idx-options-implements-DuplexStream" name="api-new-port-UART-idx-options-implements-DuplexStream">#</a> <i>new</i>&nbsp; port<b>.UART</b> ( [idx[, options]] ) implements DuplexStream  
+&#x20;<a href="#api-new-port-UART-idx-options" name="api-new-port-UART-idx-options">#</a> <i>new</i>&nbsp; port<b>.UART</b> ( [idx[, options]] )  
+ implements DuplexStream  
 Creates a UART channel. Defaults: `{"baudrate": 9600, "dataBits": 8, "parity": "even", "stopBits": 2}`
 
 &#x20;<a href="#api-array-number-uart-baudRates" name="api-array-number-uart-baudRates">#</a> <i>array&lt;number&gt;</i>&nbsp; uart<b>.baudRates</b> = []  
@@ -391,13 +393,99 @@ Writes a buffer to the UART connection.
 &#x20;<a href="#api-uart-emits-data" name="api-uart-emits-data">#</a> uart &rarr; <i>emits "data"</i>  
 Data that arrives over the UART channel is sent as a Node.js stream.
 
-<!--/markdocs:generated-->
-
 ### System
 
-&#x20;<a href="#api-process-sendfile-filename-buf" name="api-process-sendfile-filename-buf">#</a> process<b>.sendfile</b> ( filename, buffer )  A `buffer` can be sent over USB to a file named `filename` on a host computer's file system. You must start the script with -u and the argument of which directory to save the folder. For example, `tessel run test.js -u ./recordings` will save the file in the recordings directory.
+&#x20;<a href="#api-process-sendfile-filename-buffer" name="api-process-sendfile-filename-buffer">#</a> process<b>.sendfile</b> ( filename, buffer )  
+  A buffer can be sent over USB to a file named filename on a host computer's file system. You must start the script with -u and the argument of which directory to save the folder. For example, tessel run test.js -u ./recordings will save the file in the recordings directory.  
 
-&#x20;<a href="#api-deviceId" name="api-deviceId">#</a> tessel<b>.deviceId</b> (  )  Get the Inique ID of your Tessel.
+&#x20;<a href="#api-tessel-deviceId" name="api-tessel-deviceId">#</a> tessel<b>.deviceId</b> ()  
+  Get the Inique ID of your Tessel.  
+
+###Wifi
+Access Wifi from JS, including connection/dropping events, SmartConfig settings, WLAN settings, and finding available networks.
+
+Access through:
+
+```.js
+var wifi = require('wifi-cc3000');
+```
+
+####Methods:
+
+&#x20;<a href="#api-wifi-connect-wifiSettings-callback-err-res" name="api-wifi-connect-wifiSettings-callback-err-res">#</a> wifi<b>.connect</b>( wifiSettings, [callback(err, res)] )  
+Connects to an access point. Takes in an optional callback. The `connected`, `disconnected`, and `timeout` events are emitted. Returns the wifi object.
+
+If there is already another wifi connection being initialized (from the command line, for example), this will error out immediately.
+
+`wifiSettings` is an object that consists of:
+
+```.js
+{ ssid: // this can either be a string or a buffer
+  , password: // this can either be a string or a buffer. Use a buffer if you need to pass in hex.
+  , security: defaults to wpa2 
+  , timeout: defaults to 20s
+}
+```
+
+`res` contains the following:
+
+```.js
+res.ip;
+res.gateway;
+res.dns;
+res.ssid;
+res.macAddress; // not exposed yet, will add this when we add firmware support for mac address
+```
+
+&#x20;<a href="#api-wifi-isConnected" name="api-wifi-isConnected">#</a> wifi<b>.isConnected</b>()  
+Returns `true` if connected, `false` if not connected.
+
+&#x20;<a href="#api-wifi-isBusy" name="api-wifi-isBusy">#</a> wifi<b>.isBusy</b>()  
+Returns `true` if the CC3k is currently trying to connect/disconnect. Recommended to wait until the CC3k is not busy before issuing commands. After a request has been made to initiate a connection, the CC3k will be "busy" until it receives a connect or a disconnect call. However, sometimes the CC3k never gets a callback (usually more common with weak wifi strength). It's up to the user to decide whether or not to timeout and ignore the `isBusy`.
+
+&#x20;<a href="#api-wifi-connection" name="api-wifi-connection">#</a> wifi<b>.connection</b>()  
+Returns the details of the connection object or null if not connected. Connection object is the same as the result in `wifi.connect`
+
+&#x20;<a href="#api-wifi-reset-callback" name="api-wifi-reset-callback">#</a> wifi<b>.reset</b>( [callback] )  
+Returns the wifi object. Does a software reset of the wifi chip. Useful for forcing a fastConnect on boot. Callback is optional.
+
+&#x20;<a href="#api-wifi-disable-callback" name="api-wifi-disable-callback">#</a> wifi<b>.disable</b>( [callback] )  
+Returns the wifi object. Turns off the wifi chip. Saves on power. Callback is optional.
+
+&#x20;<a href="#api-wifi-enable-callback" name="api-wifi-enable-callback">#</a> wifi<b>.enable</b>( callback )  
+Returns the wifi object. Turns on the wifi chip.
+
+&#x20;<a href="#api-wifi-disconnect-callback" name="api-wifi-disconnect-callback">#</a> wifi<b>.disconnect</b>( callback )  
+Disconnects from the network.
+
+&#x20;<a href="#api-wifi-isEnabled" name="api-wifi-isEnabled">#</a> wifi<b>.isEnabled</b>()  
+Returns `true` if the CC3k is enabled (powered on, regardless of connection status). Returns `false` if the CC3k is powered off.
+
+####Events
+
+&#x20;<a href="#api-wifi-on-connect-callback-err-res" name="api-wifi-on-connect-callback-err-res">#</a> wifi<b>.on</b>( 'connect', callback(err, res) )  
+Event emitted on connection. `res` contains the following:
+
+```.js
+res.ip;
+res.gateway;
+res.dns;
+res.ssid;
+res.macAddress; // will add when its exposed in firmware
+```
+
+&#x20;<a href="#api-wifi-on-disconnect-callback-err" name="api-wifi-on-disconnect-callback-err">#</a> wifi<b>.on</b>( 'disconnect', callback(err) )  
+Called when wifi drops.
+
+&#x20;<a href="#api-wifi-on-timeout-callback-err" name="api-wifi-on-timeout-callback-err">#</a> wifi<b>.on</b>( 'timeout', callback(err) )  
+Called when the CC3k times out after the `.connect` call.
+
+&#x20;<a href="#api-wifi-on-error-callback-err" name="api-wifi-on-error-callback-err">#</a> wifi<b>.on</b>( 'error', callback(err) )  
+The `error` event will be called for any of the following actions:
+
+1. tried to disconnect while not connected
+2. tried to disconnect while in the middle of trying to connect
+1. tried to initialize a connection without first waiting for a timeout or a disconnect
 
 ## License
 
