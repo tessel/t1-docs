@@ -4,22 +4,10 @@ A collection of tools for use with Tessel. Community-created or built by Technic
 
 ### Contents
 
-* [Contributing](#contributing)
 * [Tutorials](#tutorials)
 * [Software tools](#software-tools)
 * [Hardware libraries](#hardware-libraries)
-
-
-### Contributing
-
-&#x20;<a href="#api-Technical-Machine-contribution-guide-https-github-com-tessel-contribution-guide" name="api-Technical-Machine-contribution-guide-https-github-com-tessel-contribution-guide">#</a> [Technical Machine contribution guide]( https://github.com/tessel/contribution-guide )  
-A thorough explanation of how the Tessel software architecture works as a whole, descriptions of the individual pieces, and the processes for contributing code
-
-&#x20;<a href="#api-Technical-Machine-style-guide-https-github-com-tessel-style" name="api-Technical-Machine-style-guide-https-github-com-tessel-style">#</a> [Technical Machine style guide]( https://github.com/tessel/style )  
-Defines style for Technical Machine code, docs, and directories, particularly Tessel modules
-
-&#x20;<a href="#api-RFC-category-on-the-Tessel-forums-https-forums-tessel-io-category-rfc" name="api-RFC-category-on-the-Tessel-forums-https-forums-tessel-io-category-rfc">#</a> [RFC category on the Tessel forums]( https://forums.tessel.io/category/rfc )  
-Technical Machine & community members request comments on APIs and projects
+* [Contributing](#contributing)
 
 
 ### Tutorials
@@ -118,3 +106,15 @@ Library to run a strand of neopixels from Tessel
 
 &#x20;<a href="#api-ir-codes-https-www-npmjs-org-package-ir-codes" name="api-ir-codes-https-www-npmjs-org-package-ir-codes">#</a> [ir-codes]( https://www.npmjs.org/package/ir-codes )  
 Generates signal buffers for different infrared device manufacturers
+
+
+### Contributing
+
+&#x20;<a href="#api-Technical-Machine-contribution-guide-https-github-com-tessel-contribution-guide" name="api-Technical-Machine-contribution-guide-https-github-com-tessel-contribution-guide">#</a> [Technical Machine contribution guide]( https://github.com/tessel/contribution-guide )  
+A thorough explanation of how the Tessel software architecture works as a whole, descriptions of the individual pieces, and the processes for contributing code
+
+&#x20;<a href="#api-Technical-Machine-style-guide-https-github-com-tessel-style" name="api-Technical-Machine-style-guide-https-github-com-tessel-style">#</a> [Technical Machine style guide]( https://github.com/tessel/style )  
+Defines style for Technical Machine code, docs, and directories, particularly Tessel modules
+
+&#x20;<a href="#api-RFC-category-on-the-Tessel-forums-https-forums-tessel-io-category-rfc" name="api-RFC-category-on-the-Tessel-forums-https-forums-tessel-io-category-rfc">#</a> [RFC category on the Tessel forums]( https://forums.tessel.io/category/rfc )  
+Technical Machine & community members request comments on APIs and projects
