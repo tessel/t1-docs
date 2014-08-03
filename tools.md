@@ -93,7 +93,10 @@ AT&T M2X API client for node.js based Tessel
 Beyond the [modules](tessel.io/modules), libraries and examples for connecting with Tessel.
 
 &#x20;<a href="#api-pir-https-www-npmjs-org-package-pir" name="api-pir-https-www-npmjs-org-package-pir">#</a> [pir]( https://www.npmjs.org/package/pir )  
-Node library for a PIR motion detector
+Node/Tessel library for a PIR motion detector
+
+&#x20;<a href="#api-pulse-sensor-https-www-npmjs-org-package-pulsesensor" name="api-pulse-sensor-https-www-npmjs-org-package-pulsesensor">#</a> [pulse sensor]( https://www.npmjs.org/package/pulsesensor )  
+Node/Tessel library for a pulse sensor
 
 &#x20;<a href="#api-tessel-ht16k33-https-www-npmjs-org-package-tessel-ht16k33" name="api-tessel-ht16k33-https-www-npmjs-org-package-tessel-ht16k33">#</a> [tessel-ht16k33]( https://www.npmjs.org/package/tessel-ht16k33 )  
 Use the Adafruit HT16K33 LED Backpack with your Tessel
