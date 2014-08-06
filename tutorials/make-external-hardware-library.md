@@ -64,19 +64,54 @@ Your readme is your documentation. For consistency with Tessel modules, check ou
 Connect your hardware based on the [hardware](https://tessel.io/docs/hardware#pins-and-ports) and [API](https://tessel.io/docs/hardwareAPI#pins) documentation.
 Instructions for establishing SPI/UART/I2C are part of the API docs.
 
-At the top of your README, write which pins should be connected to which between the Tessel and the external hardware. A picture of the setup would also be useful.
+At the top of your README, write which pins should be connected to which between the Tessel and the external hardware.
+A picture of the setup would also be useful to include in the README.
 
 ## Establishing communication
 
+Set up something basic to make sure you can connect to the sensor.
+I like to start with example code: require Tessel, read the pin, see what kind of values we get.
+
+If you're working with more complex hardware, you might need to wake up the hardware with a wakeup sequence. This sort of thing will be documented in the part's datasheet.
+
+If there is existing Arduino code for the hardware, this can be a good starting point to poke around and get an understanding of how to interface with the device.
+
 ## Writing an API
 
-## Writing an example
+Once you're able to connect and get some basic functionality out of the device, start writing your API.
 
-## Writing the docs
+Start with the object constructor and the `use` function in your index.js file. Make sure you can require the hardware and have it connect.
+
+Now, draft up your API. How might people want to interface with this piece of hardware? How can you make it intuitive? If you'd like feedback on a proposed API, feel free to post it to [the RFC category of our forums](https://forums.tessel.io/category/rfc).
+
+As a general rule, top priority is intuitive interaction. Second priority is exposing as much as you can.
 
 ## Writing tests
 
-## Publishing
-Good tutorial for npm
+Write tests as you go.
 
-Publish to tools doc
+* Initializing the object should callback the object, return the object, and emit the object as a ready event.
+* Super thorough tests check to make sure errors are emitted when they should be.
+
+## Writing an example
+
+The example named <hardware>.js should be a simple "is it working" example.
+
+Feel free to write other examples to show off different uses of the hardware and the API you've built!
+
+## Writing the docs
+
+Please follow the template formatting [here](https://github.com/tessel/style/blob/master/module_RM_template.md) to write your README.
+
+Document every method, event, and property.
+
+Complete documentation is important! If you don't document a method, most people will never realize that method exists.
+
+## Publishing
+Publish your module to npm! If you've never done that, [this](https://gist.github.com/coolaj86/1318304) is a good tutorial. Be sure to include 'tessel' in the keywords of your package.json so that people can find it!
+
+Other places you might want to publish as well:
+
+* [This list of tools to use with Tessel](https://github.com/tessel/docs/blob/master/tools.md)
+* [Tessel's forums](https://forums.tessel.io/)
+* [The Tessel projects page](projects.tessel.io)
