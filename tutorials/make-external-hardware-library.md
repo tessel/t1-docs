@@ -1,10 +1,10 @@
-# Making a Tessel-style Library for External Hardware
+# Making a Tessel-style Library for Third-Party Hardware
 
 There's a lot of existing hardware from Seeed, Adafruit, and elsewhere that can be used with Tessel. Though it's not that difficult to hack together a project based on the hardware API docs, making an npm module for the hardware is a nice way to interface cleanly with the hardware, and reuse a custom API across projects.
 
 This tutorial walks you through the process to go from a piece of hardware to a Tessel-style npm module.
 
-For this tutorial, I used a PIR motion detector from Adafruit.
+For this tutorial, I used a [PIR motion detector from Adafruit](http://www.adafruit.com/products/189) to make [this npm module](https://www.npmjs.org/package/pir).
 
 ## Understanding your hardware
 Before you start, it would be a good idea to check out Tessel's [hardware docs](tessel.io/docs/hardware) and [hardware api docs](tessel.io/docs/hardwareAPI). These two documents will give you a good idea of Tessel's capabilities and available interfaces.
@@ -18,7 +18,7 @@ Tessel can:
 * Communicate over SPI (MISO, MOSI, and SCK)
 * Communicate over I2C (SDA and SLC)
 * Communicate over UART (TX and RX)
-* Provide 5V power
+* Provide 5V power* (if Tessel is powered over USB. Please see [Powering Tessel](https://tessel.io/docs/power))
 * Provide 3.3V power (a digital pin set to output(1) (high))
 
 For the PIR sensor, I needed one 3.3V digital signal pin and 5V of power. It will typically say what you need on the manufacturer's page, straight out or on a datasheet. Adafruit typically says these things in the [description field](http://www.adafruit.com/products/189#description-anchor) of a product page, as does [Seeed](http://www.seeedstudio.com/depot/PIR-Motion-sensor-module-p-74.html).
@@ -32,8 +32,8 @@ Here are notes on some of the key files:
 ###index.js ([template](https://github.com/tessel/style/blob/master/Templates/index.js))
 This file is the driver for the hardware. Here's the basic setup:
 
-* Require util and the event emitter, along with any other dependencies.
-* Make a constructor function that instantiates the hardware as an object. Its two arguments are "hardware" and a callback. The function should emit a 'ready' event that returns the object when it is ready.
+* Require util and the event emitter, along with any other dependencies. These let you write event-driven APIs.
+* Make a constructor function that instantiates the hardware as an object. Its two arguments are "hardware" and a callback. The function should emit a "ready" event that returns the object when it is ready. For the PIR, it's "ready" as soon as the object is instantiated. For something more complex, e.g. the Ambient module, it's not "ready" until it verifies that it has the correct firmware version.
  * `hardware` specifies where the hardware is connected to Tessel. For modules, it's a port. For external hardware, this will most likely be a port and a pin (e.g. tessel.port['GPIO'].pin['A3']). You should probably also add error handling in case the wrong hardware type is passed in (e.g. just a port when you need a pin) or for specification of the wrong type of pin (you can see which pins are digital, analog and PWM in the examples [here](https://tessel.io/docs/hardwareAPI#pins)). You can check the [PIR code](https://github.com/Frijol/PIR/blob/master/index.js) for examples of this error handling.
  * `callback(err, obj)` should return an error if there are any errors connecting, or if there are no errors, should return the object as its second argument.
 * Functions: this is the fun part! What do you want as the API for your hardware? What's useful? What do you want to expose?
@@ -95,7 +95,7 @@ Write tests as you go.
 
 ## Writing an example
 
-The example named <hardware>.js should be a simple "is it working" example.
+The example named `<hardware>.js` should be a simple "is it working" example.
 
 Feel free to write other examples to show off different uses of the hardware and the API you've built!
 
