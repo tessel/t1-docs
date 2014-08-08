@@ -22,7 +22,7 @@ Both the Seeeduino and the Crowduino can switch between 5V and 3.3V.
 
 
 ### Arduino Uno
-Arduino Unos send over signals at 5V and **this will damage Tesssel**. If you are planning on using an Arduino Uno, you need to make a [5V to 3.3V level converter](https://www.sparkfun.com/products/12009) which shifts the 5V UART TX signal from the Arduino to 3.3V. 
+Arduino Unos send over signals at 5V and **this will damage Tessel**. If you are planning on using an Arduino Uno, you need to make a [5V to 3.3V level converter](https://www.sparkfun.com/products/12009) which shifts the 5V UART TX signal from the Arduino to 3.3V. 
 
 The UART TX coming **from** Tessel is at max 3.3V, but this will register as a digital "high" signal so it does not need to be boosted up to 5V.
 
@@ -110,7 +110,7 @@ setInterval(function(){
 }, 3000);
 ```
 
-Run the code with `tessel run uart.js`, or if you want this to be persistant through power cycles, `tessel push uart.js`.
+Run the code with `tessel run uart.js`, or if you want this to be persistent through power cycles, `tessel push uart.js`.
 
 ##Step 5: Test it
 You should be able to go into the Arduino console and see the blue and green LEDs on Tessel change as you enter a "1" or a "2".
