@@ -354,7 +354,7 @@ A UART channel. For details on connecting the hardware to Tessel see [the Pins a
 var port = tessel.port['A'];
 var uart = new port.UART({
   baudrate: 115200
-})
+});
 
 uart.write('ahoy hoy\n')
 uart.on('data', function (data) {
@@ -364,7 +364,6 @@ uart.on('data', function (data) {
 // UART objects are streams!
 // pipe all incoming data to stdout:
 uart.pipe(process.stdout);
-})
 ```
 
 
