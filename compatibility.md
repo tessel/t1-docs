@@ -76,38 +76,17 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
  - [Global Agent](http://nodejs.org/api/https.html#https_https_globalagent) not implemented yet.
 * [modules](http://nodejs.org/api/modules.html)
 * [net](http://nodejs.org/api/net.html)
- - [net.createConnections](http://nodejs.org/api/net.html#net_net_createconnection_options_connectionlistener) not implemented yet
- - [server.address](http://nodejs.org/api/net.html#net_server_address) not implemented yet
  - [server.unref](http://nodejs.org/api/net.html#net_server_unref) not implemented yet
  - [server.ref](http://nodejs.org/api/net.html#net_server_ref) not implemented yet
  - [server.maxConnections](http://nodejs.org/api/net.html#net_server_maxconnections) not implemented yet
  - [server.getConnections](http://nodejs.org/api/net.html#net_server_getconnections_callback) not implemented yet
- - [Event:'listening'](http://nodejs.org/api/net.html#net_event_listening) not implemented yet
- - [Event:'connection'](http://nodejs.org/api/net.html#net_event_connection) not implemented yet
- - [Event:'close'](http://nodejs.org/api/net.html#net_event_close) not implemented yet
- - [Event:'error'](http://nodejs.org/api/net.html#net_event_error) not implemented yet
  - [socket.bufferSize](http://nodejs.org/api/net.html#net_socket_buffersize) not implemented yet
- - [socket.setEncoding](http://nodejs.org/api/net.html#net_socket_setencoding_encoding) not implemented yet
- - [socket.pause](http://nodejs.org/api/net.html#net_socket_pause) not implemented yet
- - [socket.resume](http://nodejs.org/api/net.html#net_socket_resume) not implemented yet
- - [socket.setTimeout](http://nodejs.org/api/net.html#net_socket_settimeout_timeout_callback) not implemented yet
- - [socket.setNoDelay](http://nodejs.org/api/net.html#net_socket_setnodelay_nodelay) not implemented yet
- - [socket.setKeepAlive](http://nodejs.org/api/net.html#net_socket_setkeepalive_enable_initialdelay) not implemented yet
- - [socket.address](http://nodejs.org/api/net.html#net_socket_address) not implemented yet
+ - [socket.setNoDelay](http://nodejs.org/api/net.html#net_socket_setnodelay_nodelay) not implemented
+ - [socket.setKeepAlive](http://nodejs.org/api/net.html#net_socket_setkeepalive_enable_initialdelay) not implemented
  - [socket.unref](http://nodejs.org/api/net.html#net_socket_unref) not implemented yet
  - [socket.ref](http://nodejs.org/api/net.html#net_socket_ref) not implemented yet
- - [socket.remoteAddress](http://nodejs.org/api/net.html#net_socket_remoteaddress) not implemented yet
- - [socket.remotePort](http://nodejs.org/api/net.html#net_socket_remoteport) not implemented yet
- - [socket.localAddress](http://nodejs.org/api/net.html#net_socket_localaddress) not implemented yet
- - [socket.localPort](http://nodejs.org/api/net.html#net_socket_localport) not implemented yet
  - [socket.bytesRead](http://nodejs.org/api/net.html#net_socket_localport) not implemented yet
  - [socket.bytesWritten](http://nodejs.org/api/net.html#net_socket_byteswritten) not implemented yet
- - [Event:'timeout'](http://nodejs.org/api/net.html#net_event_timeout) not implemented yet
- - [Event:'drain'](http://nodejs.org/api/net.html#net_event_drain) not implemented yet
- - [Net.isIP](http://nodejs.org/api/net.html#net_net_isip_input) not implemented yet
- - [Net.isIPV4](http://nodejs.org/api/net.html#net_net_isipv4_input) not implemented yet
- - [Net.isIPV6](http://nodejs.org/api/net.html#net_net_isipv6_input) not implemented yet
- 
 * [os](http://nodejs.org/api/os.html)
 * [path](http://nodejs.org/api/path.html)
 * [process](http://nodejs.org/api/process.html)
@@ -121,6 +100,7 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
 * [querystring](http://nodejs.org/api/querystring.html)
 * [smalloc](http://nodejs.org/api/smalloc.html)
 * [stream](http://nodejs.org/api/stream.html)
+ - [readable.setEncoding](http://nodejs.org/api/stream.html#stream_readable_setencoding_encoding) not implemented yet
 * [sys](http://nodejs.org/api/sys.html)
 * [timers](http://nodejs.org/api/timers.html)
 * [tracing](http://nodejs.org/api/tracing.html)
