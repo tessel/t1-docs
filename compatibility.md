@@ -76,17 +76,22 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
  - [Global Agent](http://nodejs.org/api/https.html#https_https_globalagent) not implemented yet.
 * [modules](http://nodejs.org/api/modules.html)
 * [net](http://nodejs.org/api/net.html)
+ - Some socket options may not be possible to configure (at least on a per-connection basis) with the CC3000 drivers:
+ - [socket.setNoDelay](http://nodejs.org/api/net.html#net_socket_setnodelay_nodelay) not implemented, [#342](https://github.com/tessel/runtime/issues/342)
+ - [socket.setKeepAlive](http://nodejs.org/api/net.html#net_socket_setkeepalive_enable_initialdelay) not implemented, [#342](https://github.com/tessel/runtime/issues/342)
+ - ['allowHalfOpen' socket/server option](http://nodejs.org/api/net.html#net_net_createserver_options_connectionlistener) not implemented yet, [#409](https://github.com/tessel/runtime/issues/409)
+ - ['fd' socket option](http://nodejs.org/api/net.html#net_new_net_socket_options) not implemented
+ - These are dependent on currently missing runtime support, [#266](https://github.com/tessel/runtime/issues/266):
  - [server.unref](http://nodejs.org/api/net.html#net_server_unref) not implemented yet
  - [server.ref](http://nodejs.org/api/net.html#net_server_ref) not implemented yet
- - [server.maxConnections](http://nodejs.org/api/net.html#net_server_maxconnections) not implemented yet
- - [server.getConnections](http://nodejs.org/api/net.html#net_server_getconnections_callback) not implemented yet
- - [socket.bufferSize](http://nodejs.org/api/net.html#net_socket_buffersize) not implemented yet
- - [socket.setNoDelay](http://nodejs.org/api/net.html#net_socket_setnodelay_nodelay) not implemented
- - [socket.setKeepAlive](http://nodejs.org/api/net.html#net_socket_setkeepalive_enable_initialdelay) not implemented
  - [socket.unref](http://nodejs.org/api/net.html#net_socket_unref) not implemented yet
  - [socket.ref](http://nodejs.org/api/net.html#net_socket_ref) not implemented yet
- - [socket.bytesRead](http://nodejs.org/api/net.html#net_socket_localport) not implemented yet
- - [socket.bytesWritten](http://nodejs.org/api/net.html#net_socket_byteswritten) not implemented yet
+ - These would be welcome contributions if they are needed by anyone:
+ - [server.maxConnections](http://nodejs.org/api/net.html#net_server_maxconnections) not implemented yet, [#341](https://github.com/tessel/runtime/issues/341)
+ - [server.getConnections](http://nodejs.org/api/net.html#net_server_getconnections_callback) not implemented yet, [#341](https://github.com/tessel/runtime/issues/341)
+ - [socket.bufferSize](http://nodejs.org/api/net.html#net_socket_buffersize) not implemented yet, [#339](https://github.com/tessel/runtime/issues/339)
+ - [socket.bytesRead](http://nodejs.org/api/net.html#net_socket_localport) not implemented yet, [#339](https://github.com/tessel/runtime/issues/339)
+ - [socket.bytesWritten](http://nodejs.org/api/net.html#net_socket_byteswritten) not implemented yet, [#339](https://github.com/tessel/runtime/issues/339)
 * [os](http://nodejs.org/api/os.html)
 * [path](http://nodejs.org/api/path.html)
 * [process](http://nodejs.org/api/process.html)
@@ -100,7 +105,6 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
 * [querystring](http://nodejs.org/api/querystring.html)
 * [smalloc](http://nodejs.org/api/smalloc.html)
 * [stream](http://nodejs.org/api/stream.html)
- - [readable.setEncoding](http://nodejs.org/api/stream.html#stream_readable_setencoding_encoding) not implemented yet
 * [sys](http://nodejs.org/api/sys.html)
 * [timers](http://nodejs.org/api/timers.html)
 * [tracing](http://nodejs.org/api/tracing.html)
