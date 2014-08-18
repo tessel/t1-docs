@@ -48,11 +48,20 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
  - Most of the Node library is not yet supported. The method that IS implemented is:
   [resolve](http://nodejs.org/api/dns.html#dns_dns_resolve_domain_rrtype_callback)
 * [events](http://nodejs.org/api/events.html)
-* [fs](http://nodejs.org/api/fs.html)
+* [fs](http://nodejs.org/api/fs.html) — builtin
  - Async and sync versions of file/directory permissions/owner related functions are not yet implemented (chown, fchown, lchown, chmod, fchmod, lchmod)
  - Symlink related functions are not yet implemented (link, symlink, readlink, unlink)
  - File/Directory watching related methods not supported (watchFile, unwatchFile, watch)
  - Timestamp related functions not supported (utimes, futimes)
+* [fs](http://nodejs.org/api/fs.html) — sdcard's [fatfs](https://github.com/natevw/fatfs) instances
+  - Note that *instances* of this "module" come from sdcard getFilesystems option (or method call)
+  - fs.*Sync methods not implemented
+  - [fs.rename](http://nodejs.org/api/fs.html#fs_fs_rename_oldpath_newpath_callback) not implemented yet
+  - [fs.unlink](http://nodejs.org/api/fs.html#fs_fs_unlink_path_callback) not implemented yet
+  - [fs.rmdir](http://nodejs.org/api/fs.html#fs_fs_rmdir_path_callback) not implemented yet
+  - [fs.watchFile](http://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener) not implemented yet
+  - [fs.unwatchFile](http://nodejs.org/api/fs.html#fs_fs_unwatchfile_filename_listener) not implemented yet
+  - [fs.watch](http://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener) not implemented yet
 * [Globals](http://nodejs.org/api/globals.html)
 * [http](http://nodejs.org/api/http.html)
  - [response.writeContinue](http://nodejs.org/api/http.html#http_response_writecontinue) not implemented yet
