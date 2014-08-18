@@ -369,7 +369,7 @@ uart.pipe(process.stdout);
 
 &#x20;<a href="#api-new-port-UART-idx-options" name="api-new-port-UART-idx-options">#</a> <i>new</i>&nbsp; port<b>.UART</b> ( [idx[, options]] )  
  implements DuplexStream  
-Creates a UART channel. Defaults: `{"baudrate": 9600, "dataBits": 8, "parity": "even", "stopBits": 2}`
+Creates a UART channel. Defaults: `{"baudrate": 9600, "dataBits": 8, "parity": "none", "stopBits": 1}`
 
 &#x20;<a href="#api-array-number-uart-baudRates" name="api-array-number-uart-baudRates">#</a> <i>array&lt;number&gt;</i>&nbsp; uart<b>.baudRates</b> = []  
 An array of valid baud rates supported by the system.
