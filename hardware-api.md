@@ -114,7 +114,7 @@ var tessel = require('tessel'); // import tessel
 var gpio = tessel.port['GPIO']; // select the GPIO port
 var myPin = gpio.pwm[0]; // can be gpio.pwm[0] through 3 or gpio.pin['G4'] through ‘G6’
 // Tell the GPIO port that the frequency of its pwm pins is 980 Hz
-gpio.portFrequency(980);
+gpio.pwmFrequency(980);
 // Set duty cycle
 myPin.pwmDutyCycle(0.6); // set the pin to be on 60% of the time
 ```
