@@ -10,6 +10,7 @@ We've built an example for you to expand on:
 git clone https://github.com/tessel/docs.git
 cd docs/tutorials/usb_messages
 npm install
+node host.js
 ```
 The directory structure looks like:
 
@@ -36,3 +37,14 @@ The Tessel code, `device/index.js`, simply demonstrates sending and receiving me
 
 To try this example, run `node host.js`. It sends the device-side code on the Tessel as it starts.
 
+## Multiple Tessels on one computer
+**Note only works on Linux & Mac due to Windows hotplug issues**
+
+This deploys the same script to multiple Tessels and listens for output from each one.
+
+```
+git clone https://github.com/tessel/docs.git
+cd docs/tutorials/usb_messages
+npm install
+node multi_host.js
+``` 
