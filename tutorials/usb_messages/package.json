@@ -16,6 +16,7 @@
     "url": "https://github.com/tessel/docs/issues"
   },
   "dependencies": {
-    "tessel": "~0.3.9"
+    "tessel": "~0.3.9",
+    "async": "~0.9.0"
   }
 }
