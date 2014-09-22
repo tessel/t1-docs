@@ -7,7 +7,8 @@ Documentation for Tessel's hardware APIs. These are available for code running o
 ### Contents
 
 * [Ports and LEDs (Tessel)](#tessel)
-* [GPIO, Pins and Buttons](#pins)
+* [GPIO/Pins](#pins)
+* [Buttons](#buttons)
 * [SPI](#spi)
 * [I2C](#i2c)
 * [UART](#uart)
