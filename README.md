@@ -13,13 +13,13 @@ Tessel was designed for web developers to work in the world of hardware for the 
 
 ====
 
-<b>To install and get started with Tessel,</b> launch our [First Run Experience](http://tessel.io/start).
+<b>To install and get started with Tessel,</b> launch our [First Run Experience](//tessel.io/start).
 
-<b>For details on Tessel and Tessel's modules,</b> including API and hardware design information, explore the links here.
+<b>For details on Tessel and Tessel's modules,</b> including API and hardware design information, explore the links available at [tessel.io/docs](//tessel.io/docs).
 
-If there's anything you can't find, something that isn't working, or documentation that we should add, please don't hesitate to <b>reach out to us</b> on the [Tessel forums](http://forums.tessel.io).
+If there's anything you can't find, something that isn't working, or documentation that we should add, please don't hesitate to <b>reach out to us</b> on the [Tessel forums](//forums.tessel.io).
 
-Technical Machine is open source, [hardware](https://github.com/tessel/hardware) and [software](https://github.com/tessel/firmware). We welcome your pull requests, and  we encourage you to design your own modules and products based on our designs. Check out the [contribution guide](https://github.com/tessel/contribution-guide) for more details.
+Technical Machine is open source, [hardware](//github.com/tessel/hardware) and [software](//github.com/tessel/firmware). We welcome your pull requests, and  we encourage you to design your own modules and products based on our designs. Check out the [contribution guide](//github.com/tessel/contribution-guide) for more details.
 
 We look forward to seeing what you make!
 
