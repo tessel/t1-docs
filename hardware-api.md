@@ -148,6 +148,43 @@ tessel.port['A'].pin['G3']; // this is the same as digital[2]
 
 For more details on addressing the other pins on the module ports, see the sections on [SPI](#spi), [I2C](#i2c), and [UART](#uart).
 
+#### Referring to Pins
+
+The table below indexes the various ways of referring to pins.
+
+Pin # is the number returned when you console.log the pin. Label is the silkscreened label. Type and index can be used together, e.g. pin #16 can be referred to as `tessel.port['A'].pin['G1']` or `tessel.port['A'].digital[0]`.
+
+| Pin # | Port | Label | Type    | Index |
+|-------|----- | ----- | ------- | ----- |
+|   16  | A    | G1    | Digital | 0     |
+|   17  | A    | G2    | Digital | 1     |
+|   18  | A    | G3    | Digital | 2     |
+|   19  | B    | G1    | Digital | 0     |
+|   20  | B    | G2    | Digital | 1     |
+|   21  | B    | G3    | Digital | 2     |
+|   22  | C    | G1    | Digital | 0     |
+|   23  | C    | G2    | Digital | 1     |
+|   24  | C    | G3    | Digital | 2     |
+|   25  | D    | G1    | Digital | 0     |
+|   26  | D    | G2    | Digital | 1     |
+|   27  | D    | G3    | Digital | 2     |
+|   28  | GPIO | A1    | Analog  | 0     |
+|   29  | GPIO | A2    | Analog  | 1     |
+|   30  | GPIO | A3    | Analog  | 2     |
+|   31  | GPIO | A4    | Analog  | 3     |
+|   32  | GPIO | A5    | Analog  | 4     |
+|   33  | GPIO | A6    | Analog  | 5     |
+|   34  | GPIO | G1    | Digital | 0     |
+|   35  | GPIO | G2    | Digital | 1     |
+|   36  | GPIO | G3    | Digital | 2     |
+|   37  | GPIO | G4    | Digital | 3     |
+|   37  | GPIO | G4    | PWM     | 0     |
+|   38  | GPIO | G5    | Digital | 4     |
+|   38  | GPIO | G5    | PWM     | 1     |
+|   39  | GPIO | G6    | Digital | 5     |
+|   39  | GPIO | G6    | PWM     | 2     |
+
+
 #### Pin API
 
 
