@@ -443,7 +443,7 @@ Access Wifi from JS, including connection/dropping events, SmartConfig settings,
 
 Access through:
 
-```.js
+```js
 var wifi = require('wifi-cc3000');
 ```
 
@@ -456,7 +456,7 @@ If there is already another wifi connection being initialized (from the command 
 
 `wifiSettings` is an object that consists of:
 
-```.js
+```js
 { ssid: // this can either be a string or a buffer
   , password: // this can either be a string or a buffer. Use a buffer if you need to pass in hex.
   , security: defaults to wpa2 
@@ -466,7 +466,7 @@ If there is already another wifi connection being initialized (from the command 
 
 `res` contains the following:
 
-```.js
+```js
 res.ip;
 res.gateway;
 res.dns;
@@ -503,7 +503,7 @@ Returns `true` if the CC3k is enabled (powered on, regardless of connection stat
 &#x20;<a href="#api-wifi-on-connect-callback-err-res" name="api-wifi-on-connect-callback-err-res">#</a> wifi<b>.on</b>( 'connect', callback(err, res) )  
 Event emitted on connection. `res` contains the following:
 
-```.js
+```js
 res.ip;
 res.gateway;
 res.dns;
