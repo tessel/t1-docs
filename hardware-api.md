@@ -4,7 +4,7 @@
 
 Documentation for Tessel's hardware APIs. These are available for code running on Tessel, and is imported by `require('tessel')`.
 
-### Contents
+##Contents
 
 * [Ports and LEDs (Tessel)](#tessel)
 * [GPIO/Pins](#pins)
@@ -15,7 +15,7 @@ Documentation for Tessel's hardware APIs. These are available for code running o
 * [System](#system)
 
 
-### Tessel
+##Tessel
 
 Tessel is the root object for each of the different ports on the device.
 
@@ -47,7 +47,7 @@ An array of 4 LEDs available on the Tessel board. These are [`Pin` objects](#pin
 })(true)
 ```
 
-### Pins
+##Pins
 
 General purpose input-output (GPIO) provides access for digital and analog signal lines. Available pins are exposed through the `.pin`, `.digital`, `.analog`, and `.pwm` arrays.
 
@@ -55,7 +55,7 @@ By default, all of the pins are pulled high if not specifically set.
 
 You may find it useful to cross-reference this section with the hardware documentation for [Pins and Ports](https://tessel.io/docs/hardware#pins-and-ports).
 
-#### GPIO bank
+###GPIO bank
 Tessel's GPIO bank is designed to be breadboardable, so you can interact easily with sensors and actuators beyond our pre-built modules.
 
 This example logs the value of each digital and analog pin from the GPIO bank:
@@ -121,7 +121,7 @@ myPin.pwmDutyCycle(0.6); // set the pin to be on 60% of the time
 
 **Other pins:** For more details on addressing the other pins on the GPIO bank, see the sections on [SPI](#spi), [I2C](#i2c), and [UART](#uart).
 
-#### Module port pins
+###Module port pins
 
 You can address each of the pins in the module ports.
 
@@ -147,7 +147,7 @@ tessel.port['A'].pin['G3']; // this is the same as digital[2]
 
 For more details on addressing the other pins on the module ports, see the sections on [SPI](#spi), [I2C](#i2c), and [UART](#uart).
 
-#### Referring to Pins
+###Referring to Pins
 
 The table below indexes the various ways of referring to pins.
 
@@ -184,7 +184,7 @@ Pin # is the number returned when you console.log the pin. Label is the silkscre
 |   39  | GPIO | G6    | PWM     | 2     |
 
 
-#### Pin API
+###Pin API
 
 
 &#x20;<a href="#api-string-port-id" name="api-string-port-id">#</a> <i>string</i>&nbsp; port<b>.id</b>  
@@ -258,7 +258,7 @@ Removes the `listener` callback for a given `type` of trigger (eg. 'rise' or 'hi
 &#x20;<a href="#api-pin-removeAllListeners-type" name="api-pin-removeAllListeners-type">#</a> pin<b>.removeAllListeners</b> ( type )  
 Removes all of the listeners for a given trigger `type` on a `pin`.
 
-### Buttons
+##Buttons
 
 Tessel has two buttons. The `reset` button (nearer to the edge of the board) will stop running any program that is currently executing and restart the microcontroller (erasing any memory in RAM).
 
@@ -278,7 +278,7 @@ Please note that the button `press` and `release` events will use one of the sev
 
 The buttons can also be used to put the board into DFU Mode which can be understood as the stage just prior to reprogramming the board. This is useful if the board is no longer able to communicate like typical with a host computer. To activate DFU mode, hold down the `config` button while pressing and releasing the `reset` button so that the `config` button is pressed down when the board comes out of a reset. Then release the `config button`.
 
-### SPI
+##SPI
 
 A SPI channel. For details on connecting the hardware to Tessel see [the Pins and Ports section of the Hardware documentation](https://tessel.io/docs/hardware#pins-and-ports).
 
@@ -357,7 +357,7 @@ Sets the chip select settings.
 Locks SPI so that only one SPI port is communicating at a time. To read more about SPI Bus Locking, check out our discussion about the [Bus Locking and Raw Transfers API](https://github.com/tessel/docs/blob/master/detailedWalkthroughs/spiLocksRawTransfers.md).
 
 
-### I2C
+##I2C
 
 An I2C channel. For details on connecting the hardware to Tessel see [the Pins and Ports section of the Hardware documentation](https://tessel.io/docs/hardware#pins-and-ports).
 
@@ -383,7 +383,7 @@ Reads `rxbuf_len` bytes from a client.
 &#x20;<a href="#api-i2c-send-txbuf-callback-err" name="api-i2c-send-txbuf-callback-err">#</a> i2c<b>.send</b> ( txbuf, callback(err) )  
 Sends a Buffer `txbuf` to the client.
 
-### UART
+##UART
 
 A UART channel. For details on connecting the hardware to Tessel see [the Pins and Ports section of the Hardware documentation](https://tessel.io/docs/hardware#pins-and-ports).
 
@@ -429,14 +429,10 @@ Writes a buffer to the UART connection.
 &#x20;<a href="#api-uart-emits-data" name="api-uart-emits-data">#</a> uart &rarr; <i>emits "data"</i>  
 Data that arrives over the UART channel is sent as a Node.js stream.
 
-### System
+##System
 
 &#x20;<a href="#api-process-sendfile-filename-buffer" name="api-process-sendfile-filename-buffer">#</a> process<b>.sendfile</b> ( filename, buffer )  
   A buffer can be sent over USB to a file named filename on a host computer's file system. You must start the script with -u and the argument of which directory to save the folder. For example, tessel run test.js -u ./recordings will save the file in the recordings directory.  
 
 &#x20;<a href="#api-tessel-deviceId" name="api-tessel-deviceId">#</a> tessel<b>.deviceId</b> ()  
   Get the Unique ID of your Tessel.  
-
-## License
-
-MIT
