@@ -13,7 +13,6 @@ Documentation for Tessel's hardware APIs. These are available for code running o
 * [I2C](#i2c)
 * [UART](#uart)
 * [System](#system)
-* [Wifi](#wifi)
 
 
 ### Tessel
@@ -436,93 +435,7 @@ Data that arrives over the UART channel is sent as a Node.js stream.
   A buffer can be sent over USB to a file named filename on a host computer's file system. You must start the script with -u and the argument of which directory to save the folder. For example, tessel run test.js -u ./recordings will save the file in the recordings directory.  
 
 &#x20;<a href="#api-tessel-deviceId" name="api-tessel-deviceId">#</a> tessel<b>.deviceId</b> ()  
-  Get the Inique ID of your Tessel.  
-
-###Wifi
-Access Wifi from JS, including connection/dropping events, SmartConfig settings, WLAN settings, and finding available networks.
-
-Access through:
-
-```js
-var wifi = require('wifi-cc3000');
-```
-
-####Methods:
-
-&#x20;<a href="#api-wifi-connect-wifiSettings-callback-err-res" name="api-wifi-connect-wifiSettings-callback-err-res">#</a> wifi<b>.connect</b>( wifiSettings, [callback(err, res)] )  
-Connects to an access point. Takes in an optional callback. The `connected`, `disconnected`, and `timeout` events are emitted. Returns the wifi object.
-
-If there is already another wifi connection being initialized (from the command line, for example), this will error out immediately.
-
-`wifiSettings` is an object that consists of:
-
-```js
-{ ssid: // this can either be a string or a buffer
-  , password: // this can either be a string or a buffer. Use a buffer if you need to pass in hex.
-  , security: defaults to wpa2 
-  , timeout: defaults to 20s
-}
-```
-
-`res` contains the following:
-
-```js
-res.ip;
-res.gateway;
-res.dns;
-res.ssid;
-res.macAddress; // not exposed yet, will add this when we add firmware support for mac address
-```
-
-&#x20;<a href="#api-wifi-isConnected" name="api-wifi-isConnected">#</a> wifi<b>.isConnected</b>()  
-Returns `true` if connected, `false` if not connected.
-
-&#x20;<a href="#api-wifi-isBusy" name="api-wifi-isBusy">#</a> wifi<b>.isBusy</b>()  
-Returns `true` if the CC3k is currently trying to connect/disconnect. Recommended to wait until the CC3k is not busy before issuing commands. After a request has been made to initiate a connection, the CC3k will be "busy" until it receives a connect or a disconnect call. However, sometimes the CC3k never gets a callback (usually more common with weak wifi strength). It's up to the user to decide whether or not to timeout and ignore the `isBusy`.
-
-&#x20;<a href="#api-wifi-connection" name="api-wifi-connection">#</a> wifi<b>.connection</b>()  
-Returns the details of the connection object or null if not connected. Connection object is the same as the result in `wifi.connect`
-
-&#x20;<a href="#api-wifi-reset-callback" name="api-wifi-reset-callback">#</a> wifi<b>.reset</b>( [callback] )  
-Returns the wifi object. Does a software reset of the wifi chip. Useful for forcing a fastConnect on boot. Callback is optional.
-
-&#x20;<a href="#api-wifi-disable-callback" name="api-wifi-disable-callback">#</a> wifi<b>.disable</b>( [callback] )  
-Returns the wifi object. Turns off the wifi chip. Saves on power. Callback is optional.
-
-&#x20;<a href="#api-wifi-enable-callback" name="api-wifi-enable-callback">#</a> wifi<b>.enable</b>( callback )  
-Returns the wifi object. Turns on the wifi chip.
-
-&#x20;<a href="#api-wifi-disconnect-callback" name="api-wifi-disconnect-callback">#</a> wifi<b>.disconnect</b>( callback )  
-Disconnects from the network.
-
-&#x20;<a href="#api-wifi-isEnabled" name="api-wifi-isEnabled">#</a> wifi<b>.isEnabled</b>()  
-Returns `true` if the CC3k is enabled (powered on, regardless of connection status). Returns `false` if the CC3k is powered off.
-
-####Events
-
-&#x20;<a href="#api-wifi-on-connect-callback-err-res" name="api-wifi-on-connect-callback-err-res">#</a> wifi<b>.on</b>( 'connect', callback(err, res) )  
-Event emitted on connection. `res` contains the following:
-
-```js
-res.ip;
-res.gateway;
-res.dns;
-res.ssid;
-res.macAddress; // will add when its exposed in firmware
-```
-
-&#x20;<a href="#api-wifi-on-disconnect-callback-err" name="api-wifi-on-disconnect-callback-err">#</a> wifi<b>.on</b>( 'disconnect', callback(err) )  
-Called when wifi drops.
-
-&#x20;<a href="#api-wifi-on-timeout-callback-err" name="api-wifi-on-timeout-callback-err">#</a> wifi<b>.on</b>( 'timeout', callback(err) )  
-Called when the CC3k times out after the `.connect` call.
-
-&#x20;<a href="#api-wifi-on-error-callback-err" name="api-wifi-on-error-callback-err">#</a> wifi<b>.on</b>( 'error', callback(err) )  
-The `error` event will be called for any of the following actions:
-
-1. tried to disconnect while not connected
-2. tried to disconnect while in the middle of trying to connect
-1. tried to initialize a connection without first waiting for a timeout or a disconnect
+  Get the Unique ID of your Tessel.  
 
 ## License
 
