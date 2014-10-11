@@ -119,6 +119,32 @@ gpio.pwmFrequency(980);
 myPin.pwmDutyCycle(0.6); // set the pin to be on 60% of the time
 ```
 
+Tessel also has a pin that will allow you to read in the length of an incoming pulse.
+
+Here is an example of reading in a 250 millisecond pulse:
+```js
+var tessel = require('tessel'); // import tessel
+var gpio = tessel.port['GPIO']; // select the GPIO port
+var pin_input = gpio.pin['G3']; // readPulse only works on gpio.pin['G3']
+var pin_output = gpio.pin['G4']; // pin that is going to send a pulse out
+// read a low pulse in (--_--) and timeout if there's no pulse within 3 seconds
+pin_input.readPulse('low', 3000, function (err,pulse_len) {
+  // if there's an err object it means the SCT timed out
+  if (err) {
+    console.log(err.message);
+    return;
+  }
+  // Read the pulse length
+  console.log('Pulse read length:',pulse_len,'ms');
+});
+// output pin is default pulled high so pull low
+pin_output.write(0);
+// emulate a low pulse by returning to high state after 250 milliseconds
+setTimeout(function () { pin_output.write(1); }, 250);
+```
+
+Note that in order for this test to work properly you need to connect a wire between the GPIO pins G3 and G4. Also note that the resulting pulse length may be slightly off as the pulse is created in software and thus not as accurate as an actual input pulse.
+
 **Other pins:** For more details on addressing the other pins on the GPIO bank, see the sections on [SPI](#spi), [I2C](#i2c), and [UART](#uart).
 
 ###Module port pins
@@ -234,6 +260,9 @@ Sets the pin to `value`. Does not change the direction of the pin.
 
 &#x20;<a href="#api-pin-read" name="api-pin-read">#</a> pin<b>.read</b> ()  
 Sets the pin as an input and reads a digital or analog `value`. For digital pins, `1` is returned if the value is HIGH, otherwise `0` if LOW. For analog pins the range is between [1-0] inclusive.
+
+&#x20;<a href="#api-pin-readPulse" name="api-pin-readPulse">#</a> pin<b>.readPulse</b> ( type, timeout, callback(err, pulsetime) )  
+Reads the length of an input pulse. The `type` of the pulse can either be `'high'` or `'low'`. The `timeout` in milliseconds is the maximum time to wait for a pulse before returning with an `err` to the `callback` function. Upon completion, the `pulsetime` in milliseconds will be set to the measured length of the input pulse. Note that reading a pulse is only possible on GPIO pin `'G3'`
 
 &#x20;<a href="#api-pin-rawRead" name="api-pin-rawRead">#</a> pin<b>.rawRead</b> ()  
 Reads from the pin ***without** first setting the direction as an input. Only available on digital pins.
