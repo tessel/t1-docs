@@ -121,29 +121,22 @@ myPin.pwmDutyCycle(0.6); // set the pin to be on 60% of the time
 
 Tessel also has a pin that will allow you to read in the length of an incoming pulse.
 
-Here is an example of reading in a 250 millisecond pulse:
+Here is an example of reading a pulse in from an external device
 ```js
 var tessel = require('tessel'); // import tessel
 var gpio = tessel.port['GPIO']; // select the GPIO port
 var pin_input = gpio.pin['G3']; // readPulse only works on gpio.pin['G3']
-var pin_output = gpio.pin['G4']; // pin that is going to send a pulse out
 // read a low pulse in (--_--) and timeout if there's no pulse within 3 seconds
 pin_input.readPulse('low', 3000, function (err,pulse_len) {
-  // if there's an err object it means the SCT timed out
+  // if there's an err object it means the SCT timed out or was already in use
   if (err) {
     console.log(err.message);
     return;
   }
-  // Read the pulse length
+  // Log the pulse length
   console.log('Pulse read length:',pulse_len,'ms');
 });
-// output pin is default pulled high so pull low
-pin_output.write(0);
-// emulate a low pulse by returning to high state after 250 milliseconds
-setTimeout(function () { pin_output.write(1); }, 250);
 ```
-
-Note that in order for this test to work properly you need to connect a wire between the GPIO pins G3 and G4. Also note that the resulting pulse length may be slightly off as the pulse is created in software and thus not as accurate as an actual input pulse.
 
 **Other pins:** For more details on addressing the other pins on the GPIO bank, see the sections on [SPI](#spi), [I2C](#i2c), and [UART](#uart).
 
