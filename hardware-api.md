@@ -138,6 +138,8 @@ pin_input.readPulse('low', 3000, function (err,pulse_len) {
 });
 ```
 
+Note that readPulse is similar to the arduino pulseIn function.
+
 **Other pins:** For more details on addressing the other pins on the GPIO bank, see the sections on [SPI](#spi), [I2C](#i2c), and [UART](#uart).
 
 ###Module port pins
@@ -255,7 +257,7 @@ Sets the pin to `value`. Does not change the direction of the pin.
 Sets the pin as an input and reads a digital or analog `value`. For digital pins, `1` is returned if the value is HIGH, otherwise `0` if LOW. For analog pins the range is between [1-0] inclusive.
 
 &#x20;<a href="#api-pin-readPulse" name="api-pin-readPulse">#</a> pin<b>.readPulse</b> ( type, timeout, callback(err, pulsetime) )  
-Reads the length of an input pulse. The `type` of the pulse can either be `'high'` or `'low'`. The `timeout` in milliseconds is the maximum time to wait for a pulse before returning with an `err` to the `callback` function. Upon completion, the `pulsetime` in milliseconds will be set to the measured length of the input pulse. Note that reading a pulse is only possible on GPIO pin `'G3'`
+Measures the length of an input pulse. The `type` of the pulse can either be `'high'` or `'low'`. The `callback` function is passed an `err` if no pulse was read within the `timeout` (in milliseconds) or if the SCT was in use by another process. If there was an error then `pulsetime` will be set to 0, otherwise it will be set to the measured pulse length. Note that reading a pulse is only possible on GPIO pin `'G3'`.
 
 &#x20;<a href="#api-pin-rawRead" name="api-pin-rawRead">#</a> pin<b>.rawRead</b> ()  
 Reads from the pin ***without** first setting the direction as an input. Only available on digital pins.
