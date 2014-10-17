@@ -65,26 +65,13 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
   - [fs.unwatchFile](http://nodejs.org/api/fs.html#fs_fs_unwatchfile_filename_listener) not implemented yet
   - [fs.watch](http://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener) not implemented yet
 * [Globals](http://nodejs.org/api/globals.html)
-* [http](http://nodejs.org/api/http.html)
- - [response.writeContinue](http://nodejs.org/api/http.html#http_response_writecontinue) not implemented yet
+* [http](http://nodejs.org/api/http.html) / [https](http://nodejs.org/api/https.html)
  - [response.setTimeout](http://nodejs.org/api/http.html#http_response_settimeout_msecs_callback) not implemented yet
- - [response.headersSent](http://nodejs.org/api/http.html#http_response_headerssent) not implemented yet
- - [response.sendDate](http://nodejs.org/api/http.html#http_response_senddate) not implemented yet
- - [response.addTrailers](http://nodejs.org/api/http.html#http_response_addtrailers_headers) not implemented yet
- - [http.agent](http://nodejs.org/api/http.html#http_class_http_agent) not implemented yet
- - [Global Agent](http://nodejs.org/api/http.html#http_http_globalagent) not implemented yet.
- - [server.maxHeadersCount](http://nodejs.org/api/http.html#http_server_maxheaderscount) not implemented yet
  - [sever.setTimeout](http://nodejs.org/api/http.html#http_server_settimeout_msecs_callback) not implemented yet
  - [server.timeout](http://nodejs.org/api/http.html#http_server_timeout) not implemented yet
- - [Event:'upgrade'](http://nodejs.org/api/http.html#http_event_upgrade_1) not implemented yet
- - [Event:'continue'](http://nodejs.org/api/http.html#http_event_continue) not implemented yet
-  - [request.abort](http://nodejs.org/api/http.html#http_request_abort) not implemented yet
  - [request.setTimeout](http://nodejs.org/api/http.html#http_request_settimeout_timeout_callback) not implemented yet
  - [request.setNoDelay](http://nodejs.org/api/http.html#http_request_setnodelay_nodelay) not implemented yet
  - [request.setSocketKeepAlive](http://nodejs.org/api/http.html#http_request_setsocketkeepalive_enable_initialdelay) not implemented yet
-* [https](http://nodejs.org/api/https.html)
- - [http.agent](http://nodejs.org/api/https.html#https_class_https_agent) not implemented yet
- - [Global Agent](http://nodejs.org/api/https.html#https_https_globalagent) not implemented yet.
 * [modules](http://nodejs.org/api/modules.html)
 * [net](http://nodejs.org/api/net.html)
  - Some socket options may not be possible to configure (at least on a per-connection basis) with the CC3000 drivers:
