@@ -23,8 +23,8 @@ For the simplest power solution, all you need is a USB charger of some kind:
 
 (There are various other ways to power your Tessel as well. You can read about them [here](https://tessel.io/docs/power).)
 
-Plug in your Tessel to power.
+Once you've pushed your code to Tessel's Flash, plug in your Tessel to power.
 
-Tessel will boot up and immediately start running your code!
+Tessel should boot up and immediately start running your code.
 
 *Make something cool? Show it off on the [Projects Page](//projects.tessel.io)!*
