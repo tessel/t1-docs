@@ -19,7 +19,9 @@ If there's anything you can't find, something that isn't working, or documentati
 
 Technical Machine is open source, [hardware](//github.com/tessel/hardware) and [software](//github.com/tessel/firmware). We welcome your pull requests, and  we encourage you to design your own modules and products based on our designs. Check out the [contribution guide](//github.com/tessel/contribution-guide) for more details.
 
-We look forward to seeing what you make!
+Once you've made something (building block or whole system; both are useful), please share it with the community on the [Projects Page](//projects.tessel.io)!
+
+We look forward to seeing what you make.
 
 Sincerely,<br/>
 the Technical Machine Team<br/>
