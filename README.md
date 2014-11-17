@@ -1,8 +1,6 @@
 Tessel Documentation
 ====
 
-###New: Check out the [contribution guide](https://forums.tessel.io/t/tessel-contribution-guide/524)!
-
 This is Tessel. Think of it as a tiny server, or a tiny robot you can control from the internet.
 
 <img src='https://s3.amazonaws.com/technicalmachine-assets/doc+pictures/hardware_design_docs/TM-00-04-ports.png'>
@@ -25,4 +23,4 @@ We look forward to seeing what you make!
 
 Sincerely,<br/>
 the Technical Machine Team<br/>
-(Jon, Jia, Tim, Kelsey, Eric, Kevin, Evan, Natty, and Paige)
+(Jon, Jia, Tim, Kelsey, Eric, Kevin, Ken, and Kwyn)
