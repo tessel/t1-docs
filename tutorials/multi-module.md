@@ -11,8 +11,8 @@ Whatever you're making, here are some tips for working with multiple modules on 
 
 ## Loading multiple modules
 
-We recommend you use the community-created module <code>tesselate</code>.
-This module loads all of your modules and returns them as an object when they're all ready.
+We recommend you use the community-created npm package <code>tesselate</code>.
+This package loads all of your modules and returns them as an object when they're all ready.
 Check out its usage docs <a href="https://www.npmjs.org/package/tesselate">here</a>.
 
 For example, if you wanted to build something involving climate and relay, with `tesselate`, it might look like this:
