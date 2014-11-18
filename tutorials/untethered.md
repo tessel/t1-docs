@@ -12,6 +12,8 @@ tessel push script.js
 
 Once the push command completes, you can disconnect Tessel from your computer and connect it to a different power source.
 
+*(You can read more about pushing vs running code on Tessel [here](http://start.tessel.io/usage).)*
+
 ## Powering Tessel
 
 For the simplest power solution, all you need is a USB charger of some kind:
