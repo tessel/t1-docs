@@ -119,6 +119,27 @@ gpio.pwmFrequency(980);
 myPin.pwmDutyCycle(0.6); // set the pin to be on 60% of the time
 ```
 
+Tessel also has a pin that will allow you to read in the length of an incoming pulse.
+
+Here is an example of reading a pulse in from an external device
+```js
+var tessel = require('tessel'); // import tessel
+var gpio = tessel.port['GPIO']; // select the GPIO port
+var pin_input = gpio.pin['G3']; // readPulse only works on gpio.pin['G3']
+// read a low pulse in (--_--) and timeout if there's no pulse within 3 seconds
+pin_input.readPulse('low', 3000, function (err,pulse_len) {
+  // if there's an err object it means the SCT timed out or was already in use
+  if (err) {
+    console.log(err.message);
+    return;
+  }
+  // Log the pulse length
+  console.log('Pulse read length:',pulse_len,'ms');
+});
+```
+
+Note that readPulse is similar to the arduino pulseIn function.
+
 **Other pins:** For more details on addressing the other pins on the GPIO bank, see the sections on [SPI](#spi), [I2C](#i2c), and [UART](#uart).
 
 ###Module port pins
@@ -234,6 +255,9 @@ Sets the pin to `value`. Does not change the direction of the pin.
 
 &#x20;<a href="#api-pin-read" name="api-pin-read">#</a> pin<b>.read</b> ()  
 Sets the pin as an input and reads a digital or analog `value`. For digital pins, `1` is returned if the value is HIGH, otherwise `0` if LOW. For analog pins the range is between [1-0] inclusive.
+
+&#x20;<a href="#api-pin-readPulse" name="api-pin-readPulse">#</a> pin<b>.readPulse</b> ( type, timeout, callback(err, pulsetime) )  
+Measures the length of an input pulse. The `type` of the pulse can either be `'high'` or `'low'`. The `callback` function is passed an `err` if no pulse was read within the `timeout` (in milliseconds) or if the SCT was in use by another process. If there was an error then `pulsetime` will be set to 0, otherwise it will be set to the measured pulse length. Note that reading a pulse is only possible on GPIO pin `'G3'`.
 
 &#x20;<a href="#api-pin-rawRead" name="api-pin-rawRead">#</a> pin<b>.rawRead</b> ()  
 Reads from the pin ***without** first setting the direction as an input. Only available on digital pins.
