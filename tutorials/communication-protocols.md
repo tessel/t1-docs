@@ -35,7 +35,7 @@ The easiest way to avoid this complication is by trying to find module component
 
 By far the simplest form of communication is via General Purpose Input/Output (GPIO), which requires only a single pin for communication. It is a rudimentary form of communication where you manually (in code) turn a pin on and off or read its state. Each port on the Tessel exposes three of them that can serve as a digital input or output and are marked as G1, G2, and G3.
 
-<img src="https://www.dropbox.com/s/abx0bu6y4uvvytt/gpio_blowout.jpg?dl=1" />
+<img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/gpio_blowout.jpg" />
 
 
 ####Output
@@ -45,7 +45,7 @@ By default, the Tessel sets an output pin to a high state.
 
 Some examples of using a GPIO pin as an output are [simple LEDs][led_example] and for turning appliances on and off with a [relay][relay_module].
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/jnpywf8zrkyzqlm/320px-5mm_Red_LED.jpg?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/320px-5mm_Red_LED.jpg" /></h1>
 
 
 *Image is licensed under the [Creative Commons Attribution-Share Alike 2.0 Generic](http://creativecommons.org/licenses/by-sa/2.0/deed.en) license.*
@@ -72,7 +72,7 @@ Every Tessel First party module uses the GPIO protocol in some fashion. Some, li
 
 SPI stands for [Serial Peripheral Interface][spi_wikipedia] and allows data to be exchanged one byte at a time between the Tessel and a custom module via two communication lines. This is great for transferring data like sensor readings or sending commands to a module.
 
-<img src="https://www.dropbox.com/s/wcpsw2nnlbnqb0c/spi_blowout.jpg?dl=1" />
+<img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/spi_blowout.jpg?X-Amz-Date=20141119T192157Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=c0ed925574d5742abd9a2cfe7540321df7f08caeb894f911119bdd4382f28136&X-Amz-Credential=ASIAIDIHXPZ6MK46AEFQ/20141119/us-east-1/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=AQoDYXdzEDQakAIhnD3tNwMy8PcJbV/Ee%2BiysohZkJC%2BZRwUv3JoY7RCt1cDP%2BCv/%2BfRWhHtkUskEjV4rYETdqknYCuV1iiVv/2pQoWzCAaroAugXN75RoirVJodBLsexUttxMmHJRw84y2Row27tdYAqocoQ/WKq55K%2BEbXf0j2Rg3a4lHLEJhijKQ0CLvuAZugimCkyMESLZgnmyft3et4b0%2BQ2FGF%2B11zxvadZ2e1qz%2B8QsMXZQfS%2B%2Bhe6pyN93O/aNc2x3qWFPUbyec/%2B5tkblHLkwVvzjjLRUjgatj880dXt7kHe00ZvUTgB%2B5nQpXmKyuaqGKEjcA/PbkpNQYfwsxSfxFtjkf/ybzt4CBl9ND4i0A2pdUcPSDJ17OjBQ%3D%3D" />
 
 The SPI protocol is known as a Master/Slave protocol, which means that there is always a single master device which controls the flow of communication with one or more slave devices. Think of the master as a traffic cop. It directs all of the connected slave devices so they know when it’s their turn to communicate. When you are creating modules, the Tessel will always act as the master device and your custom module will be a slave device.
 
@@ -102,7 +102,7 @@ When the Tessel needs to send data to the Camera Module, the MicroSD and nRF24  
 
 The following diagram shows how the various pins in the SPI protocol are toggled to create meaningful data. In this case, the master sends the ASCII character ‘S’, and the slave responds with ‘F’.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/ff339gnz117u637/spi_diagram.jpg?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/spi_diagram.jpg" /></h1>
 
 
 <h5 style="text-align:center;">*Modified [image](https://dlnmh9ip6v2uc.cloudfront.net/assets/c/7/8/7/d/52ddb2dcce395fed638b4567.png) from Sparkfun is [CC BY-NC-SA 3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/)*</h5>
@@ -123,7 +123,7 @@ Remember that the master initiates all communication so when it is ready the fir
 
 I2C stands for [Inter-Integrated Circuit][i2c_wikipedia] and is pronounced “I squared C”, “I two C” or “I-I-C”. I2C is a protocol that allows one device to exchange data with one or more connected devices through the use of a single data line and clock signal.
 
-<img src="https://www.dropbox.com/s/05mcdh16f3weamt/i2c_blowout.jpg?dl=1" />
+<img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/i2c_blowout.jpg" />
 
 I2C is a Master/Slave protocol, which means that there is always a single master device which controls the flow of communication with one or more slave devices. I2C only requires two communication connections as show below.
 
@@ -159,7 +159,7 @@ To begin a data transaction the master creates what is called a start condition 
 
 UART stands for [Universal Asynchronous Receiver/Transmitter][uart_wikipedia] and is really just a fancy way of referring to a serial port. It is really easy to understand as it only requires two lines: a transmission line (**TX**) and a receiving line (**RX**). The Tessel sends data to connected modules on the TX line and gets data back on the RX line.
 
-<img src="https://www.dropbox.com/s/hd7ncbbi08880ps/uart_blowout.jpg?dl=1" />
+<img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/uart_blowout.jpg" />
 
 ###TX
 Used by the Tessel to send data to the module.
@@ -169,14 +169,14 @@ Used by the module to send data to the Tessel.
 
 When using a UART, it’s important to remember that the communication lines cannot be shared between modules. In fact, because of this, each Tessel port needs its own RX and TX line from the main Tessel chip (LPC1830) as seen below.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/x642krl30g49e7o/UART_Connections.jpg?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/UART_Connections.jpg" /></h1>
 <h5 style="text-align:center;">*Only ports A, B, and D have dedicated UART lines from the LPC1830*</h5>
 
 Since the LPC1830 doesn’t have 4 UARTs, only Ports A, B, and D have a hardware UART. A software UART can be implemented on Port C but is beyond the scope of this guide. If you need to use a UART for communication we recommend using Port A, B or D.
 
 The following diagram shows what a basic UART data transmission looks like.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/y889ykn0p4zbmsi/uart_example.jpg?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/uart_example.jpg" /></h1>
 
 
 The transmission begins with a start bit where the appropriate line (TX or RX) is pulled low by the sending party. Then 5 to 8 data bits are sent. The diagram above shows the scenario where 8 bits are sent. Following the data an optional parity bit is sent followed by 1 or 2 stop bits where the sending module pulls the pin high. For this protocol to work the sender and receiver have to agree on a few things.
