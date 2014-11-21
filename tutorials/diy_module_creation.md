@@ -35,7 +35,7 @@ If you understand how each of these fit into the module creation process, you wi
 ### Power
 When dealing with anything in electronics, whether it be sensors, displays, buttons, or servos, you have to provide power. Everything needs a power source, and Tessel modules are no exception. In its simplest form, you can think of a power source as two connections; a positive voltage and a ground connection. These connections are provided on each Tessel port as seen in the image below.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/l4ya1tzydjj1pl6/power_zoomed.jpg?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/diy-module-guide/power_zoomed.jpg" /></h1>
 
 <p style="text-align:center;"><em>Power connections on Tessel's Port B</em></p>
 
@@ -43,7 +43,7 @@ The main Tessel board [can be powered several ways][power_options], but regardle
 
 One of the nice things about the proto-module is that the 3.3V and ground connections are exposed as two rails that run along each side of the module as seen below. This allows you to easily power your module components.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/z3cp6mfyppwjc4b/diymod_power.jpg?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/diy-module-guide/diymod_power.jpg" /></h1>
 
 <p style="text-align:center;"><em>Proto-module power rails</em></p>
 
@@ -52,7 +52,7 @@ If all of the components on your custom module operate at 3.3V, then your power 
 
 Many servos like to operate at 5V. That's their native "voltage language" and so the 3.3V provided by the Tessel isn't ideal and, in many cases, just won't work. Servos can also draw a lot of current, which may overwhelm the Tessel's power supply. To solve this problem, you'll notice that the servo module has a DC barrel jack on it that allows you to plug in a 5V adapter to provide sufficient power to the connected servos.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/5ysijbkmrgtzmki/servo_jack_identified.jpg?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/diy-module-guide/servo_jack_identified.jpg" /></h1>
 
 <p style="text-align:center;"><em>DC Barrel Jack on the Servo Module</em></p>
 
@@ -121,7 +121,7 @@ npm init
 
 Edit your package.json file to include a name, version, and description. We also highly recommend adding "tessel" as a keyword so that other Tessel users can easily find your work. Most of the package.json file is self-explanatory and follows the [npm package.json standard][package_json_standard] with the exception of the **hardware** member.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/ckcm98rafsh0sc4/package_hardware_section.png?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/diy-module-guide/package_hardware_section.png" /></h1>
 
 <p style="text-align:center;"><em>**hardware** section of package.json</em></p>
 
@@ -162,11 +162,11 @@ Each port on the Tessel has 3 pins that can serve this purpose, and you are free
 
 We're going to choose G1, which is what we will hook up to the other side of the button. When the button is not pressed, our input pin will read high, or true. When we press it, we are making a connection between our GPIO pin and ground, which will cause a low state to be present on the input pin. This is what the design looks like.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/aezvhlapciedyhs/switch_schematic.png?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/diy-module-guide/switch_schematic.png" /></h1>
 
 <p style="text-align:center"><em>Schematic of button connections</em></p>
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/4bf42ubqzyulchs/button_module_angle.jpg?dl=1" width=300 /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/diy-module-guide/button_module_angle.jpg" width=300 /></h1>
 
 <p style="text-align:center"><em>Soldered together on a proto-module board.</em></p>
 
@@ -229,7 +229,7 @@ Every time you push your button it should log to the console.
 
 Congratulations! You just created your first custom module for the Tessel.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/fosfc2tod786vzo/button_attached.jpg?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/diy-module-guide/button_attached.jpg" /></h1>
 
 <p style="text-align:center"><em>Custom button module connected to the Tessel</em></p>
 
@@ -248,7 +248,7 @@ One of the popular screen modules in embedded projects is the Nokia 5110, becaus
 
 For this example we'll use the [Nokia 5110 breakout from Sparkfun][nokia_sparkfun], but you could also use the [Adafruit version of the screen][nokia_adafruit] or just try to snag one [on Ebay][nokia_ebay]
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/cbbvhlaufomlzpv/nokia5110.png?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/diy-module-guide/nokia5110.png" /></h1>
 
 <p style="text-align:center"><em>Nokia 5110 Graphic LCD</em></p>
 
@@ -257,7 +257,7 @@ The 5110 has a listed power supply range of 2.7V to 3.3V, which means any voltag
 
 Because of the screen's size, we'll use one of the double-wide proto-modules this time, even though we'll only use a single port to connect everything.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/iim4g8aocek26bv/doublewide_module.jpg?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/diy-module-guide/doublewide_module.jpg" /></h1>
 
 <p style="text-align:center"><em>Double-Wide Proto-Module</em></p>
 
@@ -293,7 +293,7 @@ We hooked everything up using the [Graphic LCD Hookup Guide][screen_hookup_guide
 
 Here is what the module looks like soldered to the double-wide proto-module.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/zea90ijemlejcma/screen_soldered.jpg?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/diy-module-guide/screen_soldered.jpg" /></h1>
 
 <p style="text-align:center"><em>Nokia 5110 soldered to a large proto-module board</em></p>
 
@@ -338,7 +338,7 @@ Now it's time to share our new creation with the world by:
   * Creating a [project page][screen_project_page] for it
   * [Submitting][module_submission] it to the [third-party module list][third_party_modules]
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/ucushe30nbx40yc/screen_connected.jpg?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/diy-module-guide/screen_connected.jpg" /></h1>
 
 <p style="text-align:center"><em>Finished screen module</em></p>
 
