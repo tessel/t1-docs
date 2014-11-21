@@ -138,7 +138,7 @@ Returns `true` if the CC3k is enabled (powered on, regardless of connection stat
 
 ####Events
 
-&#x20;<a href="#api-wifi-on-connect-callback-err-res" name="api-wifi-on-connect-callback-err-res">#</a> wifi<b>.on</b>( 'connect', callback(err, res) )  
+&#x20;<a href="#api-wifi-on-connect-callback-err-res" name="api-wifi-on-connect-callback-err-res">#</a> wifi<b>.on</b>( 'connect', callback(res) )  
 Event emitted on connection. `res` contains the following:
 
 ```js
