@@ -162,7 +162,7 @@ I2C stands for [Inter-Integrated Circuit][i2c_wikipedia] and is pronounced "I sq
 
 I2C is a Master/Slave protocol, which means that there is always a single master device which controls the flow of communication with one or more slave devices. I2C only requires two communication connections as show below.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/vwvobed6c1cvb5q/Simple_I2C.png?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/Simple_I2C.png" /></h1>
 
 
 ####SCL
@@ -173,11 +173,11 @@ This is the data line used for exchanging data between the master and slaves. In
 
 Since multiple slave devices can use the same SDA line, the master needs a way to distinguish between them and talk to a single device at a time. The I2C protocol uses the concept of **device addressing** to coordinate traffic on the data line. Every single I2C device connected to the Tessel will have an internal address that cannot be the same as any other module connected to the Tessel. This address is usually determined by the device manufacturer and listed in the datasheet. Sometimes you can configure the address through device-specific tweaks defined by the manufacturer. The Tessel, as the master device, needs to know the address of each slave and will use it to notify a device when it wants to communicate with it before transferring data.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/q2kjc3vjcoqjcm3/Multi_I2C.png?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/Multi_I2C.png" /></h1>
 
 The following diagram illustrates how the SDA and SCL pins are toggled when transferring data with the I2C protocol.
 
-<h1 style="text-align:center;"><img src="https://www.dropbox.com/s/nyd71vspy6elgtg/i2c_modified_timing.png?dl=1" /></h1>
+<h1 style="text-align:center;"><img src="https://s3.amazonaws.com/technicalmachine-assets/tutorials/communication-protocols/i2c_modified_timing.png" /></h1>
 
 To begin a data transaction the master creates what is called a start condition by pulling the SDA pin low before the SCL pin. The master then broadcasts the address of the device it wishes to communicate with by sending each bit of the 7 bit address. Notice the clock signal (SCL) is toggled for each bit. This toggling is how the slaves know when to read each bit of the address so they can determine with which device the master wants to communicate. Right after the address the master sends a read/write bit which signals whether it will be sending data to the slave or reading data from the slave. After broadcasting the address the master either transmits data to the slave or sends the address of a register (internal storage) on the slave from which it wishes to retrieve data. Finally, the master will issue a stop condition on the bus by pulling SCL high followed by SDA. It's a little tricky to understand but the Tessel takes care of all the details for you. Using the I2C pins on port A is as simple as this.
 
