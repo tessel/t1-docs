@@ -40,7 +40,7 @@ One of the nice things about the proto-module is that the 3.3V and ground connec
 <p style="text-align:center;"><em>Proto-module power rails</em></p>
 
 ### Special Considerations
-If all of the components on your custom module operate at 3.3V, then your power design is extremely simple. You just use the 3.3V and ground rails and connect your components accordingly ([custom screen module](screen_example) below is a good example). Sometimes, however, you may encounter a situation where 3.3V is not what you need, like in the case of the [servo module][servo_module].
+If all of the components on your custom module operate at 3.3V, then your power design is extremely simple. You just use the 3.3V and ground rails and connect your components accordingly (the [custom screen module](#screen_example) below is a good example). Sometimes, however, you may encounter a situation where 3.3V is not what you need, like in the case of the [servo module][servo_module].
 
 Many servos like to operate at 5V. That's their native "voltage language" and so the 3.3V provided by the Tessel isn't ideal and, in many cases, just won't work. Servos can also draw a lot of current, which may overwhelm the Tessel's power supply. To solve this problem, you'll notice that the servo module has a DC barrel jack on it that allows you to plug in a 5V adapter to provide sufficient power to the connected servos.
 
@@ -48,12 +48,13 @@ Many servos like to operate at 5V. That's their native "voltage language" and so
 
 <p style="text-align:center;"><em>DC Barrel Jack on the Servo Module</em></p>
 
-From the [servo module schematic](http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Servo/TM-03-03.pdf) we can see that communication is accomplished with the normal I2C lines which operate at 3.3V but servo power is provided via J2 which is the barrel jack.
+From the [servo module schematic][servo_schematic] we can see that communication is accomplished with the normal I2C lines which operate at 3.3V but servo power is provided via J2 which is the barrel jack.
 
 This guide isn't meant to be a comprehensive power reference, but we just want to point out that if you have any components on your custom module that work outside of the 3.3V realm you will [need to design for it][level_shifting]. To simplify your module design, we recommend using 3.3V components where possible.
 
 ### The Power Warnings
 Here are some items to remember when working with power in electronics.
+
   * **ALWAYS** unplug your Tessel before making or altering connections.
   * Don't mix voltages unless you know what you're doing. For example, if you put 5V on any of the module pins, you can ruin your Tessel.
   * Never connect the positive voltage directly to ground. This is called a [short circuit](http://en.wikipedia.org/wiki/Short_circuit) and can ruin components and your day.
@@ -124,14 +125,14 @@ Once your package.json file is complete you're ready to publish your code. Run t
 The [Tessel Projects page][tessel_projects] is a way to share your module directly with the Tessel community. You simply provide a few pieces of information, a picture, and can even use your README.md file from your Git repo as the contents.
 
 ### Submit Your Module
-We're always looking to add modules to our [third-party module list][third_party_modules] so if you'd like your custom module to be listed at [tessel.io/modules][tessel_modules] then fill out this form and we'd be happy to review it.
+We're always looking to add modules to our [third-party module list][third_party_modules] so if you'd like your custom module to be listed at [tessel.io/modules][modules_page] then fill out this form and we'd be happy to review it.
 
 [Third-Party Module Submission Form][module_submission]
 
-A great example of using this module-creation pattern can be found in [Making a Tessel-style Library for Third-Party Hardware][third_party_doc]
+A great example of using this module-creation pattern can be found in [Making a Tessel-style Library for Third-Party Hardware][third_party_doc].
 
 ## Your First Custom Module
-So now that we've described the pattern for making a custom module, let's walk through creating a very simple module using that pattern. The Tessel has a spare button on the main board, but maybe you'd like to add one as a module. Kelsey did [a great writeup on adding a button to the GPIO bank](https://projects.tessel.io/projects/a-button-on-tessel) so let's use her work to take it one step further using a proto-module.
+So now that we've described the pattern for making a custom module, let's walk through creating a very simple module using that pattern. The Tessel has a spare button on the main board, but maybe you'd like to add one as a module. Kelsey did [a great writeup on adding a button to the GPIO bank][orig_button_project_page] so let's use her work to take it one step further using a proto-module.
 
 ### Power
 You might not think of a button as needing power and you're right, sort of. While the button itself doesn't need power to function we can connect our button in such a way that it uses the power connections to create high and low states on a GPIO pin. GPIO pins on the Tessel will always read high or truthy with nothing connected because internally (inside the main Tessel chip) they are pulled up to the 3.3V supply. That's our positive connection. The other power connection is ground, which we'll connect to one side of our button. It doesn't matter which side because a button is just a momentary switch that creates and breaks a connection. You can't hook it up backward. We'll get to connecting the other side of the button in a minute.
@@ -143,7 +144,7 @@ As mentioned above, normally your communication protocol is determined by your m
 
 <p style="text-align:center"><em>GPIO pins available on a Tessel module port: G1, G2, and G3</em></p>
 
-I'm going to choose G1, which is what I will hook up to the other side of the button. When the button is not pressed, our input pin will read high or true. Remember that it's connected internally to our 3.3V power connection. When we press it, we are making a connection between our GPIO pin and ground, which will cause a low state to be present on the input pin. This is what the design looks like.
+We're going to choose G1, which is what we will hook up to the other side of the button. When the button is not pressed, our input pin will read high or true. Remember that it's connected internally to our 3.3V power connection. When we press it, we are making a connection between our GPIO pin and ground, which will cause a low state to be present on the input pin. This is what the design looks like.
 
 <h1 style="text-align:center;"><img src="https://www.dropbox.com/s/aezvhlapciedyhs/switch_schematic.png?dl=1" /></h1>
 
@@ -211,14 +212,15 @@ Congratulations! You just created your first custom module for the Tessel.
 ### Documentation and Sharing
 We sort of cheated on our first module because Kelsey had already created an NPM package that we could reuse so there wasn't really anything to document or share. We just created the physical module and plugged it in. There is nothing wrong with that. In fact, the less code you have to write, the better. This is a great example of how taking the time to document and share your work benefits the entire community.
 
-What we can do though is create [a project page]() showing how we took Kelsey's button to the next level in the form of a plug-in module.
+What we can do though is create [a project page][button_project_page] showing how we took Kelsey's button to the next level in the form of a plug-in module.
 
-[Custom Button Module Project Page]()
+[Custom Button Module Project Page][button_project_page]
 
+<a name="screen_example"></a>
 ## Custom Screen Module
 Now that you have a simple module under your belt, it's time to level up. To date, the module that people have requested the most is a screen module. Displays are tricky because they come in so many flavors. There are simple 7-segment displays, LCD displays, OLEDs, resistive touchscreens, capacitive touchscreens, and more. This is a great use case for a custom module.
 
-One of the popular screen modules in embedded projects is the Nokia 5110 because of its simple interface and low cost. Let's see how we'd create a module for it by following the same pattern as before. For this example we'll use the [Nokia 5110 breakout from Sparkfun](https://www.sparkfun.com/products/10168) but you could also use the [Adafruit version of the screen](https://www.adafruit.com/products/338) or just try to snag one [on Ebay](http://www.ebay.com/sch/i.html?_from=R40&_trksid=p2050601.m570.l1313.TR6.TRC1.A0.H0.Xnokia+5110&_nkw=nokia+5110&_sacat=0)
+One of the popular screen modules in embedded projects is the Nokia 5110 because of its simple interface and low cost. Let's see how we'd create a module for it by following the same pattern as before. For this example we'll use the [Nokia 5110 breakout from Sparkfun][nokia_sparkfun] but you could also use the [Adafruit version of the screen][nokia_adafruit] or just try to snag one [on Ebay][nokia_ebay]
 
 <h1 style="text-align:center;"><img src="https://www.dropbox.com/s/cbbvhlaufomlzpv/nokia5110.png?dl=1" /></h1>
 
@@ -232,7 +234,7 @@ The 5110 has a listed power supply range of 2.7V to 3.3V, which means any voltag
 <p style="text-align:center"><em>Double-Wide Proto-Module</em></p>
 
 ### Communication
-Just like in the button example, the communication protocol for the screen has already been chosen for us. The Nokia 5110 uses a slightly modified version of [SPI][link to SPI section in other doc] to communicate with a parent controller, namely the Tessel in our case. In addition to the normal SPI protocol, the 5110 has an extra pin involved (**D/C**) that tells the screen whether the data we are sending via SPI is a special command or actual screen data. The D/C pin is controlled by a simple high or low signal which is a perfect job for one of the GPIO pins. The following table shows all of the communication connections available on our screen and how we'll attach them to the Tessel port.
+Just like in the button example, the communication protocol for the screen has already been chosen for us. The Nokia 5110 uses a slightly modified version of [SPI][comm_spi] to communicate with a parent controller, namely the Tessel in our case. In addition to the normal SPI protocol, the 5110 has an extra pin involved (**D/C**) that tells the screen whether the data we are sending via SPI is a special command or actual screen data. The D/C pin is controlled by a simple high or low signal which is a perfect job for one of the GPIO pins. The following table shows all of the communication connections available on our screen and how we'll attach them to the Tessel port.
 
 | Nokia 5110 Pin | Proto-Module Connetion                   |
 |----------------|------------------------------------------|
@@ -251,7 +253,7 @@ The Nokia 5110 has 4 connections that can utilize GPIO pins for functionality. T
   3. Since we're using the double-wide, you could use a GPIO pin from the adjacent port and have use of both LED and RST
   4. Connect SCE (chip select) to ground, which frees up a GPIO so you can control both LED and RST. Holding the chip select low, however, makes it so that **no other SPI device** (including other Tessel modules that use SPI e.g., the Camera module) can be connected to the Tessel on any other port.
 
-I decided to go with option 1 because there isn't really a need to reset the screen in most cases and it allows control of the backlight with a GPIO pin. This is another great thing about custom modules. You can design it however you want to fit your project needs. I hooked everything up using the [Graphic LCD Hookup Guide](https://learn.sparkfun.com/tutorials/graphic-lcd-hookup-guide).
+We decided to go with option 1 because there isn't really a need to reset the screen in most cases and it allows control of the backlight with a GPIO pin. This is another great thing about custom modules. You can design it however you want to fit your project needs. We hooked everything up using the [Graphic LCD Hookup Guide][screen_hookup_guide].
 
 And here is what the module looks like soldered to the double-wide proto-module.
 
@@ -260,9 +262,9 @@ And here is what the module looks like soldered to the double-wide proto-module.
 <p style="text-align:center"><em>Nokia 5110 soldered to a large proto-module board</em></p>
 
 ### Software
-With the screen hooked up it's time to start writing code. We'll follow the pattern found in the [Git Repo Template][repo_template] and start by creating a directory called **tessel-Nokia5110** and cd into that directory. Next, we'll create **index.js** which is where we'll write our API using [the example index.js template](https://github.com/tessel/style/blob/master/Templates/index.js) as a guide.
+With the screen hooked up it's time to start writing code. We'll follow the pattern found in the [Git Repo Template][repo_template] and start by creating a directory called **tessel-nokia5110** and cd into that directory. Next, we'll create **index.js** which is where we'll write our API using [the example index.js template][index_template] as a guide.
 
-Because this screen is so popular there are lots of code examples and libraries online for interacting with it. We don't need to reinvent the wheel. We just want to control the screen with Javascript so we took a [simple Arduino library](http://dlnmh9ip6v2uc.cloudfront.net/datasheets/LCD/Monochrome/Nokia_5110_Example.pde) for this screen and [ported it to Javascript](link to Github project).
+Because this screen is so popular there are lots of code examples and libraries online for interacting with it. We don't need to reinvent the wheel. We just want to control the screen with Javascript so we took a [simple Arduino library][screen_arduino_code] for this screen and [ported it to Javascript][screen_github].
 
 Our API is very simple and exposes just one event and a few methods.
 
@@ -283,46 +285,77 @@ Nokia5110.**clear**([callback(err)]) - Clears the display
 Nokia5110.**setBacklight**(state) - Turns the backlight on if _state_ is truthy, off otherwise
 
 ### Documentation
-Now that the module is connected up and the software is working, it's time to document its use. We can't stress enough how important this is and it really only takes a few minutes once you've defined everything. Just think of all the times you've needed a piece of code and found a beautifully documented example that had you up and running in minutes. Share that love with others when you create your own modules, no matter how trivial you think they are. In our case, we'll take the [template README.md file][readme_template] and [add some notes for getting started as well as document our API]().
+Now that the module is connected up and the software is working, it's time to document its use. We can't stress enough how important this is and it really only takes a few minutes once you've defined everything. Just think of all the times you've needed a piece of code and found a beautifully documented example that had you up and running in minutes. Share that love with others when you create your own modules, no matter how trivial you think they are. In our case, we'll take the [template README.md file][readme_template] and [add some notes for getting started as well as document our API][screen_github].
 
 We'll also create an **examples** folder to show how the module can be used.
 
 ### Sharing
 Now it's time to share our new creation with the world by:
 
-  * Creating a [git repo and pushing the code online](https://github.com/sidwarkd/tessel-nokia5110)
-  * [Publishing the module to NPM](https://www.npmjs.org/package/tessel-nokia5110)
-  * Creating a [project page]() for it
-  * Submitting it to the [third-party module list][third_party_modules]
+  * Creating a [git repo and pushing the code online][screen_github]
+  * [Publishing the module to NPM][screen_npm]
+  * Creating a [project page][screen_project_page] for it
+  * [Submitting][module_submission] it to the [third-party module list][third_party_modules]
 
 <h1 style="text-align:center;"><img src="https://www.dropbox.com/s/ucushe30nbx40yc/screen_connected.jpg?dl=1" /></h1>
 
 <p style="text-align:center"><em>Finished screen module</em></p>
 
-###Resource List
-We've covered a lot in this tutorial. Here is a list of key resources to help you along the way.
+### Resource List
+To help you get started creating your own custom modules here is a list of the resources we used to put this tutorial together.
 
-README.md Template - https://github.com/tessel/style/blob/master/module_RM_template.md
+#### Power
+  * [Powering Your Tessel][power_options]
+  * [Level Shifting][level_shifting]
 
+#### Communication
+  * [Tessel Module Communication Protocols][comm_protocols]
+
+#### Software
+  * [Making a Tessel-style Library for Third-Party Hardware][third_party_doc]
+  * [Tessel Hardware API][hardware_api]
+  * [All first-party module code on Github][tessel_github]
+
+#### Documentation
+  * [Git Repo Template][repo_template]
+  * [README.md Template][readme_template]
+
+#### Sharing
+  * [Publishing to NPM Tutorial][npm_tutorial]
+  * [package.json Standard][package_json_standard]
+  * [Tessel Project Page][tessel_projects]
+  * [Third-Party Module Submission Form][module_submission]
+
+[modules_page]: https://tessel.io/modules
 [third_party_modules]: https://tessel.io/modules#third-party
 [tessel_github]: https://github.com/tessel
-[hardware_api]: https://tessel.io/docs/hardwareAPI
 [repo_template]: https://github.com/tessel/style/tree/master/Templates
+[index_template]: https://github.com/tessel/style/blob/master/Templates/index.js
 [package_json_standard]: https://www.npmjs.org/doc/files/package.json.html
+[npm_tutorial]: https://gist.github.com/coolaj86/1318304
 [readme_template]: https://github.com/tessel/style/blob/master/module_RM_template.md
+[hardware_api]: https://tessel.io/docs/hardwareAPI
 [tessel_projects]: https://projects.tessel.io/projects
 [module_submission]: https://docs.google.com/a/hardlysoftware.com/forms/d/1Zod-EjAIilRrCJX0Nt6k6TrFO-oREeBWMdBmNMw9Zxc/viewform
-[tessel_modules]: https://tessel.io/modules
-[third_party_modules]: https://tessel.io/modules#third-party
 [level_shifting]: https://learn.sparkfun.com/tutorials/voltage-dividers
-[modules_page]: https://tessel.io/modules
-[power_options]: asdf
-[servo_module]: asdf
+[power_options]: https://tessel.io/docs/power
+[servo_module]: https://tessel.io/modules#module-servo
+[servo_schematic]: http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Servo/TM-03-03.pdf
+[climate_module]: https://tessel.io/modules#module-climate
+[pir_project]: https://projects.tessel.io/projects/pir
+[button_project_page]: https://projects.tessel.io/projects/button-proto-module/
+[orig_button_project_page]: https://projects.tessel.io/projects/a-button-on-tessel
+[comm_protocols]: #
 [comm_gpio]: #
 [comm_spi]: #
 [comm_i2c]: #
 [comm_uart]: #
-[comm_protocols]: #
-[pir_project]: https://projects.tessel.io/projects/pir
-[climate_module]: https://tessel.io/modules#module-climate
 [third_party_doc]: https://github.com/tessel/docs/blob/master/tutorials/make-external-hardware-library.md
+[nokia_sparkfun]: https://www.sparkfun.com/products/10168)
+[nokia_adafruit]: https://www.adafruit.com/products/338
+[nokia_ebay]: http://www.ebay.com/sch/i.html?_from=R40&_trksid=p2050601.m570.l1313.TR6.TRC1.A0.H0.Xnokia+5110&_nkw=nokia+5110&_sacat=0)
+[screen_arduino_code]: http://dlnmh9ip6v2uc.cloudfront.net/datasheets/LCD/Monochrome/Nokia_5110_Example.pde
+[screen_github]: https://github.com/sidwarkd/tessel-nokia5110
+[screen_npm]: https://www.npmjs.org/package/tessel-nokia5110
+[screen_hookup_guide]: https://learn.sparkfun.com/tutorials/graphic-lcd-hookup-guide
+[screen_project_page]: https://projects.tessel.io/projects/nokia-5110-graphic-lcd-proto-module
