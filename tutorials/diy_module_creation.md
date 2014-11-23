@@ -377,7 +377,7 @@ To help you get started creating your own custom modules, here is a list of the 
 [readme_template]: https://github.com/tessel/style/blob/master/module_RM_template.md
 [hardware_api]: https://tessel.io/docs/hardwareAPI
 [tessel_projects]: https://projects.tessel.io/projects
-[module_submission]: https://docs.google.com/a/hardlysoftware.com/forms/d/1Zod-EjAIilRrCJX0Nt6k6TrFO-oREeBWMdBmNMw9Zxc/viewform
+[module_submission]: https://docs.google.com/forms/d/1Zod-EjAIilRrCJX0Nt6k6TrFO-oREeBWMdBmNMw9Zxc/viewform
 [level_shifting]: https://learn.sparkfun.com/tutorials/voltage-dividers
 [power_options]: https://tessel.io/docs/power
 [servo_module]: https://tessel.io/modules#module-servo
@@ -392,7 +392,7 @@ To help you get started creating your own custom modules, here is a list of the 
 [comm_i2c]: https://github.com/tessel/docs/blob/DIY-module/tutorials/communication-protocols.md#i2c
 [comm_uart]: https://github.com/tessel/docs/blob/DIY-module/tutorials/communication-protocols.md#uart
 [third_party_doc]: https://github.com/tessel/docs/blob/master/tutorials/make-external-hardware-library.md
-[nokia_sparkfun]: https://www.sparkfun.com/products/10168)
+[nokia_sparkfun]: https://www.sparkfun.com/products/10168
 [nokia_adafruit]: https://www.adafruit.com/products/338
 [nokia_ebay]: http://www.ebay.com/sch/i.html?_from=R40&_trksid=p2050601.m570.l1313.TR6.TRC1.A0.H0.Xnokia+5110&_nkw=nokia+5110&_sacat=0)
 [screen_arduino_code]: http://dlnmh9ip6v2uc.cloudfront.net/datasheets/LCD/Monochrome/Nokia_5110_Example.pde
