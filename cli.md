@@ -5,6 +5,7 @@ Tessel CLI is the command line interface for the Tessel microcontroller (http://
 
 * [Installation](#installation)
 * [Commands](#commands)
+* [Code Deploy Process](#deploying)
 * [REPL](#repl)
 
 ##Installation
@@ -27,7 +28,7 @@ npm install -g http://s3.amazonaws.com/builds.tessel.io/cli/tessel-cli-current.t
 #####`tessel list`
 #####`tessel logs`
 #####`tessel push <filename> [options]`
-Push a file into flash memory (persists across power cycles).
+Push a file and its dependencies into flash memory (persists across power cycles). For more information about what files/folders are sent to Tessel, see the [deploying](#deploying) section. 
 Options:
 * `-a, --args`      Arguments to passin as process.argv
 * `-q, --quiet`     [Tessel] Hide tessel deployment messages
@@ -37,7 +38,7 @@ Options:
 * `-h, --help`      Show usage for tessel push
 
 #####`tessel run <filename> [options]`
-Run a script temporarily without writing it to flash.
+Run a script and its dependencies temporarily without writing it to flash. For more information about what files/folders are sent to Tessel, see the [deploying](#deploying) section. 
 Options:
 * `-a, --args`          Arguments to passin as process.argv
 * `-i, --interactive`   Enter the REPL
@@ -58,6 +59,8 @@ Connects to a wifi network without a password
 #####`tessel wifi -l`
 See current wifi status
 #####`tessel stop`
+#####`tessel pack <filename>`
+Creates a tarball of all the files that would be sent over to Tessel. This is helpful for checking what files may be too large or missing from any particular script. 
 #####`tessel check <filename>`
 Dumps tessel binary code
 #####`tessel dfu-restore [tag]`
@@ -83,6 +86,11 @@ Runs through debug script and uploads logs
 Show version of CLI
 #####`tessel version --board`
 Show version of the connected Tessel
+
+##Deploying
+When a host computer deploys code to Tessel (either via the `run` or `push` command), the host computer bundles up the entire "project directory" and sends it to the Tessel. The CLI must wrap up all the dependencies (node_modules and subfolders) before sending the project over  because the Tessel has no mechanism for fetching them from the host computer once the script has initiated on Tessel. The CLI defines the root of a "project directory" as the highest level folder that contains a node_modules folder or a package.json (note: if you pass the -s flag, only a single file is sent). This means that when `tessel run` or `tessel push` is called, the CLI will traverse up the directory tree until it finds a folder that matches that criteria. It will not bundle the home folder of a filesystem because it's probably greater than the 32MB available on Tessel.
+
+If you're having trouble figuring out which files are being sent to Tessel, use the `tessel pack` command.   
 
 ##REPL
 *Source: [tessel-repl](https://github.com/tessel/cli/blob/master/src/commands.js) or [tessel-run](https://github.com/tessel/cli/blob/master/bin/tessel-run.js) with the interactive flag set.*
