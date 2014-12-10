@@ -28,7 +28,7 @@ npm install -g http://s3.amazonaws.com/builds.tessel.io/cli/tessel-cli-current.t
 #####`tessel list`
 #####`tessel logs`
 #####`tessel push <filename> [options]`
-Push a file and its dependencies into flash memory (persists across power cycles). For more information about what files/folders are sent to Tessel, see the [deploying](#deploying) section. 
+Push a file and its containing directory into flash memory (persists across power cycles). For more information about what files/folders are sent to Tessel, see the [deploying](#deploying) section. 
 Options:
 * `-a, --args`      Arguments to passin as process.argv
 * `-q, --quiet`     [Tessel] Hide tessel deployment messages
@@ -38,7 +38,7 @@ Options:
 * `-h, --help`      Show usage for tessel push
 
 #####`tessel run <filename> [options]`
-Run a script and its dependencies temporarily without writing it to flash. For more information about what files/folders are sent to Tessel, see the [deploying](#deploying) section. 
+Run a script and its containing directory temporarily without writing it to flash. For more information about what files/folders are sent to Tessel, see the [deploying](#deploying) section. 
 Options:
 * `-a, --args`          Arguments to passin as process.argv
 * `-i, --interactive`   Enter the REPL
