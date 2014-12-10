@@ -1,5 +1,5 @@
 #Connect Tessel to Wifi
-Tessel has Wifi built into the main board ([CC3000](http://www.ti.com.cn/cn/lit/ds/symlink/cc3000.pdf)).
+Tessel has Wifi built into the main board ([CC3000](http://www.ti.com/lit/ds/symlink/cc3000.pdf)).
 
 ##Connecting to a network
 
