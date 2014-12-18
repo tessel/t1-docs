@@ -36,6 +36,11 @@ tessel wifi -l
 ```
 See current wifi status
 
+```sh
+tessel wifi -d
+```
+Disconnect from any currently connected network and forget the credentials
+
 ##Example
 Here is an example of requesting a website over Tessel's Wifi connection:
 
