@@ -57,6 +57,8 @@ Connects to wifi
 Connects to a wifi network without a password
 #####`tessel wifi -l`
 See current wifi status
+#####`tessel wifi -d`
+Disconnect from the current network and forget its credentials
 #####`tessel stop`
 #####`tessel check <filename>`
 Dumps tessel binary code
