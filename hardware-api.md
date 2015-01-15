@@ -82,11 +82,11 @@ var myPin = gpio.digital[0]; // on GPIO, can be gpio.digital[0] through 5 or gpi
 // Turn on the pin
 myPin.output(1); // setting ‘true’ has the same effect
 // Read the pin
-console.log('Reading pin:', myPin.read());
+console.log('Reading pin:', myPin.rawRead());
 // Turn off the pin
 myPin.output(0); // setting ‘false’ has the same effect. We could also call myPin.toggle() here.
 // Read the pin
-console.log('Reading pin:', myPin.read());
+console.log('Reading pin:', myPin.rawRead());
 ```
 
 **Analog pins** can be any value between 0 and 1 (GND/0V and 3.3V).
