@@ -79,7 +79,7 @@ In the world of web communication, there are standards like HTTP, HTTPS, and FTP
   * [I2C][comm_i2c]
   * [UART][comm_uart]
 
-Because the Tessel [does most of the heavy lifting][hardware_api] for all of these, you don't need to be an expert to use them in your custom module. However, if you'd like to learn a little more, we've [provided a simple overview of each][comm_protocols].
+Because the Tessel [does most of the heavy lifting][hardware_api] for all of these, you don't need to be an expert to use them in your custom module. However, if you'd like to learn a little more, we've [provided a simple overview of each](https://tessel.io/docs/communicationProtocols).
 
 ### So Which Communication Protocol Should I Use?
 Knowing that there are four communication options available to you, which should you use for your custom module? The good news is that this will usually be decided for you based on the type of module you are creating. For example, most [PIR sensor modules][pir_project] will set a pin high when motion is detected, which can be read with a simple digital input (GPIO). The same applies to sensors. For example, the Si7005 temperature and humidity sensor on the [Climate Module][climate_module] communicates via the [I2C protocol][comm_i2c]. Usually sensors will only support one protocol– so the decision is easy, you use that one.
