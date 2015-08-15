@@ -1,7 +1,7 @@
 Tessel 1 Documentation
 ====
 
-*If you are looking for Tessel 2 documentation, go to [tessel.io/docs](//tessel.io/docs). Most of the documentation in this repo is archival.*
+*If you are looking for Tessel 2 documentation, go to [tessel.io/docs](//tessel.io/docs).*
 
 This is Tessel. Think of it as a tiny server, or a tiny robot you can control from the internet.
 
