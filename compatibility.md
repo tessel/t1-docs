@@ -12,7 +12,7 @@ Tessel aims for full JavaScript compatibility, with the exception of `eval()`. I
 Documentation for the JavaScript programming language can be found [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference).
 
 ##Node
-Tessel is currently compatible with the most common and applicable core [Node](http://nodejs.org/about/) libraries. Most non-core libraries should also work however we don't yet support libraries with binary dependencies. If your module is not working, please [file an issue](https://github.com/tessel/runtime/issues)! Greater Node compatibility is an area of active development. 
+Tessel is currently compatible with the most common and applicable core [Node](http://nodejs.org/about/) libraries. Most non-core libraries should also work however we don't yet support libraries with binary dependencies. If your module is not working, please [file an issue](https://github.com/tessel/runtime/issues)! Greater Node compatibility is an area of active development.
 
 You can see progress on Node compatibility on [our public Runtime Trello board](https://trello.com/b/p8Berhi1/runtime).
 
@@ -66,12 +66,12 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
   - [fs.watch](http://nodejs.org/api/fs.html#fs_fs_watch_filename_options_listener) not implemented yet
 * [Globals](http://nodejs.org/api/globals.html)
 * [http](http://nodejs.org/api/http.html) / [https](http://nodejs.org/api/https.html)
- - [response.setTimeout](http://nodejs.org/api/http.html#http_response_settimeout_msecs_callback) not implemented yet
- - [sever.setTimeout](http://nodejs.org/api/http.html#http_server_settimeout_msecs_callback) not implemented yet
- - [server.timeout](http://nodejs.org/api/http.html#http_server_timeout) not implemented yet
- - [request.setTimeout](http://nodejs.org/api/http.html#http_request_settimeout_timeout_callback) not implemented yet
- - [request.setNoDelay](http://nodejs.org/api/http.html#http_request_setnodelay_nodelay) not implemented yet
- - [request.setSocketKeepAlive](http://nodejs.org/api/http.html#http_request_setsocketkeepalive_enable_initialdelay) not implemented yet
+ - [response.setTimeout](http://nodejs.org/api/http.html#http_response_settimeout_msecs_callback) not implemented yet, [#428](https://github.com/tessel/runtime/issues/428)
+ - [sever.setTimeout](http://nodejs.org/api/http.html#http_server_settimeout_msecs_callback) not implemented yet, [#428](https://github.com/tessel/runtime/issues/428)
+ - [server.timeout](http://nodejs.org/api/http.html#http_server_timeout) not implemented yet, [#428](https://github.com/tessel/runtime/issues/428)
+ - [request.setTimeout](http://nodejs.org/api/http.html#http_request_settimeout_timeout_callback) not implemented well, [#428](https://github.com/tessel/runtime/issues/428)
+ - [request.setNoDelay](http://nodejs.org/api/http.html#http_request_setnodelay_nodelay) not implemented yet, [#428](https://github.com/tessel/runtime/issues/428)
+ - [request.setSocketKeepAlive](http://nodejs.org/api/http.html#http_request_setsocketkeepalive_enable_initialdelay) not implemented yet, [#428](https://github.com/tessel/runtime/issues/428)
 * [modules](http://nodejs.org/api/modules.html)
 * [net](http://nodejs.org/api/net.html)
  - Some socket options may not be possible to configure (at least on a per-connection basis) with the CC3000 drivers:
@@ -116,7 +116,7 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
  - [log](http://nodejs.org/api/util.html#util_util_log_string) not implemented yet
  - [inspect](http://nodejs.org/api/util.html#util_util_inspect_object_options) not implemented yet
  - [isError](http://nodejs.org/api/util.html#util_util_iserror_object) not implemented yet
- 
+
 
 ###Plan to support in the future:
 * [assert](http://nodejs.org/api/assert.html)
@@ -138,4 +138,4 @@ Documentation for Node can be found [here](http://nodejs.org/api/).
 ##CoffeeScript
 Tessel plans to eventually support [CoffeeScript](http://coffeescript.org/).
 
-(Tessel can currently run pre-compiled CoffeeScript into [JavaScript](#javascript).) 
+(Tessel can currently run pre-compiled CoffeeScript into [JavaScript](#javascript).)
