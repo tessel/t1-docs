@@ -17,11 +17,11 @@ Tessel was designed for web developers to work in the world of hardware for the 
 
 ## Tessel 1 API Documentation
 
-* [Tessel 1 CLI](https://github.com/tessel/docs/blob/master/cli.md)
-* [Tessel 1 Hardware API (LEDs, pins, ports, etc.)](https://github.com/tessel/docs/blob/master/hardware-api.md)
-* [Modules on Tessel 1](https://github.com/tessel/docs/blob/master/module-apis.md)
-* [Connecting Tessel 1 to Wifi](https://github.com/tessel/docs/blob/master/wifi.md)
-* [Tessel 1 Languages and Compatibility](https://github.com/tessel/docs/blob/master/compatibility.md)
+* [Tessel 1 CLI](https://github.com/tessel/t1-docs/blob/master/cli.md)
+* [Tessel 1 Hardware API (LEDs, pins, ports, etc.)](https://github.com/tessel/t1-docs/blob/master/hardware-api.md)
+* [Modules on Tessel 1](https://github.com/tessel/t1-docs/blob/master/module-apis.md)
+* [Connecting Tessel 1 to Wifi](https://github.com/tessel/t1-docs/blob/master/wifi.md)
+* [Tessel 1 Languages and Compatibility](https://github.com/tessel/t1-docs/blob/master/compatibility.md)
 
 ## Tessel 1 Hardware Documentation
 
@@ -33,10 +33,10 @@ Tessel was designed for web developers to work in the world of hardware for the 
 
 ## Tessel 1 Tutorials
 
-* [Communication protocols](https://github.com/tessel/docs/blob/master/tutorials/communication-protocols.md)
-* [Making a DIY module](https://github.com/tessel/docs/blob/master/tutorials/diy_module_creation.md)
-* [Using multiple modules](https://github.com/tessel/docs/blob/master/tutorials/multi-module.md)
-* [Untethering Tessel](https://github.com/tessel/docs/blob/master/tutorials/untethered.md)
+* [Communication protocols](https://github.com/tessel/t1-docs/blob/master/tutorials/communication-protocols.md)
+* [Making a DIY module](https://github.com/tessel/t1-docs/blob/master/tutorials/diy_module_creation.md)
+* [Using multiple modules](https://github.com/tessel/t1-docs/blob/master/tutorials/multi-module.md)
+* [Untethering Tessel](https://github.com/tessel/t1-docs/blob/master/tutorials/untethered.md)
 
 If there's anything you can't find, something that isn't working, or documentation that we should add, please don't hesitate to <b>reach out to us</b> on the [Tessel forums](//forums.tessel.io).
 
