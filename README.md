@@ -38,7 +38,24 @@ Tessel was designed for web developers to work in the world of hardware for the 
 * [Using multiple modules](https://github.com/tessel/t1-docs/blob/master/tutorials/multi-module.md)
 * [Untethering Tessel](https://github.com/tessel/t1-docs/blob/master/tutorials/untethered.md)
 
-If there's anything you can't find, something that isn't working, or documentation that we should add, please don't hesitate to <b>reach out to us</b> on the [Tessel forums](//forums.tessel.io).
+## Modules
+
+* [Accelerometer](https://github.com/tessel/accel-mma84)
+* [Ambient](https://github.com/tessel/ambient-attx4)
+* [Audio](https://github.com/tessel/audio-vs1053b)
+* [Bluetooth Low Energy](https://github.com/tessel/ble-ble113a)
+* [Camera](https://github.com/tessel/camera-vc0706)
+* [Climate](https://github.com/tessel/climate-si7020)
+* [DIY](//tessel.io/diy)
+* [GPS](https://github.com/tessel/gps-a2235h)
+* [GPRS](https://github.com/tessel/gprs-sim900)
+* [Infrared](https://github.com/tessel/ir-attx4)
+* [MicroSD](https://github.com/tessel/sdcard)
+* [Relay](https://github.com/tessel/relay-mono)
+* [RFID](https://github.com/tessel/rfid-pn532)
+* [Servo](https://github.com/tessel/servo-pca9685)
+
+If there's anything you can't find, something that isn't working, or documentation that we should add, please don't hesitate to <b>reach out to us</b> on the [Tessel forums](//forums.tessel.io) or on the [Tessel Github repos](//github.com/tessel).
 
 Technical Machine is open source, [hardware](//github.com/tessel/hardware) and [software](//github.com/tessel/t1-firmware). We welcome your pull requests, and  we encourage you to design your own modules and products based on our designs. Check out the [contribution guide](//github.com/tessel/contribution-guide) for more details.
 
