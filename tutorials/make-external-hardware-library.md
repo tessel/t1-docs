@@ -114,4 +114,4 @@ Other places you might want to publish as well:
 
 * [This list of tools to use with Tessel](https://github.com/tessel/t1-docs/blob/master/tools.md)
 * [Tessel's forums](https://forums.tessel.io/)
-* [The Tessel projects page](projects.tessel.io)
+* [The Tessel projects page](//tessel.io/projects)

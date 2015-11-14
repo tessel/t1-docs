@@ -29,4 +29,4 @@ Once you've pushed your code to Tessel's Flash, plug in your Tessel to power.
 
 Tessel should boot up and immediately start running your code.
 
-*Make something cool? Show it off on the [Projects Page](//projects.tessel.io)!*
+*Make something cool? Show it off on the [Projects Page](//tessel.io/projects)!*
