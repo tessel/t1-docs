@@ -1,6 +1,6 @@
 # Running Tessel from a Battery
  Tessel can be unplugged from your computer and powered from alternative power sources, like a USB battery.
- 
+
 ## Deploying Code to Tessel
 
 While Tessel is connected to the computer, you can push code into Tessel's Flash memory with the following command:
@@ -23,7 +23,7 @@ For the simplest power solution, all you need is a USB charger of some kind:
 
 *USB battery* | *USB wall adapter*
 
-(There are various other ways to power your Tessel as well. You can read about them [here](https://tessel.io/docs/power).)
+(There are various other ways to power your Tessel as well. You can read about them [here](https://github.com/tessel/hardware/blob/master/powering-tessel.md).)
 
 Once you've pushed your code to Tessel's Flash, plug in your Tessel to power.
 

@@ -3,7 +3,7 @@ Each of the four ports on the Tessel exposes ten pins for use in creating custom
 
 All eight communication pins speak in terms of simple on/off states, but only three of them (the GPIO pins) are meant to be controlled manually. The rest, when grouped in pre-defined ways, are capable of encoding complex messages by having their state rapidly toggled in accordance with various protocols. It's a lot like [Morse code](http://en.wikipedia.org/wiki/Morse_code), but for electronics.
 
-In embedded electronics, there are four common protocols and Tessel [supports them all in JavaScript](https://tessel.io/docs/hardwareAPI).
+In embedded electronics, there are four common protocols and Tessel [supports them all in JavaScript](https://github.com/tessel/t1-docs/blob/master/hardware-api.md).
 
   * [GPIO](#gpio)
   * [SPI](#spi)
@@ -334,10 +334,10 @@ uart.write('Hello UART');
 [i2c_wikipedia]: http://en.wikipedia.org/wiki/I%C2%B2C
 [uart_wikipedia]: http://en.wikipedia.org/wiki/Universal_asynchronous_receiver/transmitter
 [level_shifting]: https://learn.sparkfun.com/tutorials/voltage-dividers
-[spi_code_example]: https://tessel.io/docs/hardwareAPI#spi
-[gpio_code_example]: https://tessel.io/docs/hardwareAPI#pins
-[i2c_code_example]: https://tessel.io/docs/hardwareAPI#i2c
-[uart_code_example]: https://tessel.io/docs/hardwareAPI#uart
+[spi_code_example]: https://github.com/tessel/t1-docs/blob/master/hardware-api.md#spi
+[gpio_code_example]: https://github.com/tessel/t1-docs/blob/master/hardware-api.md#pins
+[i2c_code_example]: https://github.com/tessel/t1-docs/blob/master/hardware-api.md#i2c
+[uart_code_example]: https://github.com/tessel/t1-docs/blob/master/hardware-api.md#uart
 [pir_project]: https://projects.tessel.io/projects/pir
 [button_post]: https://projects.tessel.io/projects/a-button-on-tessel
 [ambient_index]: https://github.com/tessel/ambient-attx4
@@ -346,7 +346,7 @@ uart.write('Hello UART');
 [sd_index]: https://github.com/tessel/sdcard
 [nrf_index]: https://github.com/tessel/rf-nrf24
 [accel_index]: https://github.com/tessel/accel-mma84
-[climate_index]: https://github.com/tessel/climate-si7005
+[climate_index]: https://github.com/tessel/climate-si7020
 [rfid_index]: https://github.com/tessel/rfid-pn532
 [servo_index]: https://github.com/tessel/servo-pca9685
 [ble_index]: https://github.com/tessel/ble-ble113a

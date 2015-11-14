@@ -12,9 +12,7 @@ Tessel aims for full JavaScript compatibility, with the exception of `eval()`. I
 Documentation for the JavaScript programming language can be found [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference).
 
 ##Node
-Tessel is currently compatible with the most common and applicable core [Node](http://nodejs.org/about/) libraries. Most non-core libraries should also work however we don't yet support libraries with binary dependencies. If your module is not working, please [file an issue](https://github.com/tessel/runtime/issues)! Greater Node compatibility is an area of active development.
-
-You can see progress on Node compatibility on [our public Runtime Trello board](https://trello.com/b/p8Berhi1/runtime).
+Tessel is currently compatible with the most common and applicable core [Node](http://nodejs.org/about/) libraries. Most non-core libraries should also work however we don't yet support libraries with binary dependencies. If your module is not working, please [file an issue](https://github.com/tessel/runtime/issues)!
 
 Node library support is prioritized by which libraries are most relevant to Tessel usage. The target Node version is latest Node master.
 
