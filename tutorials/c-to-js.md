@@ -9,9 +9,9 @@ var tessel = require('tessel');
 console.log("Can Tessel add?", 3 == tessel.add(1, 2));
 ```
 
-1. Clone down the [tessel/firmware](https://github.com/tessel/firmware) repo.
-2. Set up the firmware according to the [tessel/firmware readme](https://github.com/tessel/firmware/blob/master/README.md). 
-3. Open up `src/tessel.c`. Add these lines 
+1. Clone down the [tessel/t1-firmware](https://github.com/tessel/t1-firmware) repo.
+2. Set up the firmware according to the [tessel/t1-firmware readme](https://github.com/tessel/t1-firmware/blob/master/README.md). 
+3. Open up `src/tessel.c`. Add these lines
 
 	```c
 	uint32_t tessel_add(uint32_t x, uint32_t y)
@@ -54,7 +54,7 @@ console.log("Can Tessel add?", 3 == tessel.add(1, 2));
 	```js
 	this.deviceId = function(){
   		return hw.device_id();
-	}; 
+	};
 	```
 
 	Add the following right below it
@@ -75,9 +75,9 @@ console.log("Can Tessel add?", 3 == tessel.add(1, 2));
    	6100	  34272	     36	  40408	   9dd8	out/Release/tessel-otp.elf
 	```
 
-	This outputs the [elf file](http://en.wikipedia.org/wiki/Executable_and_Linkable_Format) for hardware debugging. 
+	This outputs the [elf file](http://en.wikipedia.org/wiki/Executable_and_Linkable_Format) for hardware debugging.
 
-10. Now go to `out/Release/` and do an `ls`. You should see the following 
+10. Now go to `out/Release/` and do an `ls`. You should see the following
 
 	```
 	build.ninja              tessel-cc3k-patch.bin    tessel-firmware.bin.cpgz
@@ -88,7 +88,7 @@ console.log("Can Tessel add?", 3 == tessel.add(1, 2));
 	```
 
 	Here's what each of those do:
-	* `tessel-boot`: bootloader for Tessel. Also writes the Tessel version number (04) in [otp](http://en.wikipedia.org/wiki/One-time_programmable). 
+	* `tessel-boot`: bootloader for Tessel. Also writes the Tessel version number (04) in [otp](http://en.wikipedia.org/wiki/One-time_programmable).
 	* `tessel-cc3k-patch`: updates the firmware for the [CC3000 wifi chip](http://processors.wiki.ti.com/index.php/CC3000) on Tessel. Current version is 1.28.
 	* `tessel-erase`: erases all JS user code on Tessel.
 	* `tessel-firmware`: the firmware for Tessel. This was just changed this to add the '.add' function.

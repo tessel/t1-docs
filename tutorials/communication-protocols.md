@@ -3,7 +3,7 @@ Each of the four ports on the Tessel exposes ten pins for use in creating custom
 
 All eight communication pins speak in terms of simple on/off states, but only three of them (the GPIO pins) are meant to be controlled manually. The rest, when grouped in pre-defined ways, are capable of encoding complex messages by having their state rapidly toggled in accordance with various protocols. It's a lot like [Morse code](http://en.wikipedia.org/wiki/Morse_code), but for electronics.
 
-In embedded electronics, there are four common protocols and Tessel [supports them all in JavaScript](https://tessel.io/docs/hardwareAPI).
+In embedded electronics, there are four common protocols and Tessel [supports them all in JavaScript](https://github.com/tessel/t1-docs/blob/master/hardware-api.md).
 
   * [GPIO](#gpio)
   * [SPI](#spi)
@@ -18,7 +18,7 @@ Most of the time, you will choose your protocol based on the parts you are using
 | Protocol 	|          # Pins Required          	    |               Supported Ports               	|            Max Speed            	| Example Modules 	|
 |:--------:	|:---------------------------------:	    |:-------------------------------------------:	|:-------------------------------:	|:---------------:	|
 | GPIO     	|          **1** (G1,G2 or G3)          	| A,B,C,D                                     	| 1kHz                            	| [All Modules](https://tessel.io/modules)                	|
-| SPI      	| **3+** (MOSI, MISO, SCK + 1 GPIO pin) 	| A,B,C,D                                     	| 25MBit/s                        	| <a href="https://github.com/tessel/ambient-attx4"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/ambient.png" style="height: 30px"/></a> <a href="https://github.com/tessel/audio-vs1053b"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/audio.png" style="height: 30px"/></a> <a href="https://github.com/tessel/camera-vc0706"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/camera.png" style="height: 30px"/></a> <a href="https://github.com/tessel/sdcard"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/sdcard.png" style="height: 30px"/></a> <a href="https://github.com/tessel/rf-nrf24"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/nrf.png" style="height: 30px"/></a> <a href="https://github.com/tessel/ir-attx4"><img src="https://projects.tessel.io/img/modules/infrared.svg" style="height: 30px"/></a>               	|
+| SPI      	| **3+** (MOSI, MISO, SCK + 1 GPIO pin) 	| A,B,C,D                                     	| 25MBit/s                        	| <a href="https://github.com/tessel/ambient-attx4"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/ambient.png" style="height: 30px"/></a> <a href="https://github.com/tessel/audio-vs1053b"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/audio.png" style="height: 30px"/></a> <a href="https://github.com/tessel/camera-vc0706"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/camera.png" style="height: 30px"/></a> <a href="https://github.com/tessel/sdcard"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/sdcard.png" style="height: 30px"/></a> <a href="https://github.com/tessel/rf-nrf24"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/nrf.png" style="height: 30px"/></a> <a href="https://github.com/tessel/ir-attx4"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/infrared.svg" style="height: 30px"/></a>               	|
 | I2C      	|          **2** (SCL and SDA)          	| A,B (shared bus I2C1) C,D (shared bus I2C0) 	| I2C0 - 1Mbit/s I2C1 - 400kbit/s 	| <a href="https://github.com/tessel/accel-mma84"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/accelerometer.png" style="height: 30px"/></a> <a href="https://github.com/tessel/climate-si7005"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/climate.png" style="height: 30px"/></a> <a href="https://github.com/tessel/rfid-pn532"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/rfid.png" style="height: 30px"/></a> <a href="https://github.com/tessel/servo-pca9685"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/servo.png" style="height: 30px"/></a>                	|
 | UART     	|           **2** (TX and RX)           	| A,B,D - hardware C - software               	| 8Mbit/s                         	|  <a href="https://github.com/tessel/ble-ble113a"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/ble.png" style="height: 30px"/></a> <a href="https://github.com/tessel/camera-vc0706"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/camera.png" style="height: 30px"/></a> <a href="https://github.com/tessel/gps-a2235h"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/gps.png" style="height: 30px"/></a> <a href="https://github.com/tessel/gprs-sim900"><img src="https://s3.amazonaws.com/technicalmachine-assets/technical-io/modules/gprs.png" style="height: 30px"/></a>             	|
 
@@ -334,19 +334,19 @@ uart.write('Hello UART');
 [i2c_wikipedia]: http://en.wikipedia.org/wiki/I%C2%B2C
 [uart_wikipedia]: http://en.wikipedia.org/wiki/Universal_asynchronous_receiver/transmitter
 [level_shifting]: https://learn.sparkfun.com/tutorials/voltage-dividers
-[spi_code_example]: https://tessel.io/docs/hardwareAPI#spi
-[gpio_code_example]: https://tessel.io/docs/hardwareAPI#pins
-[i2c_code_example]: https://tessel.io/docs/hardwareAPI#i2c
-[uart_code_example]: https://tessel.io/docs/hardwareAPI#uart
-[pir_project]: https://projects.tessel.io/projects/pir
-[button_post]: https://projects.tessel.io/projects/a-button-on-tessel
+[spi_code_example]: https://github.com/tessel/t1-docs/blob/master/hardware-api.md#spi
+[gpio_code_example]: https://github.com/tessel/t1-docs/blob/master/hardware-api.md#pins
+[i2c_code_example]: https://github.com/tessel/t1-docs/blob/master/hardware-api.md#i2c
+[uart_code_example]: https://github.com/tessel/t1-docs/blob/master/hardware-api.md#uart
+[pir_project]: https://tessel.hackster.io/ifoundthemeaningoflife/pir-a0a3f8?ref=search&ref_id=pir&offset=3
+[button_post]: https://tessel.hackster.io/ifoundthemeaningoflife/tessel-button-bcf822?ref=search&ref_id=button&offset=4
 [ambient_index]: https://github.com/tessel/ambient-attx4
 [audio_index]: https://github.com/tessel/audio-vs1053b
 [camera_index]: https://github.com/tessel/camera-vc0706
 [sd_index]: https://github.com/tessel/sdcard
 [nrf_index]: https://github.com/tessel/rf-nrf24
 [accel_index]: https://github.com/tessel/accel-mma84
-[climate_index]: https://github.com/tessel/climate-si7005
+[climate_index]: https://github.com/tessel/climate-si7020
 [rfid_index]: https://github.com/tessel/rfid-pn532
 [servo_index]: https://github.com/tessel/servo-pca9685
 [ble_index]: https://github.com/tessel/ble-ble113a

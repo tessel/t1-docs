@@ -3,9 +3,9 @@
 
 >Modules should be devices with clear-cut functionality. That is to say, they should have a single, well-defined purpose or a set of closely related functions, rather than an eclectic mix of capabilities onboard. This requirement is designed to reduce complexity, cost, and power consumption and maximize reusability in hardware and software.
 
->*[–Tessel hardware docs](https://tessel.io/docs/hardware#module-design-philosophy)*
+>*[–Tessel hardware docs](https://github.com/tessel/hardware/blob/master/tessel-hardware-overview.md#module-design-philosophy)*
 
-One of the main goals of the Tessel platform is "connected hardware as easy as npm install." 
+One of the main goals of the Tessel platform is "connected hardware as easy as npm install."
 If you need an accelerometer, Bluetooth Low Energy connection, SIM card capability, or any of the other [14 first-party modules available][modules_page], you can literally plug, npm install, and play.
 
 There is also a growing library of community-contributed [third-party modules][third_party_modules]: npm libraries paired with some simple wiring instructions, built for specific pieces of hardware.
@@ -170,7 +170,7 @@ We're going to choose G1, which is what we will hook up to the other side of the
 
 <p style="text-align:center"><em>Soldered together on a proto-module board.</em></p>
 
-Don't let the soldering part scare you. Soldering components like this onto a proto-module is a little harder than learning to use a hot glue gun, but not a lot harder. 
+Don't let the soldering part scare you. Soldering components like this onto a proto-module is a little harder than learning to use a hot glue gun, but not a lot harder.
 [This tutorial from Sparkfun](https://learn.sparkfun.com/tutorials/how-to-solder---through-hole-soldering) is a great place to start learning soldering.
 
 Let's go ahead and plug our module into Port A. **Remember to never make connections while your Tessel is powered up. Always unplug it first.**
@@ -375,23 +375,23 @@ To help you get started creating your own custom modules, here is a list of the 
 [package_json_standard]: https://www.npmjs.org/doc/files/package.json.html
 [npm_tutorial]: https://gist.github.com/coolaj86/1318304
 [readme_template]: https://github.com/tessel/style/blob/master/module_RM_template.md
-[hardware_api]: https://tessel.io/docs/hardwareAPI
-[tessel_projects]: https://projects.tessel.io/projects
+[hardware_api]: https://github.com/tessel/t1-docs/blob/master/hardware-api.md
+[tessel_projects]: https://tessel.io/projects
 [module_submission]: https://docs.google.com/forms/d/1Zod-EjAIilRrCJX0Nt6k6TrFO-oREeBWMdBmNMw9Zxc/viewform
 [level_shifting]: https://learn.sparkfun.com/tutorials/voltage-dividers
-[power_options]: https://tessel.io/docs/power
+[power_options]: https://github.com/tessel/hardware/blob/master/powering-tessel.md
 [servo_module]: https://tessel.io/modules#module-servo
 [servo_schematic]: http://design-files.tessel.io.s3.amazonaws.com/2014.06.06/Modules/Servo/TM-03-03.pdf
 [climate_module]: https://tessel.io/modules#module-climate
-[pir_project]: https://projects.tessel.io/projects/pir
-[button_project_page]: https://projects.tessel.io/projects/button-proto-module/
-[orig_button_project_page]: https://projects.tessel.io/projects/a-button-on-tessel
-[comm_protocols]: https://github.com/tessel/docs/blob/DIY-module/tutorials/communication-protocols.md
-[comm_gpio]: https://github.com/tessel/docs/blob/DIY-module/tutorials/communication-protocols.md#gpio
-[comm_spi]: https://github.com/tessel/docs/blob/DIY-module/tutorials/communication-protocols.md#spi
-[comm_i2c]: https://github.com/tessel/docs/blob/DIY-module/tutorials/communication-protocols.md#i2c
-[comm_uart]: https://github.com/tessel/docs/blob/DIY-module/tutorials/communication-protocols.md#uart
-[third_party_doc]: https://github.com/tessel/docs/blob/master/tutorials/make-external-hardware-library.md
+[pir_project]: https://tessel.hackster.io/ifoundthemeaningoflife/pir-a0a3f8?ref=search&ref_id=pir&offset=3
+[button_project_page]: https://tessel.hackster.io/sidwarkd/tessel-button-diy-module-054813?ref=search&ref_id=button&offset=12
+[orig_button_project_page]: https://tessel.hackster.io/ifoundthemeaningoflife/tessel-button-bcf822?ref=search&ref_id=button&offset=4
+[comm_protocols]: https://github.com/tessel/t1-docs/blob/DIY-module/tutorials/communication-protocols.md
+[comm_gpio]: https://github.com/tessel/t1-docs/blob/DIY-module/tutorials/communication-protocols.md#gpio
+[comm_spi]: https://github.com/tessel/t1-docs/blob/DIY-module/tutorials/communication-protocols.md#spi
+[comm_i2c]: https://github.com/tessel/t1-docs/blob/DIY-module/tutorials/communication-protocols.md#i2c
+[comm_uart]: https://github.com/tessel/t1-docs/blob/DIY-module/tutorials/communication-protocols.md#uart
+[third_party_doc]: https://github.com/tessel/t1-docs/blob/master/tutorials/make-external-hardware-library.md
 [nokia_sparkfun]: https://www.sparkfun.com/products/10168
 [nokia_adafruit]: https://www.adafruit.com/products/338
 [nokia_ebay]: http://www.ebay.com/sch/i.html?_from=R40&_trksid=p2050601.m570.l1313.TR6.TRC1.A0.H0.Xnokia+5110&_nkw=nokia+5110&_sacat=0)
@@ -399,4 +399,4 @@ To help you get started creating your own custom modules, here is a list of the 
 [screen_github]: https://github.com/sidwarkd/tessel-nokia5110
 [screen_npm]: https://www.npmjs.org/package/tessel-nokia5110
 [screen_hookup_guide]: https://learn.sparkfun.com/tutorials/graphic-lcd-hookup-guide
-[screen_project_page]: https://projects.tessel.io/projects/nokia-5110-graphic-lcd-proto-module
+[screen_project_page]: https://tessel.hackster.io/sidwarkd/tessel-nokia5110-c489c7?ref=search&ref_id=lcd&offset=0

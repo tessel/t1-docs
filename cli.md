@@ -1,7 +1,7 @@
 #Tessel CLI
 
 Tessel CLI is the command line interface for the Tessel microcontroller (http://tessel.io).
-[[CLI source.](https://github.com/tessel/cli)]
+[[CLI source.](https://github.com/tessel/t1-cli)]
 
 * [Installation](#installation)
 * [Commands](#commands)
@@ -28,7 +28,7 @@ npm install -g http://s3.amazonaws.com/builds.tessel.io/cli/tessel-cli-current.t
 #####`tessel list`
 #####`tessel logs`
 #####`tessel push <filename> [options]`
-Push a file and its containing directory into flash memory (persists across power cycles). For more information about what files/folders are sent to Tessel, see the [deploying](#deploying) section. 
+Push a file and its containing directory into flash memory (persists across power cycles). For more information about what files/folders are sent to Tessel, see the [deploying](#deploying) section.
 Options:
 * `-a, --args`      Arguments to passin as process.argv
 * `-q, --quiet`     [Tessel] Hide tessel deployment messages
@@ -38,7 +38,7 @@ Options:
 * `-h, --help`      Show usage for tessel push
 
 #####`tessel run <filename> [options]`
-Run a script and its containing directory temporarily without writing it to flash. For more information about what files/folders are sent to Tessel, see the [deploying](#deploying) section. 
+Run a script and its containing directory temporarily without writing it to flash. For more information about what files/folders are sent to Tessel, see the [deploying](#deploying) section.
 Options:
 * `-a, --args`          Arguments to passin as process.argv
 * `-i, --interactive`   Enter the REPL
@@ -51,7 +51,7 @@ Options:
 * `-h, --help`          Show usage for tessel push
 
 #####`tessel repl`
-Interactive JavaScript shell - see [REPL docs below](#REPL)
+Interactive JavaScript shell - see [REPL docs below](#repl)
 #####`tessel wifi -n <ssid> -p <password> [-s <security (wep/wpa/wpa2 by default)>]`
 Connects to wifi
 #####`tessel wifi -n <ssid>`
@@ -62,7 +62,7 @@ See current wifi status
 Disconnect from the current network and forget its credentials
 #####`tessel stop`
 #####`tessel pack <filename>`
-Creates a tarball of all the files that would be sent over to Tessel. This is helpful for checking what files may be too large or missing from any particular script. 
+Creates a tarball of all the files that would be sent over to Tessel. This is helpful for checking what files may be too large or missing from any particular script.
 #####`tessel check <filename>`
 Dumps tessel binary code
 #####`tessel dfu-restore [tag]`

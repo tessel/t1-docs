@@ -53,7 +53,7 @@ General purpose input-output (GPIO) provides access for digital and analog signa
 
 By default, all of the pins are pulled high if not specifically set.
 
-You may find it useful to cross-reference this section with the hardware documentation for [Pins and Ports](https://tessel.io/docs/hardware#pins-and-ports).
+You may find it useful to cross-reference this section with the hardware documentation for [Pins and Ports](https://github.com/tessel/hardware/blob/master/tessel-hardware-overview.md#pins-and-ports).
 
 ###GPIO bank
 Tessel's GPIO bank is designed to be breadboardable, so you can interact easily with sensors and actuators beyond our pre-built modules.
@@ -268,7 +268,7 @@ Sets the pin as a pullup, pulldown, or neutral pin. Mode is one of `pullup`, `pu
 &#x20;<a href="#api-pin-mode" name="api-pin-mode">#</a> pin<b>.mode</b> ()  
 Returns the mode of the pin.
 
-External GPIO Interrupts can be used much like regular Node EventEmitters. There are seven external interrupts you can work with. You can read more in depth discussion about gpio interrupts in [our External GPIO Walkthrough](https://github.com/tessel/docs/blob/master/tutorials/gpio-interrupts.md).
+External GPIO Interrupts can be used much like regular Node EventEmitters. There are seven external interrupts you can work with. You can read more in depth discussion about gpio interrupts in [our External GPIO Walkthrough](https://github.com/tessel/t1-docs/blob/master/tutorials/gpio-interrupts.md).
 
 &#x20;<a href="#api-pin-on-type-callback-time-type" name="api-pin-on-type-callback-time-type">#</a> pin<b>.on</b> ( type, callback(time, type) )  
 Sets a listener for a signal edge on `pin`. `time` is the milliseconds since boot up and `type` can be one of `rise`, `fall`, `change`. The `high` and `low` level triggers cannot be used with `on` because they would fire repeatedly and wreak havoc on the runtime.
@@ -304,7 +304,7 @@ The buttons can also be used to put the board into DFU Mode which can be underst
 
 ##SPI
 
-A SPI channel. For details on connecting the hardware to Tessel see [the Pins and Ports section of the Hardware documentation](https://tessel.io/docs/hardware#pins-and-ports).
+A SPI channel. For details on connecting the hardware to Tessel see [the Pins and Ports section of the Hardware documentation](https://github.com/tessel/hardware/blob/master/tessel-hardware-overview.md#pins-and-ports).
 
 ```js
 var port = tessel.port['A'];
@@ -320,8 +320,8 @@ spi.transfer(new Buffer([0xde, 0xad, 0xbe, 0xef]), function (err, rx) {
 
 spi.transferBatch(new Buffer([0xc0, 0xd0, 0xc1, 0xd1]), {chunkSize:2}, function (err, rx) {
 // Equivalent to
-//    spi.transfer(new Buffer[0xc0, 0xd0]); 
-//    spi.transfer(new Buffer[0xc1, 0xd1]); 
+//    spi.transfer(new Buffer[0xc0, 0xd0]);
+//    spi.transfer(new Buffer[0xc1, 0xd1]);
 // Faster than doing separate transfers because only 1 JS call is made
 });
 ```
@@ -378,12 +378,12 @@ Sets the role.
 Sets the chip select settings.
 
 &#x20;<a href="#api-spi-lock-callback" name="api-spi-lock-callback">#</a> spi<b>.lock</b> ( callback )  
-Locks SPI so that only one SPI port is communicating at a time. To read more about SPI Bus Locking, check out our discussion about the [Bus Locking and Raw Transfers API](https://github.com/tessel/docs/blob/master/tutorials/raw-spi.md).
+Locks SPI so that only one SPI port is communicating at a time. To read more about SPI Bus Locking, check out our discussion about the [Bus Locking and Raw Transfers API](https://github.com/tessel/t1-docs/blob/master/tutorials/raw-spi.md).
 
 
 ##I2C
 
-An I2C channel. For details on connecting the hardware to Tessel see [the Pins and Ports section of the Hardware documentation](https://tessel.io/docs/hardware#pins-and-ports).
+An I2C channel. For details on connecting the hardware to Tessel see [the Pins and Ports section of the Hardware documentation](https://github.com/tessel/hardware/blob/master/tessel-hardware-overview.md#pins-and-ports).
 
 ```js
 var port = tessel.port['A'];
@@ -409,7 +409,7 @@ Sends a Buffer `txbuf` to the client.
 
 ##UART
 
-A UART channel. For details on connecting the hardware to Tessel see [the Pins and Ports section of the Hardware documentation](https://tessel.io/docs/hardware#pins-and-ports).
+A UART channel. For details on connecting the hardware to Tessel see [the Pins and Ports section of the Hardware documentation](https://github.com/tessel/hardware/blob/master/tessel-hardware-overview.md#pins-and-ports).
 
 ```js
 var port = tessel.port['A'];

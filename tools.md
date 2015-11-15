@@ -37,10 +37,10 @@ You can debug Tessel by soldering JTAG headers to the board and using a JTAG deb
 
 #### Hardware
 
-&#x20;<a href="#api-Powering-Tessel-https-tessel-io-docs-power" name="api-Powering-Tessel-https-tessel-io-docs-power">#</a> [Powering Tessel]( https://tessel.io/docs/power )  
+&#x20;<a href="#api-Powering-Tessel-https-github-com-tessel-hardware-blob-master-powering-tessel-md" name="api-Powering-Tessel-https-github-com-tessel-hardware-blob-master-powering-tessel-md">#</a> [Powering Tessel]( https://github.com/tessel/hardware/blob/master/powering-tessel.md )  
 Powering Tessel through an external power source
 
-&#x20;<a href="#api-Adding-a-Wifi-Antenna-https-tessel-io-docs-antenna" name="api-Adding-a-Wifi-Antenna-https-tessel-io-docs-antenna">#</a> [Adding a Wifi Antenna]( https://tessel.io/docs/antenna )  
+&#x20;<a href="#api-Adding-a-Wifi-Antenna-https-github-com-tessel-hardware-blob-master-external-wifi-antenna-md" name="api-Adding-a-Wifi-Antenna-https-github-com-tessel-hardware-blob-master-external-wifi-antenna-md">#</a> [Adding a Wifi Antenna]( https://github.com/tessel/hardware/blob/master/external-wifi-antenna.md )  
 How to add a Wifi antenna to Tessel to improve Wifi reception
 
 &#x20;<a href="#api-Connecting-Arduino-and-Tessel-https-github-com-tessel-docs-blob-master-tutorials-connect-arduino-tessel-md" name="api-Connecting-Arduino-and-Tessel-https-github-com-tessel-docs-blob-master-tutorials-connect-arduino-tessel-md">#</a> [Connecting Arduino and Tessel]( https://github.com/tessel/docs/blob/master/tutorials/connect-arduino-tessel.md )  
@@ -90,7 +90,7 @@ AT&T M2X API client for node.js based Tessel
 
 ### Hardware libraries
 
-Beyond the [modules](tessel.io/modules), libraries and examples for connecting with Tessel.
+Beyond the [modules](//tessel.io/modules), libraries and examples for connecting with Tessel.
 
 &#x20;<a href="#api-pir-https-www-npmjs-org-package-pir" name="api-pir-https-www-npmjs-org-package-pir">#</a> [pir]( https://www.npmjs.org/package/pir )  
 Node/Tessel library for a PIR motion detector
@@ -98,7 +98,7 @@ Node/Tessel library for a PIR motion detector
 &#x20;<a href="#api-pulse-sensor-https-www-npmjs-org-package-pulsesensor" name="api-pulse-sensor-https-www-npmjs-org-package-pulsesensor">#</a> [pulse sensor]( https://www.npmjs.org/package/pulsesensor )  
 Node/Tessel library for a pulse sensor
 
-&#x20;<a href="#api-tessel-ht16k33-https-www-npmjs-org-package-tessel-ht16k33" name="api-tessel-ht16k33-https-www-npmjs-org-package-tessel-ht16k33">#</a> [tessel-ht16k33]( https://www.npmjs.org/package/tessel-ht16k33 )  
+&#x20;<a href="#api-tessel-ht16k33-https-www-npmjs-com-package-backpack-ht16k33" name="api-tessel-ht16k33-https-www-npmjs-com-package-backpack-ht16k33">#</a> [tessel-ht16k33]( https://www.npmjs.com/package/backpack-ht16k33 )  
 Use the Adafruit HT16K33 LED Backpack with your Tessel
 
 &#x20;<a href="#api-tessel-button-https-www-npmjs-org-package-tessel-button" name="api-tessel-button-https-www-npmjs-org-package-tessel-button">#</a> [tessel-button]( https://www.npmjs.org/package/tessel-button )  
@@ -119,5 +119,5 @@ A thorough explanation of how the Tessel software architecture works as a whole,
 &#x20;<a href="#api-Technical-Machine-style-guide-https-github-com-tessel-style" name="api-Technical-Machine-style-guide-https-github-com-tessel-style">#</a> [Technical Machine style guide]( https://github.com/tessel/style )  
 Defines style for Technical Machine code, docs, and directories, particularly Tessel modules
 
-&#x20;<a href="#api-RFC-category-on-the-Tessel-forums-https-forums-tessel-io-category-rfc" name="api-RFC-category-on-the-Tessel-forums-https-forums-tessel-io-category-rfc">#</a> [RFC category on the Tessel forums]( https://forums.tessel.io/category/rfc )  
+&#x20;<a href="#api-Contributing-category-on-the-Tessel-forums-https-forums-tessel-io-c-contributing" name="api-Contributing-category-on-the-Tessel-forums-https-forums-tessel-io-c-contributing">#</a> [Contributing category on the Tessel forums]( https://forums.tessel.io/c/contributing )  
 Technical Machine & community members request comments on APIs and projects
